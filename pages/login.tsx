@@ -4,6 +4,7 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'; 
 import React from 'react'
 import Carousel from '../component/Carousel';
+import Router from 'next/router';
 
 export default function login() {
  
@@ -118,7 +119,7 @@ export default function login() {
                         <p className='font-Inter-Medium text-xs text-right cursor-pointer' >Forgot Password?<Link style={{ textDecoration: 'none' }} href='/forgotpassword'><span className='cursor-pointer ml-1 font-Inter-SemiBold text-xs' style={{color:'#03C8DB'}} > Get a new one</span></Link></p> 
                     </div>  
                     
-                    <button style={formik.values.email.length >= 3 && formik.values.password.length >= 8 ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
+                    <button onClick={()=> Router.push('/dashboard')} style={formik.values.email.length >= 3 && formik.values.password.length >= 8 ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
                         {!loading ? 
                             <div className='py-1' >
                                 SIGN IN

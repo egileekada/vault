@@ -17,6 +17,8 @@ module.exports = {
       current: 'currentColor',
       errorRed: '#ff0000',
       inactive: '#667B8E',
+      startgrad: '#000C15',
+      stopgrad: '#010F1B',
 
       black: colors.black,
       white: colors.white,
@@ -282,6 +284,21 @@ module.exports = {
       ],
       'Inter-SemiBold': [
         'Inter-SemiBold'
+      ],
+      'Montserrat-ExtraBold': [
+        'Montserrat-ExtraBold',
+      ],
+      'Montserrat-Bold': [
+        'Montserrat-Bold',
+      ],
+      'Montserrat-Medium': [
+        'Montserrat-Medium'
+      ],
+      'Montserrat-Regular': [
+        'Montserrat-Regular'
+      ],
+      'Montserrat-SemiBold': [
+        'Montserrat-SemiBold'
       ],
     },
     fontSize: {

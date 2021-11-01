@@ -3,6 +3,7 @@ import { Input, Link } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import * as yup from 'yup'
 import { useFormik } from 'formik';  
+import Router from 'next/router';
 
 export default function Verification() {
 
@@ -58,7 +59,7 @@ export default function Verification() {
 
             </div>  
             
-            <button style={formik.values.code !== '' ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
+            <button  onClick={()=> Router.push('/dashboard')} style={formik.values.code !== '' ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
                 {!loading ? 
                     <div className='py-1' >
                         NEXT

@@ -1,7 +1,7 @@
 import image from 'next/image'
 import React from 'react'
 
-export default function Transaction() {
+export default function Transaction(props: any) {
 
     const Array = [ 
         {
@@ -36,7 +36,7 @@ export default function Transaction() {
             </div>
             {Array.map((item: any, index: any) => {
                 return(
-                    <div key={index} className='w-full flex flex-row mt-4 items-center' >
+                    <div onClick={()=> props.open(true)} key={index} className='w-full flex cursor-pointer flex-row mt-4 items-center' >
                         <div style={{backgroundColor: '#F1ECFE', borderRadius: '8px'}} className='w-9 h-8 flex px-1 items-center justify-center'  >
                             <img className='w-full' src={item.image} /> 
                         </div>

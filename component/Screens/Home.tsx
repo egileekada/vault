@@ -1,11 +1,17 @@
 import React from 'react'
 import { IoIosArrowRoundForward } from 'react-icons/io'
 import CreditCard from '../dashboard-component/CreditCard'
+import LinkCard from '../dashboard-component/dashboard-modal/LinkCard'
+import TransactionInformation from '../dashboard-component/dashboard-modal/TransactionInformation'
 import Header from '../dashboard-component/Header'
 import Information from '../dashboard-component/Information'
 import Transaction from '../dashboard-component/Transaction'
 
 export default function Home() {
+
+    const [savingsModal, setSavingModal] = React.useState(false);
+    const [linkCardModal, setLinkCardModal] = React.useState(false);
+
     return (
         <div className='w-full h-full py-20 px-8' >
             <p style={{color: '#828282'}} className='font-Montserrat-Regular text-xs' >Balance</p>
@@ -13,12 +19,12 @@ export default function Home() {
             <Header />
             <div className='w-full flex flex-row' >
                 <div className='w-full mt-10'  >  
-                    <Transaction /> 
+                    <Transaction open={setSavingModal} /> 
                     <Information />  
                 </div>
                 <div style={{width: '700px'}} className='ml-8' >
                     <p style={{color: '#828282'}} className=' w-full font-Montserrat-ExtraBold text-sm mt-10' >Linked Cards</p>
-                    <CreditCard />
+                    <CreditCard open={setLinkCardModal} />
                     <div className=' w-96  mt-12 rounded-2xl relative ' > 
                         <img src='/assets/images/building.png'  className=' w-full rounded-3xl' />  
                         <div className="absolute inset-0 bg-gradient-to-r from-startgrad to-stopgrad opacity-40 rounded-3xl  h-full flex flex-col" />
@@ -38,7 +44,25 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
+            {savingsModal ? 
+                (
+                    <>
+                        <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
+                            <TransactionInformation close={setSavingModal} />
+                        </div> 
+                        <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                    </>
+                ) : null} 
+            {linkCardModal ? 
+                (
+                    <>
+                        <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
+                            <LinkCard close={setLinkCardModal} />
+                        </div> 
+                        <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                    </>
+                ) : null} 
         </div>
     )
 }

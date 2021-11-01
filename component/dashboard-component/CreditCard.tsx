@@ -8,7 +8,7 @@ export default function CreditCard() {
                 <div style={{width: '15px', height: '127px', backgroundColor: '#FFE27C', top: '27px', right: '-30px', borderTopRightRadius: '16px', borderBottomRightRadius: '16px'}} className=' absolute rounded-tr-2xl rounded-br-2xl' />
                 <div className='w-full flex' >
                     <div className='w-full flex flex-1' />
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg className='cursor-pointer' width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12.8835 6.31201C12.8835 6.31201 12.5215 10.802 12.3115 12.6933C12.2115 13.5967 11.6535 14.126 10.7395 14.1427C9.00016 14.174 7.25883 14.176 5.52019 14.1393C4.64085 14.1213 4.09219 13.5853 3.99419 12.698C3.78285 10.79 3.42285 6.31201 3.42285 6.31201" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M13.8053 4.15967H2.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M11.6274 4.15998C11.1041 4.15998 10.6534 3.78998 10.5507 3.27732L10.3887 2.46665C10.2887 2.09265 9.95006 1.83398 9.56406 1.83398H6.74206C6.35604 1.83398 6.01738 2.09265 5.91738 2.46665L5.75538 3.27732C5.65271 3.78998 5.20204 4.15998 4.67871 4.15998" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>

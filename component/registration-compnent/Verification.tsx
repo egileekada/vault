@@ -29,7 +29,7 @@ export default function Verification() {
 
     return (
         <div className='bg-white w-full h-full flex justify-center flex-col py-24  py-14 px-6 lg:px-40 rounded-lg' >
-            <img src='/assets/images/logo.png' alt='login' style={{width: '150px'}} className=' h-auto  ' />
+            <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '33px'}} className=' h-auto  ' />
             <p style={{color: '#002343'}} className='font-Inter-ExtraBold text-2xl flex mt-10'>Enter code sent to</p> 
             <p style={{color: '#5788AD'}} className='font-Inter-Regular my-2 text-xs' >mbaright200000@gmail.com</p>
             <div className='w-full flex flex-col mt-4 py-4' >  

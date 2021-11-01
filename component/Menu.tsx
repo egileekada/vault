@@ -51,7 +51,7 @@ export default function Menu(props: any) {
             <div className='w-full mt-8' style={{backgroundColor: '#FCFCFC'}} >
                 {Array.map((item: any, index: any) => {
                     return( 
-                        <div onClick={()=> ClickHandler(index)} style={index === active ? {backgroundColor: '#002343', paddingLeft: '3px', paddingRight: '3px', height: '24px'} : {backgroundColor: '#002343', paddingLeft: '0px', paddingRight: '0px', height: '24px'}} key={index} className='w-full cursor-pointer my-4' > 
+                        <div onClick={()=> ClickHandler(index)} style={index === active ? {backgroundColor: '#130F26', paddingLeft: '3px', paddingRight: '3px', height: '24px'} : {backgroundColor: '#002343', paddingLeft: '0px', paddingRight: '0px', height: '24px'}} key={index} className='w-full cursor-pointer my-4' > 
                             <div style={{backgroundColor: '#FCFCFC'}} className='w-full h-full flex flex-row items-center ' > 
                                 <div className='w-16 flex justify-center items-center' >
                                     <Icons icons={item.name} index={active} />

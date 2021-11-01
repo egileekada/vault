@@ -23,7 +23,7 @@ export default function CreditCard() {
                 </div>
             </div>
             <div className='w-full flex flex-1' />
-            <div style={{width: '55px', height: '132px'}} className='rounded-2xl ml-14 cursor-pointer mt-4 shadow-md flex justify-center items-center' >
+            <div style={{width: '55px', height: '132px'}} className='rounded-2xl ml-14 cursor-pointer mt-6 shadow-md flex justify-center items-center' >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="11.5" fill="white" stroke="#CCD3D9"/>
                     <path d="M12 12L12 18M12 6V12V6ZM12 12L18 12L12 12ZM12 12H6H12Z" stroke="#CCD3D9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

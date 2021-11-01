@@ -34,7 +34,7 @@ export default function login() {
                     {/* <div className='w-full flex justify-center items-center' >
                         <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '33px'}} className=' h-auto  ' />
                     </div> */}
-                    <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '33px'}} className=' h-auto  ' />
+                    <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '143px'}} className=' h-auto  ' />
                     <p style={{color: '#002343'}} className='font-Inter-ExtraBold text-2xl flex mt-10'>Welcome Back</p> 
                     <p style={{color: '#5788AD'}} className='font-Inter-Regular my-2 text-xs' >Login and start building your finanacial goal.</p>
                     <div className='w-full flex flex-col mt-4 py-4' >  

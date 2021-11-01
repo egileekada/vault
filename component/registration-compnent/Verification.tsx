@@ -5,7 +5,7 @@ import * as yup from 'yup'
 import { useFormik } from 'formik';  
 import Router from 'next/router';
 
-export default function Verification() {
+export default function Verification(props: any) {
 
     const [showpassword, setShowpass] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
@@ -29,7 +29,7 @@ export default function Verification() {
 
     return (
         <div className='bg-white w-full h-full flex justify-center flex-col py-24  py-14 px-6 lg:px-40 rounded-lg' >
-            <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '33px'}} className=' h-auto  ' />
+            <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '143px'}} className=' h-auto  ' />
             <p style={{color: '#002343'}} className='font-Inter-ExtraBold text-2xl flex mt-10'>Enter code sent to</p> 
             <p style={{color: '#5788AD'}} className='font-Inter-Regular my-2 text-xs' >mbaright200000@gmail.com</p>
             <div className='w-full flex flex-col mt-4 py-4' >  
@@ -59,7 +59,7 @@ export default function Verification() {
 
             </div>  
             
-            <button  onClick={()=> Router.push('/dashboard')} style={formik.values.code !== '' ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
+            <button  onClick={()=> props.click(true)} style={formik.values.code !== '' ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
                 {!loading ? 
                     <div className='py-1' >
                         NEXT

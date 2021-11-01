@@ -25,7 +25,7 @@ export default function Home() {
                         <div className='absolute py-6 px-8 top-0 w-full' >
                             <div className='w-full flex flex-row' >
                                 <div className='w-full flex flex-1' />
-                                <img src='/assets/images/Vault-logo.png'  className='' /> 
+                                <img src='/assets/images/Vault-logo-white.png'  className='' /> 
                             </div>
                             <div className='w-full h-full flex flex-row z-20' >
                                 <p style={{color: '#E0E0E0'}} className=' w-32 mt-8 font-Montserrat-Bold text-xl' >Lets help you Build wealth with ease.</p>

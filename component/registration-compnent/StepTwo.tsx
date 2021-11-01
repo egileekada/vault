@@ -30,7 +30,7 @@ export default function StepTwo() {
 
     return (
         <div className='  bg-white w-full h-auto flex justify-center flex-col pt-12 pb-8 px-6 lg:px-40 rounded-lg' >
-            <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '33px'}} className=' h-auto  ' />
+            <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '143px'}} className=' h-auto  ' />
             <p style={{color: '#002343'}} className='font-Inter-ExtraBold text-2xl flex mt-10'>Let’s get to know you</p>  
             <div className='w-full flex flex-col mt-4 py-4' >  
                 <div className='relative w-full flex font-Inter-Regular flex-col py-2 ' > 

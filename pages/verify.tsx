@@ -5,7 +5,7 @@ import Verification from '../component/registration-compnent/Verification';
 
 export default function verify() {
 
-    const [show, setShow] = React.useState(true)
+    const [show, setShow] = React.useState(false)
 
     return (
         <div className='w-full h-screen flex relative flex-row bg-white' > 
@@ -13,7 +13,7 @@ export default function verify() {
                 {show ? 
                         <SignMessage />
                     :
-                        <Verification />
+                        <Verification click={setShow} />
                 }
             </div> 
             <div className='w-full h-screen relative hidden lg:flex' > 

@@ -5,12 +5,16 @@ import LinkCard from '../dashboard-component/dashboard-modal/LinkCard'
 import TransactionInformation from '../dashboard-component/dashboard-modal/TransactionInformation'
 import Header from '../dashboard-component/Header'
 import Information from '../dashboard-component/Information'
+import TransactionModal from '../dashboard-component/dashboard-modal/Transaction'
 import Transaction from '../dashboard-component/Transaction'
+import SuccessModal from '../dashboard-component/dashboard-modal/SucessModal'
 
 export default function Home() {
 
     const [savingsModal, setSavingModal] = React.useState(false);
     const [linkCardModal, setLinkCardModal] = React.useState(false);
+    const [sucessModal, setSucessModal] = React.useState(false);
+    const [transactionModal, setTransactionModal] = React.useState(false);
 
     return (
         <div className='w-full h-full py-20 px-8' >
@@ -19,7 +23,7 @@ export default function Home() {
             <Header />
             <div className='w-full flex flex-row' >
                 <div className='w-full mt-10'  >  
-                    <Transaction open={setSavingModal} /> 
+                    <Transaction transac={setTransactionModal} open={setSavingModal} /> 
                     <Information />  
                 </div>
                 <div style={{width: '700px'}} className='ml-8' >
@@ -58,7 +62,25 @@ export default function Home() {
                 (
                     <>
                         <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <LinkCard close={setLinkCardModal} />
+                            <LinkCard next={setSucessModal} close={setLinkCardModal} />
+                        </div> 
+                        <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                    </>
+                ) : null} 
+            {sucessModal ? 
+                (
+                    <>
+                        <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
+                            <SuccessModal close={setSucessModal} />
+                        </div> 
+                        <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                    </>
+                ) : null} 
+            {transactionModal ? 
+                (
+                    <>
+                        <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
+                            <TransactionModal close={setTransactionModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>

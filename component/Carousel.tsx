@@ -58,8 +58,8 @@ export default function Carousel() {
                     <img className='h-full' src={arr[count].img} />
                 </div>
 
-                <p className='z-30 w-80 text-sm text-center mt-4 font-Montserrat-Bold text-white' >{arr[count].header}</p>
-                <p style={{width: '350px'}} className='z-30 text-xs text-center mt-2 font-Montserrat-Regular text-white' >{arr[count].body}</p>
+                <p className='z-30 w-80 text-base text-center mt-4 font-Montserrat-Bold text-white' >{arr[count].header}</p>
+                <p style={{width: '350px'}} className='z-30 h-14 text-sm text-center mt-2 font-Montserrat-Regular text-white' >{arr[count].body}</p>
             
                 <div className='w-full mt-14 flex justify-center items-center' >
                     {arr.map((item:any, index: any) => {

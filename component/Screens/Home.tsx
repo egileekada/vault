@@ -7,7 +7,7 @@ import Header from '../dashboard-component/Header'
 import Information from '../dashboard-component/Information'
 import TransactionModal from '../dashboard-component/dashboard-modal/Transaction'
 import Transaction from '../dashboard-component/Transaction'
-import SuccessModal from '../dashboard-component/dashboard-modal/SucessModal'
+import SuccessModal from '../reusable-modal/SucessModal'
 
 export default function Home() {
 
@@ -62,7 +62,7 @@ export default function Home() {
                 (
                     <>
                         <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <LinkCard next={setSucessModal} close={setLinkCardModal} />
+                            <LinkCard next={setSucessModal} header='Link Card' close={setLinkCardModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
@@ -71,7 +71,7 @@ export default function Home() {
                 (
                     <>
                         <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <SuccessModal close={setSucessModal} />
+                            <SuccessModal header='Card has been added successfully' body='You have successfully added this card ... 0489.' close={setSucessModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>

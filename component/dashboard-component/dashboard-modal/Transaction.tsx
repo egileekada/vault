@@ -60,7 +60,7 @@ export default function Transaction(props: any) {
                                 <IoIosClose onClick={()=> setSort(false)} className='cursor-pointer' size='20px' />
                             </div>
                         <div className='w-full flex' >
-                            <RadioButton />
+                            <RadioButton array={['Last week','Last Month','Last (2) Months']} size='20px' font='12px' />
                         </div>
                     </div>
                 :null}

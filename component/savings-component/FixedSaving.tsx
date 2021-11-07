@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function FixedSaving() {
+export default function FixedSaving(props: any) {
 
     const Array = [
         {
@@ -24,7 +24,7 @@ export default function FixedSaving() {
         <div className='w-full mt-8'>
             {Array.map((item: any, index: any) => {
                 return(
-                    <div style={{backgroundColor: '#F4F4F4', borderRadius:'8px'}} className='w-full flex items-center px-8 py-4 my-2' >
+                    <div onClick={()=> props.click(1)} key={index} style={{backgroundColor: '#F4F4F4', borderRadius:'8px'}} className='w-full flex items-center cursor-pointer px-8 py-4 my-2' >
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18.2057 10.1631H16.791V11.5778H18.2057V10.1631Z" fill="#002343"/>
                             <path d="M18.2728 10.0962H16.7246V11.6477H18.2728V10.0962ZM18.2394 11.6143H16.758V10.1295H18.2394V11.6143Z" fill="#E2E2E2"/>

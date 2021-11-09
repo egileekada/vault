@@ -1,7 +1,7 @@
 import { Input } from '@chakra-ui/input'
 import React from 'react'
-import RadioButton from '../../dashboard-component/RadioButton'
-import Modals from '../modal-controller'
+import RadioButton from '../../reusable-modal/RadioButton'
+import Modals from '../modal-controller/FixedSavingController'
 
 export default function FixedSavingTab(props: any) { 
 

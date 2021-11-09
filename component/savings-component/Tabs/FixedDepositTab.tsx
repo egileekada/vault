@@ -1,8 +1,25 @@
 import { Input } from '@chakra-ui/react'
 import React from 'react'
-import RadioButton from '../../dashboard-component/RadioButton'
+import RadioButton from '../../reusable-modal/RadioButton'
+import FixedDepositController from '../modal-controller/FixedDepositController'
 
-export default function FixedDepositTab() {
+export default function FixedDepositTab(props: any) { 
+
+    const [showModal, setShowModal] = React.useState(false)
+    const [endModal, setEndModal] = React.useState(true)
+
+    const ClickHandler =()=> {
+        props.close(-1)  
+        setEndModal(true)
+    }
+
+    React.useEffect(() => { 
+        {endModal === false ? 
+            ClickHandler() 
+            :null
+        }
+    },) 
+
     return (
         <div className='w-full flex-row flex mb-10' >
             <div className='w-full mx-3'>
@@ -38,8 +55,11 @@ export default function FixedDepositTab() {
                         </defs>
                     </svg>
                 </div>
-                <button style={{backgroundColor: '#002343'}} className='w-full font-Montserrat-Bold py-3 text-white rounded text-sm font-Montserrat-Bold' >PROCEED</button>
+                <button onClick={()=> setShowModal(true)} style={{backgroundColor: '#002343'}} className='w-full font-Montserrat-Bold py-3 text-white rounded text-sm font-Montserrat-Bold' >PROCEED</button>
             </div>
+            {showModal ?  
+                <FixedDepositController close={setShowModal} end={setEndModal} />
+            :null}
         </div>
     )
 }

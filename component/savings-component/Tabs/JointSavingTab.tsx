@@ -1,9 +1,42 @@
 import { Input } from '@chakra-ui/react'
 import React from 'react'
-import { IoIosArrowDropright, IoIosArrowRoundForward } from 'react-icons/io'
-import RadioButton from '../../dashboard-component/RadioButton'
+import { IoIosArrowRoundForward, IoIosClose } from 'react-icons/io'
+import RadioButton from '../../reusable-modal/RadioButton'
+import JointSavingsController from '../modal-controller/JointSavingsController'
+import FriendsModal from '../modal-controller/SavingsTabModals/FriendsModal'
 
-export default function JointSavingTab() {
+export default function JointSavingTab(props: any) { 
+
+    const [showModal, setShowModal] = React.useState(false)
+    const [friendsModal, setFriendsModal] = React.useState(false)
+    const [endModal, setEndModal] = React.useState(true)
+    const [friends, setFriends] = React.useState([] as any)
+
+    const ClickHandler =()=> {
+        props.close(-1)  
+        setEndModal(true)
+    }
+
+    React.useEffect(() => { 
+        {endModal === false ? 
+            ClickHandler() 
+            :null
+        }
+    },) 
+
+    const NextClick =()=> {
+        setShowModal(true);
+        setFriendsModal(false)
+    }
+
+    const DeleteHandler =(value: any)=> {
+
+        let index = friends.findIndex((item: any) => item.number === value.number)  
+        let newarr = [...friends] 
+        newarr.splice(index, 1) 
+        setFriends(newarr)
+    }
+
     return (
         <div className='w-full flex-row flex mb-10' >
             <div className='w-full mx-3'>
@@ -26,14 +59,41 @@ export default function JointSavingTab() {
                 <div style={{backgroundColor:'#E0E0E0'}} className='w-full flex items-center rounded px-4 py-3 mt-8' >
                     <p className='font-Montserrat-Regular text-sm' >Find friends using vault</p>
                     <div className='w-full flex flex-1' />
-                    <IoIosArrowRoundForward size='25px' className='cursor-pointer' />
+                    <IoIosArrowRoundForward onClick={()=> setFriendsModal(true)} size='25px' className='cursor-pointer' />
                 </div>
-                <div className='w-full flex flex-col py-14' > 
-                    <p className='font-Montserrat-Bold text-sm text-center' >No Participant added yet</p>
-                    <p className='font-Montserrat-Regular text-xs text-center' >You have to add at least one<br/> participant to proceed</p>
-                </div> 
-                <button style={{backgroundColor: '#002343'}} className='w-full font-Montserrat-Bold py-3 text-white rounded text-sm font-Montserrat-Bold' >PROCEED</button>
+                {friends.length > 0 ?  
+                    <div className='w-full mt-6 mb-12' >  
+                        <p className='font-Montserrat-Bold text-sm mb-4' style={{color: '#828282'}} >Participants</p>
+                        <div className='grid-cols-5 gap-6 w-full grid ' >
+                            {friends.map((item: any)=> {
+                                return(
+                                    <div key={item} className='w-16 h-16 bg-yellow-300 rounded-lg relative'> 
+                                        <IoIosClose onClick={()=> DeleteHandler(item)} size='20px' className=' w-auto rounded-full absolute -right-1 -top-2 cursor-pointer' color='#EB5757' style={{backgroundColor: '#FBDDDD'}}  />
+                                    </div>
+                                )
+                            })}
+                        </div> 
+                    </div>
+                    :
+                    <div className='w-full flex flex-col py-14' > 
+                        <p className='font-Montserrat-Bold text-sm text-center' >No Participant added yet</p>
+                        <p className='font-Montserrat-Regular text-xs text-center' >You have to add at least one<br/> participant to proceed</p>
+                    </div>
+                }
+                <button onClick={()=> NextClick()} style={{backgroundColor: '#002343'}} className='w-full font-Montserrat-Bold py-3 text-white rounded text-sm font-Montserrat-Bold' >PROCEED</button>
             </div>
+            {showModal ?  
+                <JointSavingsController friends={setFriends} close={setShowModal} end={setEndModal} />
+            :null}
+            {friendsModal ? 
+                (
+                    <>
+                        <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
+                            <FriendsModal check={friends} friends={setFriends} close={setFriendsModal} />
+                        </div> 
+                        <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                    </>
+                ) : null} 
         </div>
     )
 }

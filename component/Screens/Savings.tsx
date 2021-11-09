@@ -20,7 +20,7 @@ import TabScreen from '../savings-component/TabScreen'
 export default function Savings() {
 
     const [savingsModal, setSavingModal] = React.useState(false);
-    const [showModal, setShowModal] = React.useState(4)
+    const [showModal, setShowModal] = React.useState(0)
     const [tab, setTab] = React.useState(-1);
 
     return (
@@ -63,9 +63,9 @@ export default function Savings() {
                         {tab === 0 ? 
                                 <FixedSavingTab close={setTab} />    
                             :tab === 1 ? 
-                                <FixedDepositTab /> 
+                                <FixedDepositTab close={setTab} /> 
                             :tab === 2 ? 
-                                <JointSavingTab />
+                                <JointSavingTab close={setTab} />
                             :tab === 3 ? 
                                 <DollarSafeTab />
                             :null

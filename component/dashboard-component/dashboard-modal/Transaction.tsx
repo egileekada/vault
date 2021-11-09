@@ -2,7 +2,7 @@ import { Input } from '@chakra-ui/input'
 import { FastField } from 'formik'
 import React from 'react'
 import { IoIosClose } from 'react-icons/io'
-import RadioButton from '../RadioButton'
+import RadioButton from '../../reusable-modal/RadioButton'
 
 export default function Transaction(props: any) {
 

@@ -1,12 +1,13 @@
 import React from 'react'
-import LinkCard from '../../savings-component/modal-controller/FixedSavingModal/LinkCard'
+import LinkCard from './SavingsTabModals/LinkCard'
 import SuccessModal from '../../reusable-modal/SucessModal'
-import AddMoney from './FixedSavingModal/AddMoney'
-import Goals from './FixedSavingModal/Goals'
+import AddMoney from './SavingsTabModals/AddMoney'
+import Goals from './SavingsTabModals/Goals'
+import LinkCardSucess from './SavingsTabModals/LinkCardSucess'
 // import Withdrawal from './SavingsModal/Withdrawal'
 // import Transaction from './SavingsModal/Transaction'
 
-export default function index(props: any) {
+export default function Controller(props: any) {
 
     const [showModal, setShowModal] = React.useState(0)
     const [closeModal, setCloseModal] = React.useState(true)
@@ -67,7 +68,7 @@ export default function index(props: any) {
                 (
                     <>
                         <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <SuccessModal header='Card has been added successfully' body='You have successfully added this card ... 7687.' close={setCloseTab} />
+                            <LinkCardSucess header='Card has been added successfully' body='You have successfully added this card ... 7687.' back={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>

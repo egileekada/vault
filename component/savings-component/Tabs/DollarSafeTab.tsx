@@ -1,4 +1,6 @@
 import React from 'react'
+import About from '../DollarTabComponent/About'
+import SaveInDollar from '../DollarTabComponent/SaveInDollar'
 
 export default function DollarSafeTab() {
 
@@ -17,6 +19,13 @@ export default function DollarSafeTab() {
                         <p onClick={()=> setTab(1)} style={tab === 1 ? {backgroundColor: '#002343', color: '#ffffff'} : {backgroundColor: '#CCD3D9', color: '#667B8E'}} className=' font-Montserrat-Bold py-3 w-full flex justify-center text-xs rounded cursor-pointer ' >Save in Dollar</p> 
                         <p onClick={()=> setTab(2)} style={tab === 2 ? {backgroundColor: '#002343', color: '#ffffff'} : {backgroundColor: '#CCD3D9', color: '#667B8E'}} className=' font-Montserrat-Bold py-3 w-full flex justify-center text-xs rounded cursor-pointer ' >Convert to Naira</p> 
                         <p onClick={()=> setTab(3)} style={tab === 3 ? {backgroundColor: '#002343', color: '#ffffff'} : {backgroundColor: '#CCD3D9', color: '#667B8E'}} className=' font-Montserrat-Bold py-3 w-full flex justify-center text-xs rounded cursor-pointer ' >Share Dollar</p> 
+                </div>
+                <div className='w-full mt-6' > 
+                    {tab === 0 ? 
+                            <About />
+                        :tab === 1 ? 
+                            <SaveInDollar />
+                    :null}
                 </div>
             </div>
         </div>

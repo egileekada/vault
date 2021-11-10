@@ -5,6 +5,7 @@ import Header from '../dashboard-component/Header'
 import SuccessModal from '../reusable-modal/SucessModal'
 import FixedSaving from '../savings-component/FixedSaving'
 import ConfirmTransaction from '../savings-component/modal-controller/SavingsModal/ConfirmTransaction'
+import SignatureModal from '../savings-component/modal-controller/SavingsModal/SignatureModal'
 import Transaction from '../savings-component/modal-controller/SavingsModal/Transaction'
 import Withdrawal from '../savings-component/modal-controller/SavingsModal/Withdrawal'
 import WithdrawalMoney from '../savings-component/modal-controller/SavingsModal/WithdrawalMoney'
@@ -21,6 +22,7 @@ export default function Savings() {
 
     const [savingsModal, setSavingModal] = React.useState(false);
     const [showModal, setShowModal] = React.useState(0)
+    const [joint, setJoint] = React.useState(false)
     const [tab, setTab] = React.useState(-1);
 
     return (
@@ -51,7 +53,7 @@ export default function Savings() {
                                 <p style={{color: '#828282'}} className=' w-full font-Montserrat-SemiBold text-sm' >Joint Savings</p>
                                 </div>
                             </div>
-                            <FixedSaving click={setShowModal} />
+                            <FixedSaving Joint='true' sign={setJoint} click={setShowModal} />
                         </div>
                     </div> 
                 </div>:
@@ -64,10 +66,10 @@ export default function Savings() {
                                 <FixedSavingTab close={setTab} />    
                             :tab === 1 ? 
                                 <FixedDepositTab close={setTab} /> 
-                            :tab === 2 ? 
-                                <JointSavingTab close={setTab} />
-                            :tab === 3 ? 
-                                <DollarSafeTab />
+                                :tab === 2 ? 
+                                    <JointSavingTab close={setTab} />
+                                    :tab === 3 ? 
+                                        <DollarSafeTab close={setTab}/>
                             :null
                         }
                     </div>
@@ -114,7 +116,7 @@ export default function Savings() {
                 (
                     <>
                         <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <ConfirmTransaction close={setShowModal} />
+                            <ConfirmTransaction joint={setJoint} close={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
@@ -127,7 +129,16 @@ export default function Savings() {
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
+                ) : null} 
+            {showModal === 6 ? 
+                (
+                    <>
+                        <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
+                            <SignatureModal close={setShowModal} />
+                        </div> 
+                        <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
+                    </>
                 ) : null}
-        </div>
+    </div>
     )
 }

@@ -1,10 +1,25 @@
 import React from 'react'
 import About from '../DollarTabComponent/About'
+import ConvertToNaira from '../DollarTabComponent/ConvertToNaira'
 import SaveInDollar from '../DollarTabComponent/SaveInDollar'
+import ShareDollar from '../DollarTabComponent/ShareDollar'
 
-export default function DollarSafeTab() {
+export default function DollarSafeTab(props: any) {
 
     const [tab, setTab] = React.useState(0)
+    const [endModal, setEndModal] = React.useState(true)
+
+    const ClickHandler =()=> {
+        props.close(-1)  
+        setEndModal(true)
+    }
+
+    React.useEffect(() => { 
+        {endModal === false ? 
+            ClickHandler() 
+            :null
+        }
+    },) 
 
     return (
         <div className='w-full mb-10 px-4' >
@@ -24,7 +39,11 @@ export default function DollarSafeTab() {
                     {tab === 0 ? 
                             <About />
                         :tab === 1 ? 
-                            <SaveInDollar />
+                            <SaveInDollar  end={setEndModal} />
+                            :tab === 2 ? 
+                                <ConvertToNaira end={setEndModal} />
+                                :tab === 3 ? 
+                                    <ShareDollar end={setEndModal} />
                     :null}
                 </div>
             </div>

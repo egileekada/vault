@@ -83,7 +83,7 @@ export default function ConfirmTransaction(props: any) {
             <div className='w-full flex my-8 px-12' >
                 <button style={{border: '1px solid #002343', color: '#002343', borderRadius: '2px'}}  className=' w-full text-white font-Montserrat-Medium text-sm h-10 items-center justify-center mr-4' >CANCEL</button>
                 <div className='w-full flex flex-1' />
-                <button onClick={()=> props.close(5)} style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-full text-white font-Montserrat-Medium text-sm h-10 items-center justify-center ml-4' >COMPLETE</button>
+                <button onClick={()=> {props.joint ? props.close(6):props.close(5)}} style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-full text-white font-Montserrat-Medium text-sm h-10 items-center justify-center ml-4' >COMPLETE</button>
             </div>
         </div>
     )

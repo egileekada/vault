@@ -116,7 +116,7 @@ export default function Savings() {
                 (
                     <>
                         <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <ConfirmTransaction joint={setJoint} close={setShowModal} />
+                            <ConfirmTransaction joint={joint} close={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>

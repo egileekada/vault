@@ -11,7 +11,7 @@ export default function SuccessModal(props: any) {
             }
             <p className=' font-Montserrat-Bold text-sm mt-4' >{props.header}</p>
             <p className=' font-Montserrat-Regular text-xs text-center w-60' >{props.body}</p>
-            <button onClick={()=>  props.close(-1)} style={{backgroundColor: '#002343'}} className=' w-full text-white rounded py-3 mt-4 font-Montserrat-Bold text-xs text-center' >Continue</button>
+            <button onClick={()=> {props.image === 'dollar' ?  props.close(false):  props.close(0)}} style={{backgroundColor: '#002343'}} className=' w-full text-white rounded py-3 mt-4 font-Montserrat-Bold text-xs text-center' >Continue</button>
         </div>
     );
 }

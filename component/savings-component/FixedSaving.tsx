@@ -27,7 +27,7 @@ export default function FixedSaving(props: any) {
 
 
     const ClickHandler =()=> {
-        {props.joint === 'true' ?
+        {props.Joint === 'true' ?
                 Signature()
             :
                 props.click(1)

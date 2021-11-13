@@ -38,7 +38,7 @@ export default function Menu(props: any) {
     }
 
     return (
-        <div className='w-full h-screen pt-8 flex flex-col items-center' >
+        <div className='w-full h-screen pt-8 flex flex-col items-center overflow-y-auto' >
             <div className='w-full h-auto flex flex-col items-center' > 
             <img src='/assets/images/Vault-logo.png'  className='' />
             <div className='w-12 h-12 flex bg-yellow-200 mt-8' style={{borderRadius: '9px'}} >

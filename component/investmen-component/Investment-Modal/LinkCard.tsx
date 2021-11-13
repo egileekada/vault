@@ -5,7 +5,7 @@ import { IoIosClose } from 'react-icons/io';
 export default function LinkCard(props: any) {
 
     return (
-        <div style={{width : '560px'}} className='bg-white px-8 h-screen font-Montserrat-Regular'  >
+        <div style={{width : '560px'}} className='bg-white px-8 h-screen overflow-y-auto pb-12 font-Montserrat-Regular'  >
             <div className='w-full flex flex-row items-center py-10' > 
                 <p onClick={()=> props.close(false)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />
@@ -22,7 +22,7 @@ export default function LinkCard(props: any) {
                     <Input backgroundColor='#E0E0E0' marginRight='25px' fontSize='sm' />
                     <Input backgroundColor='#E0E0E0' marginLeft='25px' fontSize='sm' />
                 </div>
-                <button onClick={()=> props.next(3)} style={{backgroundColor: '#002343'}} className='w-full rounded text-white py-3 mt-8 text-sm font-Montserrat-Medium ' >PROCEED TO LINK CARD 🔒</button>
+                <button onClick={()=> props.close(3)} style={{backgroundColor: '#002343'}} className='w-full rounded text-white py-3 mt-8 text-sm font-Montserrat-Medium ' >PROCEED TO LINK CARD 🔒</button>
             </div>
         </div>
     );

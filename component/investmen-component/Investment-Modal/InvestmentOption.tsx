@@ -2,6 +2,9 @@ import React from 'react'
 import { IoIosClose } from 'react-icons/io'
 
 export default function InvestmentOption(props: any) {
+
+    const [more, setMore] = React.useState(true)
+
     return (
         <div style={{width : '560px'}} className='bg-white h-screen overflow-y-auto'  >
             <div className='w-full px-8 flex flex-row items-center py-10' > 
@@ -21,11 +24,20 @@ export default function InvestmentOption(props: any) {
             </div>
 
             <div className='w-full bg-yellow-400 h-44 my-14 relative' > 
-                <div className='rounded-tl-2xl py-1 flex justify-center items-center absolute right-0 top-20 bg-white w-16 rounded-bl-2xl' >
-                    <p style={{color: '#27AE60'}} className='text-xs font-Montserrat-Medium' >Active</p>
-                </div>
+                {more ? 
+                        <div className='w-full h-full flex items-center justify-center' >
+                            <div onClick={()=> setMore(false)} style={{backgroundColor: 'rgba(255, 255, 255, 0.16)', border: ' 1px solid #FFFFFF', color:'white'}} className=' w-28 cursor-pointer justify-center flex h-8 rounded items-center ' >
+                                <IoIosClose size='30px' />
+                                <p className='font-Montserrat text-sm' >Closed</p>
+                            </div>
+                        </div>
+                    : 
+                        <div className='rounded-tl-2xl py-1 flex justify-center items-center absolute right-0 top-20 bg-white w-16 rounded-bl-2xl' >
+                            <p style={{color: '#27AE60'}} className='text-xs font-Montserrat-Medium' >Active</p>
+                        </div>
+                }
             </div>
-            <div className='w-full px-8' >
+            <div className='w-full px-8 pb-8' >
                 <div className='w-full flex' > 
                     <div className='w-full' >
                         <p className='text-sm font-Montserrat-Bold' >Rice farm Investment</p>
@@ -44,51 +56,59 @@ export default function InvestmentOption(props: any) {
                     <div className='w-full flex flex-1' /> 
                     <p  className='text-sm font-Montserrat-Medium ml-2' >N 5000  <span style={{color: '#03C8DB'}} className='text-xs' >/unit</span></p> 
                 </div>
-                <div className='w-full grid grid-cols-4 gap-y-8' >
-                    <div className='w-full' >
-                        <p className='text-xs font-Montserrat-Medium' >Duration</p>
-                        <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >1 yr</p>
-                    </div>
-                    <div className='w-full' >
-                        <p className='text-xs font-Montserrat-Medium' >Insurance</p>
-                        <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >Yes</p>
-                    </div>
-                    <div className='w-full' >
-                        <p className='text-xs font-Montserrat-Medium' >Avail units</p>
-                        <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >239</p>
-                    </div>
-                    <div className='w-full' >
-                        <p className='text-xs font-Montserrat-Medium' >Sector Level</p>
-                        <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >Agric</p>
-                    </div>
-                    <div className='w-full' >
-                        <p className='text-xs font-Montserrat-Medium' >Start date</p>
-                        <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >1st Jul 21</p>
-                    </div>
-                    <div className='w-full' >
-                        <p className='text-xs font-Montserrat-Medium' >Maturity date</p>
-                        <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >30th Jun 22</p>
-                    </div>
-                    <div className='w-full' >
-                        <p className='text-xs font-Montserrat-Medium' >Risk Level</p>
-                        <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >None</p>
-                    </div>
-                </div>
+                {more ? 
+                        <p className='text-xs font-Montserrat-Medium'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium semper libero, velit neque consectetur. Blandit dignissim scelerisque orci amet amet mattis natoque tristique sed. Magna in ultrices massa dictum ut pharetra. A et urna sed erat eleifend quam a tortor.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium semper libero, velit neque consectetur. Blandit dignissim scelerisque orci amet amet mattis natoque tristique sed. Magna in ultrices massa dictum ut pharetra. A et urna sed erat eleifend quam a tortor.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium semper libero, velit neque consectetur. Blandit dignissim scelerisque orci amet amet mattis natoque tristique sed. Magna in ultrices massa dictum ut pharetra. A et urna sed erat eleifend quam a tortor.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium semper libero, velit neque consectetur. Blandit dignissim scelerisque orci amet amet mattis natoque tristique sed. Magna in ultrices massa dictum ut pharetra. A et urna sed erat eleifend quam a tortor.</p>
+                    : 
+                        <div className='w-full' > 
+                            <div className='w-full grid grid-cols-4 gap-y-8' >
+                                <div className='w-full' >
+                                    <p className='text-xs font-Montserrat-Medium' >Duration</p>
+                                    <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >1 yr</p>
+                                </div>
+                                <div className='w-full' >
+                                    <p className='text-xs font-Montserrat-Medium' >Insurance</p>
+                                    <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >Yes</p>
+                                </div>
+                                <div className='w-full' >
+                                    <p className='text-xs font-Montserrat-Medium' >Avail units</p>
+                                    <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >239</p>
+                                </div>
+                                <div className='w-full' >
+                                    <p className='text-xs font-Montserrat-Medium' >Sector Level</p>
+                                    <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >Agric</p>
+                                </div>
+                                <div className='w-full' >
+                                    <p className='text-xs font-Montserrat-Medium' >Start date</p>
+                                    <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >1st Jul 21</p>
+                                </div>
+                                <div className='w-full' >
+                                    <p className='text-xs font-Montserrat-Medium' >Maturity date</p>
+                                    <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >30th Jun 22</p>
+                                </div>
+                                <div className='w-full' >
+                                    <p className='text-xs font-Montserrat-Medium' >Risk Level</p>
+                                    <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >None</p>
+                                </div>
+                            </div>
 
-                    {props.withdraw ? 
-                        <div className='w-full bg-gray-300 h-1 mt-8 rounded-xl'>
-                            <div style={{width: '40%', backgroundColor: '#03C8DB'}} className='h-full rounded-tl-xl rounded-bl-xl' />
-                            <p style={{marginLeft: '35%', color: '#03C8DB'}} className='mt-2 text-sm font-Montserrat-Medium' >80 Days left</p>
+                                {props.withdraw ? 
+                                    <div className='w-full bg-gray-300 h-1 mt-8 rounded-xl'>
+                                        <div style={{width: '40%', backgroundColor: '#03C8DB'}} className='h-full rounded-tl-xl rounded-bl-xl' />
+                                        <p style={{marginLeft: '35%', color: '#03C8DB'}} className='mt-2 text-sm font-Montserrat-Medium' >80 Days left</p>
+                                    </div>
+                                :null}
+
+                            <div className='w-full flex mb-6 flex-col mt-16' >
+                                <button onClick={()=> setMore(true)} style={{border: '1px solid #002343', color: '#002343', borderRadius: '2px'}}  className=' w-full text-white font-Montserrat-Medium text-sm h-12 items-center justify-center' >More about this Investment</button>
+                                
+                                <button onClick={()=> {props.withdraw ? props.close(6): props.close(2)}} style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-full mt-6 text-white font-Montserrat-Medium text-sm h-12 items-center justify-center' >{props.withdraw ? 'Withdraw': 'Get Started'}</button>
+                            </div>
                         </div>
-                    :null}
-
-            <div className='w-full flex mb-6 flex-col mt-16' >
-                <button style={{border: '1px solid #002343', color: '#002343', borderRadius: '2px'}}  className=' w-full text-white font-Montserrat-Medium text-sm h-12 items-center justify-center' >More about this Investment</button>
-                
-                <button onClick={()=> {props.withdraw ? props.close(6): props.close(2)}} style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-full mt-6 text-white font-Montserrat-Medium text-sm h-12 items-center justify-center' >{props.withdraw ? 'Withdraw': 'Get Started'}</button>
+                }
             </div>
-            </div>
-
         </div>
     )
 }

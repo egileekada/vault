@@ -17,6 +17,11 @@ export default function InvestmentHistory(props: any) {
         },  
     ]
 
+    const ClickHandler =()=> {
+        props.open(1)
+        props.withdraw(true)
+    }
+
     return (
         <div className='w-full' >
             {/* <div className=' w-full flex flex-row items-center' >
@@ -35,7 +40,7 @@ export default function InvestmentHistory(props: any) {
             </div>
             {Array.map((item: any, index: any) => {
                 return(
-                    <div onClick={()=> props.open(true)} key={index} className='w-full flex cursor-pointer flex-row mt-4 items-center' >
+                    <div onClick={()=> ClickHandler()} key={index} className='w-full flex cursor-pointer flex-row mt-4 items-center' >
                         <div style={{backgroundColor: '#F1ECFE', borderRadius: '8px'}} className='w-10 h-10 flex rounded-lg bg-yellow-300 px-1 items-center justify-center'  >
                             {/* <img className='w-full' src={item.image} />  */}
                         </div>

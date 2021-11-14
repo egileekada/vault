@@ -22,7 +22,7 @@ export default function WithdrawalMoney(props: any) {
             <p style={{color: '#828282'}} className=' font-Montserrat-Medium text-sm text-center mt-8' >1108789782</p>
             <p style={{color: '#333333'}} className=' font-Montserrat-Bold text-base text-center mt-2' >MBA BRIGHT CHISOM</p>
             <p style={{color: '#4F4F4F'}} className=' font-Montserrat-Medium text-xs text-center mt-2' >First Bank</p>
-                <button onClick={()=> props.close(4)} style={{backgroundColor: '#002343'}} className='w-full rounded text-white py-3 mt-12 text-sm font-Montserrat-Medium ' >PROCEED TO CONFIRMATION 🔒</button>
+                <button onClick={()=> {props.withdraw ? props.close(7):props.close(4)}} style={{backgroundColor: '#002343'}} className='w-full rounded text-white py-3 mt-12 text-sm font-Montserrat-Medium ' >PROCEED TO CONFIRMATION 🔒</button>
         </div>
     )
 }

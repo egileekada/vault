@@ -2,6 +2,7 @@ import React from 'react'
 import Menu from '../component/Menu'
 import Home from '../component/Screens/Home'
 import Investment from '../component/Screens/Investment'
+import Loan from '../component/Screens/Loan'
 import Savings from '../component/Screens/Savings'
 
 export default function dashboard() {
@@ -18,8 +19,10 @@ export default function dashboard() {
                         <Home />
                     :tab === 1 ?
                         <Savings />
-                        :tab === 3 ?
-                            <Investment />
+                        :tab === 2 ?
+                            <Loan />
+                            :tab === 3 ?
+                                <Investment />
                     :null
                 }
             </div> 

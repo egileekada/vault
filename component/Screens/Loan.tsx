@@ -1,21 +1,21 @@
 import React from 'react'
 import { IoIosAdd, IoIosArrowRoundForward } from 'react-icons/io'
-import CreditCard from '../dashboard-component/CreditCard'
-import Header from '../dashboard-component/Header' 
-import ExportInvestment from '../investmen-component/Investment-Modal/ExploreInvestment'
-import InvestmentAmount from '../investmen-component/Investment-Modal/InvestmentAmount'
-import InvestmentOption from '../investmen-component/Investment-Modal/InvestmentOption'
+import Header from '../dashboard-component/Header'
 import LinkCard from '../investmen-component/Investment-Modal/LinkCard'
-import Payment from '../investmen-component/Investment-Modal/Payment'
 import SuccessModal from '../investmen-component/Investment-Modal/SucessModal'
-import InvestmentHistory from '../investmen-component/InvestmentHistory'
-import ConfirmTransaction from '../savings-component/modal-controller/SavingsModal/ConfirmTransaction' 
-import WithdrawalMoney from '../savings-component/modal-controller/SavingsModal/WithdrawalMoney'
+import Agreement from '../loan-component/Agreement'
+import ConfirmTransaction from '../loan-component/loan-modal/ConfirmTransaction'
+import History from '../loan-component/loan-modal/History'
+import LoanAmount from '../loan-component/loan-modal/LoanAmount'
+import PayBack from '../loan-component/loan-modal/PayBack'
+import Payment from '../loan-component/loan-modal/Payment'
+import PaymentInformation from '../loan-component/PaymentInformation'
 
-export default function Investment() {
+export default function Loan() {
 
-    const [showModal, setShowModal] = React.useState(-1); 
-    const [withdrawModal, setWithdrawModal] = React.useState(false);
+    const [eligible, setEligiblity] = React.useState(1)
+    const [showModal, setShowModal] = React.useState(-1);
+
     return (
         <div className='w-full h-full py-20 px-8' >
             <p style={{color: '#828282'}} className='font-Montserrat-Regular text-xs' >Balance</p>
@@ -23,10 +23,24 @@ export default function Investment() {
             <Header />
             <div className='w-full flex flex-row' >
                 <div className='w-full mt-10'  >  
-                    <InvestmentHistory open={setShowModal} withdraw={setWithdrawModal} />  
+                    {eligible === 0 ?
+                        <div className='w-full h-full flex justify-center items-center flex-col'>
+                            <img src='/assets/images/NotEligible.png' className='my-10'  />
+                            <p className='font-Montserrat-Medium w-80 text-sm text-center' >You are not Eligible to borrow from vault africa, we will et you know when this feature is available to you.</p>
+                        </div>
+                            : eligible === 1 ?
+                                <div className='w-full h-full flex justify-center items-center flex-col'>
+                                    <img src='/assets/images/Eligible.png' className='my-10'  />
+                                    <p className='font-Montserrat-Medium w-80 text-sm text-center' >We understand life happens, you can now borrow to pay later.</p>
+                                    <button onClick={()=>setEligiblity(2)} style={{backgroundColor:'#03C8DB', color: 'white'}} className='rounded font-Montserrat-Bold py-3 px-4 text-sm my-6'  >Borrow Now</button>
+                                </div>
+                                : eligible === 2 ?
+                                    <Agreement click={setEligiblity} />
+                                    : eligible === 3 ?
+                                        <PaymentInformation close={setShowModal} />
+                    :null}
                 </div>
-                <div style={{width: '700px'}} className='ml-8' > 
-                    <button onClick={()=> setShowModal(0)}  style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-32 ml-4 flex text-white ml-auto mt-16 mb-8 font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Invest Now</button>
+                <div style={{width: '700px'}} className='ml-8' >  
                     <div className=' w-96  mt-12 rounded-2xl relative ' > 
                         <img src='/assets/images/building.png'  className=' w-full rounded-3xl' />  
                         <div className="absolute inset-0 bg-gradient-to-r from-startgrad to-stopgrad opacity-40 rounded-3xl  h-full flex flex-col" />
@@ -47,12 +61,11 @@ export default function Investment() {
                     </div>
                 </div>
             </div> 
-
             {showModal === 0 ? 
                 (
                     <>
                         <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <ExportInvestment close={setShowModal} />
+                            <History close={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
@@ -61,7 +74,7 @@ export default function Investment() {
                     (
                         <>
                             <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                <InvestmentOption withdraw={withdrawModal} close={setShowModal}/>
+                                <LoanAmount close={setShowModal} />
                             </div> 
                             <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                         </>
@@ -70,7 +83,7 @@ export default function Investment() {
                         (
                             <>
                                 <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                    <InvestmentAmount close={setShowModal}/>
+                                    <PayBack close={setShowModal} />
                                 </div> 
                                 <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                             </>
@@ -79,7 +92,7 @@ export default function Investment() {
                             (
                                 <>
                                     <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                        <Payment close={setShowModal}/>
+                                        <Payment close={setShowModal} />
                                     </div> 
                                     <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                                 </>
@@ -88,7 +101,7 @@ export default function Investment() {
                                 (
                                     <>
                                         <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                            <SuccessModal image='dollar' close={setShowModal} header='Success' body='You have successfully bought some some unit of GBG farms rice investment.'  />
+                                            <SuccessModal end='loan' close={setShowModal} header='WITHDRAWAL SUCCESSFUL' body='You have successfully withdrawn ₦ 10,000.00 from your loan account.'  />
                                         </div> 
                                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                                     </>
@@ -106,7 +119,7 @@ export default function Investment() {
                                         (
                                             <>
                                                 <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                                    <WithdrawalMoney withdraw={withdrawModal} close={setShowModal}/>
+                                                    <ConfirmTransaction loan={true} close={setShowModal} />
                                                 </div> 
                                                 <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                                             </>
@@ -114,21 +127,12 @@ export default function Investment() {
                                         {showModal === 7 ? 
                                             (
                                                 <>
-                                                    <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                                        <ConfirmTransaction withdraw={withdrawModal} close={setShowModal}/>
+                                                    <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
+                                                        <SuccessModal image='dollar' end='loan' close={setShowModal} header='Success' body='You have successfully paid back N20,000.00 out of youe debt. Your new balance is -N30,983.12'  />
                                                     </div> 
                                                     <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                                                 </>
                                             ) : null}
-                                            {showModal === 8 ? 
-                                                (
-                                                    <>
-                                                        <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                                            <SuccessModal end='loan' close={setShowModal} header='TRANSACTION SUCCESSFUL' body='You have successfully withdrawn ₦ 10,000.00 from your savings account.' />
-                                                        </div> 
-                                                        <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
-                                                    </>
-                                                ) : null}
         </div>
     )
 }

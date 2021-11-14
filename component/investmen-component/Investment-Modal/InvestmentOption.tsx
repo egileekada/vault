@@ -75,10 +75,17 @@ export default function InvestmentOption(props: any) {
                     </div>
                 </div>
 
+                    {props.withdraw ? 
+                        <div className='w-full bg-gray-300 h-1 mt-8 rounded-xl'>
+                            <div style={{width: '40%', backgroundColor: '#03C8DB'}} className='h-full rounded-tl-xl rounded-bl-xl' />
+                            <p style={{marginLeft: '35%', color: '#03C8DB'}} className='mt-2 text-sm font-Montserrat-Medium' >80 Days left</p>
+                        </div>
+                    :null}
+
             <div className='w-full flex mb-6 flex-col mt-16' >
                 <button style={{border: '1px solid #002343', color: '#002343', borderRadius: '2px'}}  className=' w-full text-white font-Montserrat-Medium text-sm h-12 items-center justify-center' >More about this Investment</button>
                 
-                <button onClick={()=> props.close(2)} style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-full mt-6 text-white font-Montserrat-Medium text-sm h-12 items-center justify-center' >Get Started</button>
+                <button onClick={()=> {props.withdraw ? props.close(6): props.close(2)}} style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-full mt-6 text-white font-Montserrat-Medium text-sm h-12 items-center justify-center' >{props.withdraw ? 'Withdraw': 'Get Started'}</button>
             </div>
             </div>
 

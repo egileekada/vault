@@ -26,30 +26,30 @@ export default function Savings() {
     const [tab, setTab] = React.useState(-1);
 
     return (
-        <div className='w-full h-auto pt-20 px-8' >
-            <p style={{color: '#828282'}} className='font-Montserrat-Regular text-xs' >Savings Balance</p>
-            <p style={{color: '#1D1D1D'}} className='font-Montserrat-Bold text-base mt-1' >₦ 92,323.34</p>
+        <div className='w-full h-auto pt-8 lg:pt-20 ' >
+            <p style={{color: '#828282'}} className='px-8 font-Montserrat-Regular text-xs' >Savings Balance</p>
+            <p style={{color: '#1D1D1D'}} className='px-8 font-Montserrat-Bold text-base mt-1' >₦ 92,323.34</p>
             
             {tab === -1 ?  
                 <div>
                     <Header />
-                    <div className='w-full flex justify-center items-center'>
-                        <div style={{width: '659px'}} >
+                    <div className='w-full flex px-4 lg:px-8 justify-center items-center'>
+                        <div className='lg:w-659px w-full' >
                             <div className='w-full flex flex-row mt-10 items-center' > 
-                                <p style={{color: '#828282'}} className=' w-full font-Montserrat-SemiBold text-sm' >Fixed Savings</p>
-                                <div className='flex items-center' >
-                                    <p style={{color: '#002343'}} className=' w-auto font-Montserrat-Medium text-xs mr-2' >Filter:</p>
-                                    <div className='w-28' >
-                                        <Select placeholder='All' border='1px' borderColor='#002343' borderRadius='2px' fontSize='sm' >
+                                <p style={{color: '#828282'}} className=' w-full font-Montserrat-SemiBold text-sm hidden lg:flex' >Fixed Savings</p>
+                                <div className='lg:w-auto w-full flex items-center justify-end' >
+                                    <p style={{color: '#002343'}} className=' w-auto hidden lg:flex font-Montserrat-Medium text-xs mr-2' >Filter:</p>
+                                    <div className='w-28 hidden lg:flex' >
+                                        <Select placeholder='All' border='1px' borderColor='#002343' borderRadius='4px' fontSize='sm' >
                                             <option>Month</option>
                                         </Select> 
                                     </div> 
-                                    <button onClick={()=> setSavingModal(true)}  style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-28 ml-4 flex text-white font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Save Now</button>
+                                    <button onClick={()=> setSavingModal(true)}  style={{backgroundColor: '#002343', borderRadius: '4px'}}  className=' w-28 ml-4 flex text-white font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Save Now</button>
                                 </div>
                             </div>
                             <FixedSaving click={setShowModal}  />
                             <div className='w-full flex flex-row' >
-                                <div style={{width: '657.46px'}} className='mt-10' >
+                                <div className='mt-10 w-657.46px ' >
                                 <p style={{color: '#828282'}} className=' w-full font-Montserrat-SemiBold text-sm' >Joint Savings</p>
                                 </div>
                             </div>
@@ -57,19 +57,19 @@ export default function Savings() {
                         </div>
                     </div> 
                 </div>:
-                <div className='w-full h-full flex mt-8 '  >
-                    <div style={{width: '260px'}} >
+                <div className='w-full h-full flex mt-8 px-8 '  >
+                    <div className=' hidden lg-flex w-260px' >
                         <TabMenu check={tab} tab={setTab} />
                     </div>
                     <div className='w-full h-full ' >
                         {tab === 0 ? 
                                 <FixedSavingTab close={setTab} />    
-                            :tab === 1 ? 
-                                <FixedDepositTab close={setTab} /> 
-                                :tab === 2 ? 
-                                    <JointSavingTab close={setTab} />
-                                    :tab === 3 ? 
-                                        <DollarSafeTab close={setTab}/>
+                                :tab === 1 ? 
+                                    <FixedDepositTab close={setTab} /> 
+                                    :tab === 2 ? 
+                                        <JointSavingTab close={setTab} />
+                                        :tab === 3 ? 
+                                            <DollarSafeTab close={setTab}/>
                             :null
                         }
                     </div>

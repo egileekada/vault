@@ -23,7 +23,7 @@ export default function Transaction(props: any) {
     ]  
 
     return (
-        <div style={{width : '560px'}} className='bg-white px-8  h-screen'  >
+        <div className='  w-full lg:w-560px bg-white px-4 lg:px-8  h-screen'  >
             <div className='w-full flex flex-row items-center py-10' > 
                 <p onClick={()=> props.close(false)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />
@@ -72,7 +72,7 @@ export default function Transaction(props: any) {
             </div>
             {Array.map((item: any, index: any) => {
                 return(
-                    <div onClick={()=> props.open(true)} key={index} className='w-full flex cursor-pointer flex-row mt-4 items-center' >
+                    <div key={index} className='w-full flex cursor-pointer flex-row mt-4 items-center' >
                         <div style={{backgroundColor: '#F1ECFE', borderRadius: '8px'}} className='w-9 h-8 flex px-1 items-center justify-center'  >
                             <img className='w-full' src={item.image} /> 
                         </div>

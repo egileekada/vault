@@ -3,7 +3,7 @@ import { IoIosClose } from 'react-icons/io'
 
 export default function Withdrawal(props: any) {
     return (
-        <div style={{width : '560px'}} className='bg-white px-12 h-screen overflow-y-auto'  >
+        <div className=' w-full lg:w-560px bg-white px-12 h-screen overflow-y-auto'  >
             <div className='w-full flex flex-row items-center py-10' >  
                 <div className='w-full flex flex-1' />
                 <div onClick={()=> props.close(0)} style={{backgroundColor: '#FAFAFA', borderRadius: '4px'}} className='w-auto h-auto cursor-pointer' >

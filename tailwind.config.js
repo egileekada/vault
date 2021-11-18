@@ -67,6 +67,12 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
+      '560px': '560px',
+      '260px': '260px',
+      '560px': '560px',
+      '657.46px': '657.46px',
+      '659px': '659px',
+      '700px': '700px',
     },
     animation: {
       none: 'none',

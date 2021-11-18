@@ -38,7 +38,7 @@ export default function JointSavingTab(props: any) {
     }
 
     return (
-        <div className='w-full flex-row flex mb-10' >
+        <div className='w-full flex-col lg:flex-row flex mb-10' >
             <div className='w-full mx-3'>
                 <p className='font-Montserrat-Bold text-base' >Joint Savings</p>
                 <p className='font-Montserrat-Medium text-sm mt-6 mb-2' >What is tthe name of your group?</p>
@@ -54,7 +54,7 @@ export default function JointSavingTab(props: any) {
                 <p className='font-Montserrat-Bold text-base mt-8 mb-4' >How would you like to save?</p>
                 <RadioButton array={['Daily','Weekly','Monthly']} size='32px' font='14px' />
             </div>
-            <div className='w-full mx-3'>
+            <div className='w-full mx-3 mt-8 lg:mt-0'>
                 <p className='font-Montserrat-Bold text-base' >Add Participants</p>
                 <div style={{backgroundColor:'#E0E0E0'}} className='w-full flex items-center rounded px-4 py-3 mt-8' >
                     <p className='font-Montserrat-Regular text-sm' >Find friends using vault</p>
@@ -64,7 +64,7 @@ export default function JointSavingTab(props: any) {
                 {friends.length > 0 ?  
                     <div className='w-full mt-6 mb-12' >  
                         <p className='font-Montserrat-Bold text-sm mb-4' style={{color: '#828282'}} >Participants</p>
-                        <div className='grid-cols-5 gap-6 w-full grid ' >
+                        <div className=' grid-cols-3 lg:grid-cols-5 gap-6 w-full grid ' >
                             {friends.map((item: any)=> {
                                 return(
                                     <div key={item} className='w-16 h-16 bg-yellow-300 rounded-lg relative'> 

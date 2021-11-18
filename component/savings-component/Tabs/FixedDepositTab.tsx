@@ -21,7 +21,7 @@ export default function FixedDepositTab(props: any) {
     },) 
 
     return (
-        <div className='w-full flex-row flex mb-10' >
+        <div className='w-full flex-col lg:flex-row flex mb-10' >
             <div className='w-full mx-3'>
                 <p className='font-Montserrat-Bold text-base' >Fixed Savings</p>
                 <p className='font-Montserrat-Medium text-sm mt-6 mb-2' >Goal Name</p>
@@ -31,8 +31,8 @@ export default function FixedDepositTab(props: any) {
                 <p className='font-Montserrat-Bold text-base mt-8 mb-4' >How long would you like to keep this money?</p>
                 <RadioButton array={['3 months','6  months','1 year','2 years']} size='32px' font='14px' />
             </div>
-            <div className='w-full mx-3'> 
-                <p className='font-Montserrat-Bold text-base' >Personalize goal</p>
+            <div className='w-full mx-3 mt-8 lg:mt-0'> 
+                <p className='font-Montserrat-Bold text-base ' >Personalize goal</p>
                 <div style={{backgroundColor: '#CDF4F8', height: '160px', borderRadius: '8px'}} className='w-full flex justify-center items-center my-8' >
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.88777 27.1228C15.2009 27.1228 19.508 22.7708 19.508 17.4023C19.508 12.0337 15.2009 7.68164 9.88777 7.68164C4.57468 7.68164 0.267578 12.0337 0.267578 17.4023C0.267578 22.7708 4.57468 27.1228 9.88777 27.1228Z" fill="url(#paint0_linear_62:574)"/>

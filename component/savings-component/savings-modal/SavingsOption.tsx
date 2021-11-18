@@ -28,7 +28,7 @@ export default function SavingsOption(props: any) {
     }
 
     return (
-        <div style={{width : '560px'}} className='bg-white px-8 h-screen'  >
+        <div className=' w-full overflow-y-auto lg:w-560px bg-white px-8 h-screen'  >
             <div className='w-full flex flex-row items-center py-10' > 
                 {/* <p onClick={()=> props.close(false)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p> */}
                 <div className='w-full flex flex-1' />
@@ -41,7 +41,7 @@ export default function SavingsOption(props: any) {
             <div className='w-full mt-8' >
                 {options.map((item: any, index: any)=> {
                     return(
-                        <div onClick={()=> ClickHandler(index)} key={index} style={{border:'1px solid #EAF6FF'}} className='w-full h-20 items-center px-4 flex my-2 cursor-pointer ' >
+                        <div onClick={()=> ClickHandler(index)} key={index} style={{border:'1px solid #EAF6FF'}} className='w-full h-auto py-2 lg:py-0 lg:h-20 items-center px-4 flex my-2 cursor-pointer ' >
                             <div style={{backgroundColor:'#EAF6FF'}} className=' w-10 h-10 p-2 rounded-sm' >
                                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18.2057 10.1631H16.791V11.5778H18.2057V10.1631Z" fill="#002343"/>

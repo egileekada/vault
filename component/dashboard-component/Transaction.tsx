@@ -19,7 +19,7 @@ export default function Transaction(props: any) {
     ]
 
     return (
-        <div className='w-full' >
+        <div className='w-full lg:px-0 px-4' >
             <div className=' w-full flex flex-row items-center' >
                 <p style={{color: '#828282'}} className=' w-auto font-Montserrat-SemiBold text-sm' >Recent Transaction</p>
                 <div className='w-full flex flex-1' />

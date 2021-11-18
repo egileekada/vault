@@ -30,24 +30,37 @@ export default function Menu(props: any) {
         }
     ]
 
-    const [active, setActive] = React.useState(0) 
+    const [active, setActive] = React.useState(0)  
 
     const ClickHandler =(index: any)=> {
         setActive(index);
         props.tab(index);
-    }
+        props.close();
+    } 
+
+    React.useEffect(() => {
+        setActive(props.index)
+    },)
 
     return (
         <div className='w-full h-screen pt-8 flex flex-col items-center overflow-y-auto' >
-            <div className='w-full h-auto flex flex-col items-center' > 
-            <img src='/assets/images/Vault-logo.png'  className='' />
-            <div className='w-12 h-12 flex bg-yellow-200 mt-8' style={{borderRadius: '9px'}} >
+            {props.mobile === false ? 
+                    <>
+                        <div className='w-full h-auto flex flex-col items-center' > 
+                        <img src='/assets/images/Vault-logo.png'  className='' />
+                        <div className='w-12 h-12 flex bg-yellow-200 mt-8' style={{borderRadius: '9px'}} >
 
-            </div>
-            </div>
-            <p style={{color:'#828282'}} className='font-Montserrat-Regular text-white text-sm mt-4' >Hey, Brightmac</p>
-            <p style={{color:'#1D1D1D'}} className='font-Montserrat-Bold text-white text-base mt-1' >Welcome back!</p>
-
+                        </div>
+                        </div>
+                        <p style={{color:'#828282'}} className='font-Montserrat-Regular text-white text-sm mt-4' >Hey, Brightmac</p>
+                        <p style={{color:'#1D1D1D'}} className='font-Montserrat-Bold text-white text-base mt-1' >Welcome back!</p>
+                    </>
+                :
+                <div className='w-full flex pt-10 pb-8' >
+                    <div className='w-full flex flex-1' />
+                    <p onClick={()=> props.close()} className='font-Inter-Bold text-base cursor-pointer mr-8' style={{color:'#EB5757'}} >Close</p>
+                </div>
+            }
             <div className='w-full mt-8' style={{backgroundColor: '#FCFCFC'}} >
                 {Array.map((item: any, index: any) => {
                     return( 
@@ -56,7 +69,7 @@ export default function Menu(props: any) {
                                 <div className='w-16 flex justify-center items-center' >
                                     <Icons icons={item.name} index={active} />
                                 </div>
-                                <p style={index === active ? {color: '#002343'} : {color: '#667B8E'}} className=' font-Montserrat-Regular text-sm' >{item.name}</p>
+                                <p style={index === active ? {color: '#002343'} : {color: '#667B8E'}} className=' font-Montserrat-Medium lg:text-sm' >{item.name}</p>
                             </div>
                         </div>
                     )

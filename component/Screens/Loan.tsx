@@ -40,7 +40,7 @@ export default function Loan() {
                                         <PaymentInformation close={setShowModal} />
                     :null}
                 </div>
-                <div style={{width: '700px'}} className='ml-8' >  
+                <div className='w-700px ml-8' >  
                     <div className=' w-96  mt-12 rounded-2xl relative ' > 
                         <img src='/assets/images/building.png'  className=' w-full rounded-3xl' />  
                         <div className="absolute inset-0 bg-gradient-to-r from-startgrad to-stopgrad opacity-40 rounded-3xl  h-full flex flex-col" />

@@ -6,7 +6,7 @@ export default function InvestmentOption(props: any) {
     const [more, setMore] = React.useState(true)
 
     return (
-        <div style={{width : '560px'}} className='bg-white h-screen overflow-y-auto'  >
+        <div className=' w-560px bg-white h-screen overflow-y-auto'  >
             <div className='w-full px-8 flex flex-row items-center py-10' > 
                 <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />

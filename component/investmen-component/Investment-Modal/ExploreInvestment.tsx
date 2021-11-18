@@ -77,7 +77,7 @@ export default function ExportInvestment(props: any) {
     }
 
     return (
-        <div style={{width : '560px'}} className='bg-white px-8 h-screen overflow-y-auto'  >
+        <div className=' w-560px bg-white px-8 h-screen overflow-y-auto'  >
             <div className='w-full flex flex-row items-center py-10' > 
                 <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />

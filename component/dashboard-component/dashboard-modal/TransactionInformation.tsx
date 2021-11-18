@@ -3,7 +3,7 @@ import { IoIosClose } from 'react-icons/io'
 
 export default function TransactionInformation(props: any) {
     return (
-        <div style={{width : '560px'}} className='bg-white h-screen'  >
+        <div className='  w-full lg:w-560px bg-white h-screen'  >
             <div className='w-full flex flex-row items-center px-8 py-10' > 
                 <p onClick={()=> props.close(false)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />

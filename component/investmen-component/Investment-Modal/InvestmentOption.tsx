@@ -3,10 +3,10 @@ import { IoIosClose } from 'react-icons/io'
 
 export default function InvestmentOption(props: any) {
 
-    const [more, setMore] = React.useState(true)
+    const [more, setMore] = React.useState(false) 
 
     return (
-        <div className=' w-560px bg-white h-screen overflow-y-auto'  >
+        <div className=' w-full lg:w-560px bg-white h-screen overflow-y-auto'  >
             <div className='w-full px-8 flex flex-row items-center py-10' > 
                 <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />
@@ -63,7 +63,7 @@ export default function InvestmentOption(props: any) {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium semper libero, velit neque consectetur. Blandit dignissim scelerisque orci amet amet mattis natoque tristique sed. Magna in ultrices massa dictum ut pharetra. A et urna sed erat eleifend quam a tortor.</p>
                     : 
                         <div className='w-full' > 
-                            <div className='w-full grid grid-cols-4 gap-y-8' >
+                            <div className='w-full grid grid-cols-3 lg:grid-cols-4 gap-y-8' >
                                 <div className='w-full' >
                                     <p className='text-xs font-Montserrat-Medium' >Duration</p>
                                     <p style={{color: '#03C8DB'}} className='text-base font-Montserrat-Bold mt-4' >1 yr</p>
@@ -94,7 +94,7 @@ export default function InvestmentOption(props: any) {
                                 </div>
                             </div>
 
-                                {props.withdraw ? 
+                                {props.withdraw  ? 
                                     <div className='w-full bg-gray-300 h-1 mt-8 rounded-xl'>
                                         <div style={{width: '40%', backgroundColor: '#03C8DB'}} className='h-full rounded-tl-xl rounded-bl-xl' />
                                         <p style={{marginLeft: '35%', color: '#03C8DB'}} className='mt-2 text-sm font-Montserrat-Medium' >80 Days left</p>

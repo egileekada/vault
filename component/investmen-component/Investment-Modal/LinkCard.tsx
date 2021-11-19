@@ -5,7 +5,7 @@ import { IoIosClose } from 'react-icons/io';
 export default function LinkCard(props: any) {
 
     return (
-        <div className=' w-560px bg-white px-8 h-screen overflow-y-auto pb-12 font-Montserrat-Regular'  >
+        <div className=' w-full lg:w-560px bg-white px-6 lg:px-8 h-screen overflow-y-auto pb-12 font-Montserrat-Regular'  >
             <div className='w-full flex flex-row items-center py-10' > 
                 <p onClick={()=> props.close(false)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />

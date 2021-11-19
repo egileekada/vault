@@ -77,7 +77,7 @@ export default function ExportInvestment(props: any) {
     }
 
     return (
-        <div className=' w-560px bg-white px-8 h-screen overflow-y-auto'  >
+        <div className=' w-full lg:w-560px bg-white px-6 lg:px-8 h-screen overflow-y-auto'  >
             <div className='w-full flex flex-row items-center py-10' > 
                 <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />
@@ -104,11 +104,11 @@ export default function ExportInvestment(props: any) {
                 <Input placeholder='Search' backgroundColor='#F6F6F6' paddingLeft='12' fontSize='sm' />
             </div> 
 
-            <div className='lg:w-full w-auto dashboardslide overflow-x-auto p-1 rounded' > 
-                <div className='lg:w-full w-auto flex grid grid-cols-4 gap-2 '  >
+            <div className='lg:w-full w-auto dashboardslide flex overflow-x-auto p-1 rounded' > 
+                <div className='lg:w-full w-auto flex   '  >
                     {sort.map((item: any) => {
                         return(
-                            <p onClick={()=> ClickHandler(item)} className='w-32 lg:w-full py-1 px-4 rounded-2xl text-sm text-center font-Montserrat-Medium cursor-pointer mx-1' style={selected.some((code : any) => code  === item ) ? {backgroundColor: '#68DEE9', color: '#FFF', border: '0.5px solid transparent'}:{border: '0.5px solid #68DEE9', color: '#68DEE9'}} key={item} >{item}</p>
+                            <p onClick={()=> ClickHandler(item)} className='w-32 lg:w-auto py-1 px-4 rounded-2xl text-sm text-center font-Montserrat-Medium cursor-pointer mx-1' style={selected.some((code : any) => code  === item ) ? {backgroundColor: '#68DEE9', color: '#FFF', border: '0.5px solid transparent'}:{border: '0.5px solid #68DEE9', color: '#68DEE9'}} key={item} >{item}</p>
                         )
                     })} 
                 </div>

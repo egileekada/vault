@@ -3,7 +3,7 @@ import { IoIosClose } from 'react-icons/io'
 
 export default function SignatureModal(props: any) {
     return (
-        <div className=' w-full lg:w-560px bg-white px-12 h-screen overflow-y-auto'  >
+        <div className=' w-full lg:w-560px bg-white px-6 lg:px-12 h-screen overflow-y-auto'  >
             <div className='w-full flex flex-row items-center py-10' >
                 <p onClick={()=> props.close(0)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>  
                 <div className='w-full flex flex-1' />

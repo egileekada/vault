@@ -21,7 +21,7 @@ export default function Payment(props: any) {
     },)
 
     return (
-        <div className=' w-560px bg-white h-screen px-8 pb-10 overflow-y-auto font-Montserrat-Regular '  >
+        <div className=' w-full lg:w-560px bg-white h-screen px-6 lg:px-8 pb-10 overflow-y-auto font-Montserrat-Regular '  >
             <div className='w-full flex flex-row items-center py-10' > 
                 <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />

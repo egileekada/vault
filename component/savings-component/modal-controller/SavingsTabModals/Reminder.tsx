@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Reminder(props: any) {
     return (
-        <div style={{borderRadius: '16px'}} className='w-auto h-auto flex flex-col justify-center items-center bg-white pt-8 pb-6 px-12' >
+        <div  className=' w-full lg:rounded-2xl h-full lg:w-auto lg:h-auto flex flex-col justify-center items-center bg-white pt-8 pb-6 px-12' >
             <img style={{width: '81.17px'}} src='/assets/images/Reminder.png' />
             <p className=' font-Montserrat-Bold text-sm mt-4' >Reminder!</p>
             <p className=' font-Montserrat-Regular text-xs text-center w-72' >We will send every participant a message for their signature before this plan becomes approved.</p>

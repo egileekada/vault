@@ -85,11 +85,10 @@ export default function ExportInvestment(props: any) {
                     <IoIosClose size='30px' />
                 </div>
             </div> 
-            <p className=' font-Montserrat-Bold text-sm text-center' >Explore Investment</p>
+            <p className=' font-Montserrat-Bold text-sm text-center' >Explore Investment</p> 
 
-
-            <div className='w-full relative pr-6 pt-12 pb-10' >
-                <div className='absolute w-full flex pt-2 pl-3 pr-8 ' >
+            <div className='w-full relative lg:pr-6 pt-12 pb-10' >
+                <div className='absolute w-full flex pt-2 pl-3 pr-4 lg:pr-8 ' >
                     <svg className='z-10' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.7659 20.755C16.7301 20.755 20.7545 16.7306 20.7545 11.7664C20.7545 6.80215 16.7301 2.77783 11.7659 2.77783C6.80166 2.77783 2.77734 6.80215 2.77734 11.7664C2.77734 16.7306 6.80166 20.755 11.7659 20.755Z" stroke="#1D1D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M18.0176 18.4849L21.5416 21.9998" stroke="#1D1D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -104,14 +103,17 @@ export default function ExportInvestment(props: any) {
                 </div> 
                 <Input placeholder='Search' backgroundColor='#F6F6F6' paddingLeft='12' fontSize='sm' />
             </div> 
-            <div className='w-full grid grid-cols-4' >
-                {sort.map((item: any) => {
-                    return(
-                        <p onClick={()=> ClickHandler(item)} className='py-1 px-4 rounded-2xl text-sm text-center font-Montserrat-Medium cursor-pointer mx-1' style={selected.some((code : any) => code  === item ) ? {backgroundColor: '#68DEE9', color: '#FFF', border: '0.5px solid transparent'}:{border: '0.5px solid #68DEE9', color: '#68DEE9'}} key={item} >{item}</p>
-                    )
-                })} 
-            </div>
-            <div onClick={()=> props.close(1)} className='w-full grid grid-cols-3 mt-4' >
+
+            <div className='lg:w-full w-auto dashboardslide overflow-x-auto p-1 rounded' > 
+                <div className='lg:w-full w-auto flex grid grid-cols-4 gap-2 '  >
+                    {sort.map((item: any) => {
+                        return(
+                            <p onClick={()=> ClickHandler(item)} className='w-32 lg:w-full py-1 px-4 rounded-2xl text-sm text-center font-Montserrat-Medium cursor-pointer mx-1' style={selected.some((code : any) => code  === item ) ? {backgroundColor: '#68DEE9', color: '#FFF', border: '0.5px solid transparent'}:{border: '0.5px solid #68DEE9', color: '#68DEE9'}} key={item} >{item}</p>
+                        )
+                    })} 
+                </div>
+            </div> 
+            <div onClick={()=> props.close(1)} className='w-full grid grid-cols-2 lg:grid-cols-3 mt-4' >
                 {Investments.map((items:any)=> {
                     return(
                         <div className='w-full px-2 my-2 cursor-pointer' >

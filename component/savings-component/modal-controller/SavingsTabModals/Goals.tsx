@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Goals(props: any) { 
     return (
-        <div  className=' w-96 px-10 py-8 bg-white rounded-2xl'>
+        <div  className=' w-full h-full lg:h-auto lg:w-96 px-10 py-8 bg-white lg:rounded-2xl'>
             <p className=' font-Montserrat-Bold text-base text-center' >Goal Summary</p>
             <p style={{color: '#4f4f4f'}} className=' font-Montserrat-Bold text-sm mt-4 text-center' >Kid’s tutuition Fees</p>
             <p style={{color: '#828282'}} className=' font-Montserrat-Bold text-sm mt-2 mb-8 text-center' >₦ 100,000.00</p>

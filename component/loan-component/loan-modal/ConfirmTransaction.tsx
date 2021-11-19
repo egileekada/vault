@@ -4,7 +4,7 @@ import { IoIosClose } from 'react-icons/io'
 
 export default function ConfirmTransaction(props: any) {
     return (
-        <div className=' w-560px bg-white px-12 h-screen overflow-y-auto'  >
+        <div className=' w-560px bg-white px-6 lg:px-12 h-screen overflow-y-auto'  >
             <div className='w-full flex flex-row items-center py-10' >
                 <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>  
                 <div className='w-full flex flex-1' />
@@ -60,9 +60,8 @@ export default function ConfirmTransaction(props: any) {
                     <Input backgroundColor="#F6F6F6" />
                 </div>
             </div> 
-            <div className='w-full flex my-8 px-12' >
-                <button style={{border: '1px solid #002343', color: '#002343', borderRadius: '2px'}}  className=' w-full text-white font-Montserrat-Medium text-sm h-10 items-center justify-center mr-4' >CANCEL</button>
-                <div className='w-full flex flex-1' />
+            <div className='w-full flex my-8 lg:px-12' >
+                <button style={{border: '1px solid #002343', color: '#002343', borderRadius: '2px'}}  className=' w-full text-white font-Montserrat-Medium text-sm h-10 items-center justify-center mr-4' >CANCEL</button> 
                 <button onClick={()=> {props.joint ? props.close(6):props.loan ? props.close(4):props.close(5)}} style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-full text-white font-Montserrat-Medium text-sm h-10 items-center justify-center ml-4' >COMPLETE</button>
             </div>
         </div>

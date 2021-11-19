@@ -57,8 +57,8 @@ export default function Savings() {
                         </div>
                     </div> 
                 </div>:
-                <div className='w-full h-full flex mt-8 px-8 '  >
-                    <div className=' hidden lg-flex w-260px' >
+                <div className='w-full h-full flex mt-8 px-4 lg:px-8 '  >
+                    <div className=' hidden lg:flex w-260px' >
                         <TabMenu check={tab} tab={setTab} />
                     </div>
                     <div className='w-full h-full ' >

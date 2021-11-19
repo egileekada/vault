@@ -34,7 +34,7 @@ export default function FriendsModal(props: any) {
     }
 
     return (
-        <div className='w-auto px-10 py-8 bg-white rounded-2xl'>
+        <div className=' w-full h-full lg:h-auto lg:w-auto px-6 lg:px-10 py-8 bg-white rounded-2xl'>
             <p className=' font-Montserrat-Bold text-base text-center' >Goal Summary</p>
             <div  className='w-80 relative my-6  ' >
                 <svg className='absolute top-2 left-2 z-10' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

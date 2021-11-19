@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Header() {
     return (
-        <div className='lg:w-full w-auto dashboardslide flex overflow-x-auto flex m-4 lg:p-8 mt-10'>
+        <div className='lg:w-full w-auto dashboardslide flex overflow-x-auto m-4 lg:p-8 mt-10'>
             <div style={{border: '1px solid #CCD3D9', borderRadius: '8px', }} className='lg:w-full w-auto flex p-8 flex-row' >
                 <div className='lg:w-full w-auto  flex flex-col ' >
                     <p style={{color: '#828282'}} className='w-40 font-Montserrat-Regular text-xs' >Total Savings</p>

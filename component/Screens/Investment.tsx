@@ -17,15 +17,18 @@ export default function Investment() {
     const [showModal, setShowModal] = React.useState(-1); 
     const [withdrawModal, setWithdrawModal] = React.useState(false);
     return (
-        <div className='w-full h-full py-20 px-8' >
-            <p style={{color: '#828282'}} className='font-Montserrat-Regular text-xs' >Balance</p>
-            <p style={{color: '#1D1D1D'}} className='font-Montserrat-Bold text-base mt-1' >₦ 2,909,323.06</p>
+        <div className='w-full h-full py-20 ' >
+            <p style={{color: '#828282'}} className='px-8 font-Montserrat-Regular text-xs' >Balance</p>
+            <p style={{color: '#1D1D1D'}} className='px-8 font-Montserrat-Bold text-base mt-1' >₦ 2,909,323.06</p>
             <Header />
-            <div className='w-full flex flex-row' >
-                <div className='w-full mt-10'  >  
+            <div className='px-8 w-full flex flex-row' >
+                <div className='w-full mt-10'  > 
+                    <div className='w-full flex justify-end lg:hidden' >
+                        <button onClick={()=> setShowModal(0)}  style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-32 ml-4 flex text-white ml-auto  font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Invest Now</button>    
+                    </div> 
                     <InvestmentHistory open={setShowModal} withdraw={setWithdrawModal} />  
                 </div>
-                <div style={{width: '700px'}} className='ml-8' > 
+                <div className='ml-8 hidden flex-col lg:flex lg:w-700px' > 
                     <button onClick={()=> setShowModal(0)}  style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-32 ml-4 flex text-white ml-auto mt-16 mb-8 font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Invest Now</button>
                     <div className=' w-96  mt-12 rounded-2xl relative ' > 
                         <img src='/assets/images/building.png'  className=' w-full rounded-3xl' />  

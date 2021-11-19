@@ -18,9 +18,17 @@ export default function LinkCard(props: any) {
             <div className='mt-10' >
                 <p className=' font-Montserrat-Regular text-xs mb-2' >Card details</p>
                 <Input backgroundColor='#E0E0E0' fontSize='sm' />
-                <div style={{marginTop: '25px'}} className='w-full flex flex-row' >
-                    <Input backgroundColor='#E0E0E0' marginRight='25px' fontSize='sm' />
-                    <Input backgroundColor='#E0E0E0' marginLeft='25px' fontSize='sm' />
+                <p className=' font-Montserrat-Regular text-xs mt-4 mb-2' >Card Number</p>
+                <Input backgroundColor='#E0E0E0' fontSize='sm' />
+                <div className='w-full flex flex-row mt-4 mb-10' >
+                    <div className='w-full mr-2' >
+                        <p className=' font-Montserrat-Regular text-xs mb-2' >Expiry Date</p>
+                        <Input backgroundColor='#E0E0E0' fontSize='sm' />
+                    </div>
+                    <div className='w-full ml-2' >
+                        <p className=' font-Montserrat-Regular text-xs mb-2' >CVV</p>
+                        <Input backgroundColor='#E0E0E0' fontSize='sm' />
+                    </div>
                 </div>
                 <button onClick={()=> props.close(3)} style={{backgroundColor: '#002343'}} className='w-full rounded text-white py-3 mt-8 text-sm font-Montserrat-Medium ' >PROCEED TO LINK CARD 🔒</button>
             </div>

@@ -39,8 +39,12 @@ export default function JointSavingTab(props: any) {
 
     return (
         <div className='w-full flex-col lg:flex-row flex mb-10' >
-            <div className='w-full mx-3'>
-                <p className='font-Montserrat-Bold text-base' >Joint Savings</p>
+            <div className='w-full lg:mx-3'>
+                <div className='flex justify-center lg:justify-start mb-10 relative'>
+                    <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className=' lg:hidden font-Montserrat-Bold text-base cursor-pointer absolute left-0 ' >Go back</p>
+                    <p className='font-Montserrat-Bold text-base ' >Joint Savings</p>
+                </div>
+                {/* <p className='font-Montserrat-Bold text-base' >Joint Savings</p> */}
                 <p className='font-Montserrat-Medium text-sm mt-6 mb-2' >What is tthe name of your group?</p>
                 <Input backgroundColor='#E0E0E0' placeholder='Name your group' fontSize='sm' />
                 <p className='font-Montserrat-Medium text-sm mt-4 mb-2' >What are you saving for?</p>
@@ -54,7 +58,7 @@ export default function JointSavingTab(props: any) {
                 <p className='font-Montserrat-Bold text-base mt-8 mb-4' >How would you like to save?</p>
                 <RadioButton array={['Daily','Weekly','Monthly']} size='32px' font='14px' />
             </div>
-            <div className='w-full mx-3 mt-8 lg:mt-0'>
+            <div className='w-full lg:mx-3 mt-8 lg:mt-0'>
                 <p className='font-Montserrat-Bold text-base' >Add Participants</p>
                 <div style={{backgroundColor:'#E0E0E0'}} className='w-full flex items-center rounded px-4 py-3 mt-8' >
                     <p className='font-Montserrat-Regular text-sm' >Find friends using vault</p>

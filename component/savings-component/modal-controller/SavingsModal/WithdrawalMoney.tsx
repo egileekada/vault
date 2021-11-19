@@ -4,7 +4,7 @@ import { IoIosClose } from 'react-icons/io'
 
 export default function WithdrawalMoney(props: any) {
     return (
-        <div className=' w-full lg:w-560px bg-white px-12 h-screen overflow-y-auto'  >
+        <div className=' w-full lg:w-560px bg-white px-6 lg:px-12 h-screen overflow-y-auto'  >
             <div className='w-full flex flex-row items-center py-10' >
                 <p onClick={()=> props.close(0)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>  
                 <div className='w-full flex flex-1' />
@@ -17,7 +17,7 @@ export default function WithdrawalMoney(props: any) {
             <p className='font-Montserrat-Medium mt-8 text-xs' >Amount</p>
             <div className='w-full flex items-center pt-1' >
                 <Input placeholder='0.00' backgroundColor='#E0E0E0' opacity='0.3px' />
-                <p className='font-Montserrat-Medium w-20 ml-6 text-sm'>(₦) Naira</p>
+                <p className='font-Montserrat-Medium w-24 ml-2 lg:ml-6 text-sm'>(₦) Naira</p>
             </div>  
             <p style={{color: '#828282'}} className=' font-Montserrat-Medium text-sm text-center mt-8' >1108789782</p>
             <p style={{color: '#333333'}} className=' font-Montserrat-Bold text-base text-center mt-2' >MBA BRIGHT CHISOM</p>

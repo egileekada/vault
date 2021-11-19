@@ -17,11 +17,11 @@ export default function Loan() {
     const [showModal, setShowModal] = React.useState(-1);
 
     return (
-        <div className='w-full h-full py-20 px-8' >
-            <p style={{color: '#828282'}} className='font-Montserrat-Regular text-xs' >Balance</p>
-            <p style={{color: '#1D1D1D'}} className='font-Montserrat-Bold text-base mt-1' >₦ 2,909,323.06</p>
+        <div className='w-full h-full py-20 ' >
+            <p style={{color: '#828282'}} className='px-8 font-Montserrat-Regular text-xs' >Balance</p>
+            <p style={{color: '#1D1D1D'}} className='px-8 font-Montserrat-Bold text-base mt-1' >₦ 2,909,323.06</p>
             <Header />
-            <div className='w-full flex flex-row' >
+            <div className='w-full flex px-8 flex-row' >
                 <div className='w-full mt-10'  >  
                     {eligible === 0 ?
                         <div className='w-full h-full flex justify-center items-center flex-col'>
@@ -40,7 +40,7 @@ export default function Loan() {
                                         <PaymentInformation close={setShowModal} />
                     :null}
                 </div>
-                <div className='w-700px ml-8' >  
+                <div className='w-700px hidden lg:flex flex-col ml-8' >  
                     <div className=' w-96  mt-12 rounded-2xl relative ' > 
                         <img src='/assets/images/building.png'  className=' w-full rounded-3xl' />  
                         <div className="absolute inset-0 bg-gradient-to-r from-startgrad to-stopgrad opacity-40 rounded-3xl  h-full flex flex-col" />

@@ -2,6 +2,9 @@ import React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import Header from '../dashboard-component/Header';
 import AccountTab from '../more-component/AccountDetail/AccountTab';
+import AccountLimit from '../more-component/AccountLimit';
+import LegalTab from '../more-component/Legal/LegalTab';
+import SecurityTab from '../more-component/Security/SecurityTab';
 
 export default function More() {
 
@@ -75,6 +78,12 @@ export default function More() {
                 <div style={{backgroundColor: '#F9F9F9'}} className=' w-full h-auto rounded-xl' >
                         {tab === -1 ? 
                             <AccountTab /> 
+                            :tab === 1 ? 
+                                <SecurityTab /> 
+                                :tab === 2 ? 
+                                    <AccountLimit /> 
+                                    :tab === 3 ? 
+                                        <LegalTab /> 
                         :null}
                 </div>
             </div>

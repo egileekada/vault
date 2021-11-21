@@ -5,6 +5,7 @@ import Investment from '../component/Screens/Investment'
 import Loan from '../component/Screens/Loan'
 import Savings from '../component/Screens/Savings'
 import { Drawer, DrawerContent, DrawerCloseButton, useDisclosure } from '@chakra-ui/react';
+import More from '../component/Screens/More'
 
 export default function dashboard() {
 
@@ -37,7 +38,7 @@ export default function dashboard() {
                         </DrawerContent>
                     </Drawer>
                 </div>
-                <div className='w-screen overflow-x-hidden lg:w-full h-full bg-white overflow-y-auto' >
+                <div className='w-screen overflow-x-hidden lg:w-full bg-white overflow-y-auto' >
                     {tab === 0 ?
                             <Home />
                             :tab === 1 ?
@@ -46,6 +47,8 @@ export default function dashboard() {
                                     <Loan />
                                     :tab === 3 ?
                                         <Investment />
+                                        :tab === 5 ?
+                                            <More />
                         :null
                     }
                 </div> 

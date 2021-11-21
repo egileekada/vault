@@ -78,13 +78,16 @@ export default function More() {
                 <div style={{backgroundColor: '#F9F9F9'}} className=' w-full h-auto rounded-xl' >
                         {tab === -1 ? 
                             <AccountTab /> 
+                            :tab === 0 ? 
+                                <div>
+                                    
+                                </div>
                             :tab === 1 ? 
                                 <SecurityTab /> 
                                 :tab === 2 ? 
-                                    <AccountLimit /> 
-                                    :tab === 3 ? 
-                                        <LegalTab /> 
-                        :null}
+                                    <AccountLimit />  
+                                        
+                        :<LegalTab />}
                 </div>
             </div>
         </div>

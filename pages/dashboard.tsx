@@ -40,7 +40,7 @@ export default function dashboard() {
                 </div>
                 <div className='w-screen overflow-x-hidden lg:w-full bg-white overflow-y-auto' >
                     {tab === 0 ?
-                            <Home />
+                            <Home tab={setTab} />
                             :tab === 1 ?
                                 <Savings />
                                 :tab === 2 ?

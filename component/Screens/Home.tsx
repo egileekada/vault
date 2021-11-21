@@ -9,12 +9,19 @@ import TransactionModal from '../dashboard-component/dashboard-modal/Transaction
 import Transaction from '../dashboard-component/Transaction'
 import SuccessModal from '../reusable-modal/SucessModal'
 
-export default function Home() {
+export default function Home(props: any) {
 
     const [savingsModal, setSavingModal] = React.useState(false);
     const [linkCardModal, setLinkCardModal] = React.useState(false);
     const [sucessModal, setSucessModal] = React.useState(false);
     const [transactionModal, setTransactionModal] = React.useState(false);
+    const [tab, setTab] = React.useState(false)
+
+    React.useEffect(() => {
+        {tab ? 
+            props.tab(5)
+        :null}
+    }, )
 
     return (
         <div className='w-full h-full py-8 lg:py-20 ' >
@@ -31,7 +38,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className='w-full flex mt-8'>
-                    <Information />  
+                    <Information close={setTab} />  
                     <div style={{width: '700px'}} className='ml-8 h-52 hidden lg:flex' > 
                         <div className=' w-96 -mt-4 rounded-2xl relative ' > 
                             <img src='/assets/images/building.png'  className=' w-full rounded-3xl' />  

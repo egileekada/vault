@@ -1,9 +1,9 @@
 import React from 'react'
 import { IoIosArrowRoundForward } from "react-icons/io";
 
-export default function Information() {
+export default function Information(props: any) {
     return (
-        <div style={{border: '1px solid #CCD3D9', borderRadius: '8px', }} className='w-full p-4 my-10' >
+        <div onClick={()=> props.close(true)} style={{border: '1px solid #CCD3D9', borderRadius: '8px', }} className='w-full p-4 my-10 cursor-pointer' >
             <p style={{color: '#828282'}} className='text-xs font-Montserrat-Bold' >Let’s get to know more about you, Brightmac.</p>
             <div className='mt-2 w-full flex flex-col lg:flex-row' >
                 <div className='w-full flex flex-col mr-2' > 

@@ -1,5 +1,6 @@
 import { Input } from '@chakra-ui/react'
 import React from 'react'
+import { IoIosArrowBack } from 'react-icons/io'
 import SuccessModal from './SucessModal'
 
 export default function AccountEmail(props: any) {
@@ -14,9 +15,14 @@ export default function AccountEmail(props: any) {
     },)
 
     return (
-        <div className='w-full h-full py-10 px-14'> 
-            <p className='font-Montserrat-Bold text-base ' >Email Address</p> 
-            <div className='w-560px' >
+        <div className='w-full h-full py-6 lg:py-10 lg:px-14'> 
+            <div className='w-full flex items-center ' > 
+                <div onClick={()=> props.close(false)} style={{backgroundColor: '#F9F9F9'}} className='rounded-full mr-12 lg:hidden cursor-pointer p-2'>
+                    <IoIosArrowBack size='20px' />
+                </div>   
+            <p className='font-Montserrat-Bold text-base' >Email Address</p>
+            </div> 
+            <div className=' w-full lg:w-560px' >
                 <p className='font-Montserrat-Medium text-sm mt-6' >A one time password has been sent to your emai address number. please check and enter the 6 digit code.</p>
                 <p className='font-Montserrat-Medium text-sm mt-8 mb-1' >Email</p>
                     <Input backgroundColor='#fff' fontSize='sm' />

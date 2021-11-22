@@ -1,5 +1,6 @@
 import { Input } from '@chakra-ui/react'
 import React from 'react'
+import { IoIosArrowBack } from 'react-icons/io'
 import SuccessModal from '../../AccountDetail/component/SucessModal'
 
 export default function ForgotPin(props: any) {
@@ -15,11 +16,16 @@ export default function ForgotPin(props: any) {
     },) 
     
     return (
-        <div className='w-full h-full py-10 px-14'>
+        <div className='w-full h-full py-6 lg:py-10 lg:px-14'>
             {!next ?
                 <>
-                    <p className='font-Montserrat-Bold text-base ' >Transaction PIN</p> 
-                    <div className='w-560px' >
+                    <div className='w-full flex items-center ' > 
+                        <div onClick={()=> props.close(false)} style={{backgroundColor: '#F9F9F9'}} className='rounded-full mr-12 lg:hidden cursor-pointer p-2'>
+                            <IoIosArrowBack size='20px' />
+                        </div>   
+                    <p className='font-Montserrat-Bold text-base ' >Transaction PIN</p>
+                    </div>  
+                    <div className=' w-full lg:w-560px' >
                         <p className='font-Montserrat-Medium text-sm mt-6' >We just sent an OTP to your mail</p>
                         <p className='font-Montserrat-Medium text-sm mt-4 mb-1' >OTP</p>
                         <Input backgroundColor='#fff' fontSize='sm' /> 
@@ -33,7 +39,7 @@ export default function ForgotPin(props: any) {
             :
                 <>
                     <p className='font-Montserrat-Bold text-base ' >Create New Transaction PIN</p> 
-                    <div className='w-560px' >  
+                    <div className=' w-full lg:w-560px' >  
                         <p className='font-Montserrat-Medium text-sm mt-4 mb-1' >New PIN</p>
                             <Input backgroundColor='#fff' fontSize='sm' />
                         <p className='font-Montserrat-Medium text-sm mt-4 mb-1' >Confirm new PIN</p>

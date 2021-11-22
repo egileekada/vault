@@ -1,5 +1,6 @@
 import { Input } from '@chakra-ui/react'
 import React from 'react'
+import { IoIosArrowBack } from 'react-icons/io'
 import SuccessModal from './SucessModal'
 
 export default function AccountName(props: any) {
@@ -15,10 +16,15 @@ export default function AccountName(props: any) {
     },)
 
     return (
-        <div className='w-full h-full py-10 px-14'> 
-            <p className='font-Montserrat-Bold text-base ' >Account Name</p>
+        <div className='w-full h-full py-6 lg:py-10 lg:px-14'> 
+            <div className='w-full flex items-center ' > 
+                <div onClick={()=> props.close(false)} style={{backgroundColor: '#F9F9F9'}} className='rounded-full mr-12 lg:hidden cursor-pointer p-2'>
+                    <IoIosArrowBack size='20px' />
+                </div>   
+                <p className='font-Montserrat-Bold text-base' >Account Name</p>
+            </div> 
             {!next ?
-                <div className='w-560px' >
+                <div className=' w-full lg:w-560px' >
                     <p className='font-Montserrat-Medium text-sm mt-6' >You full legal names as it apperas on all your document</p>
                     <p className='font-Montserrat-Medium text-sm mt-8 mb-1' >First Name</p>
                         <Input backgroundColor='#fff' fontSize='sm' />
@@ -29,7 +35,7 @@ export default function AccountName(props: any) {
 
                     <button onClick={()=> setNext(true)} style={{backgroundColor: '#002343'}} className='w-full rounded text-white py-3 mt-12 text-sm font-Montserrat-Medium ' >Submit</button>
                 </div>:
-                <div className='w-560px' >
+                <div className=' w-full lg:w-560px' >
                     <p className='font-Montserrat-Medium text-sm mt-6' >Sumbit a documet that confims your change in name, it must be one that is accepted by the nigerian governement.</p>
                     <div className='w-16 rounded-2xl h-16 my-10 bg-yellow-300' >
 

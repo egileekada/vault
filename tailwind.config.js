@@ -19,6 +19,7 @@ module.exports = {
       inactive: '#667B8E',
       startgrad: '#000C15',
       stopgrad: '#010F1B',
+      morebg : '#F9F9F9',
 
       black: colors.black,
       white: colors.white,

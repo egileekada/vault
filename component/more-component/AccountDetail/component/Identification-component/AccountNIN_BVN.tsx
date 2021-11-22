@@ -4,7 +4,7 @@ import React from 'react'
 export default function AccountNIN_BVN(props: any) {
     return (
         <div className='w-full' >
-            <p className='w-560px font-Montserrat-Medium text-sm mt-6 mb-10' >Enter your BVN/NIN for verification</p>
+            <p className=' w-full lg:w-560px font-Montserrat-Medium text-sm mt-6 mb-10' >Enter your BVN/NIN for verification</p>
             <p className='font-Montserrat-Medium text-sm mt-8 mb-1' >verification</p>
                 <Select placeholder='Select one' backgroundColor='#fff' fontSize='sm' />
             <p className='font-Montserrat-Medium text-sm mt-4 mb-1' >Enter the 11 Digits</p>

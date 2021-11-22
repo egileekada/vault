@@ -1,12 +1,12 @@
 import React from 'react'
-import { IoIosArrowForward } from 'react-icons/io'
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import AccountAddress from './component/AccountAddress'
 import AccountContact from './component/AccountContact'
 import AccountEmail from './component/AccountEmail'
 import AcountIdentification from './component/AccountIdentification'
 import AccountName from './component/AccountName'
 
-export default function AccountTab() {
+export default function AccountTab(props: any) {
 
     const tabArray =[
         {
@@ -32,11 +32,30 @@ export default function AccountTab() {
     ]
 
     const [tab, setTab] = React.useState(-1)
+    const [mobile, setMobile] = React.useState(true) 
+
+    const CloseHandler =()=> { 
+        props.tab(false)
+        setTab(-1)
+        setMobile(true)
+    }
+
+    React.useEffect(() => {
+        {!mobile ?
+            CloseHandler()
+        :null}
+    },)
 
     return (
-        <div className='w-full h-auto justify-center items-center flex flex-col py-10 px-14' >
+        <div className='w-full h-auto justify-center items-center flex flex-col py-6 lg:py-10 lg:px-14' >
             {tab === -1 ?
-                <>
+                <>  
+                    <div className='w-full flex lg:hidden items-center mb-8 ' > 
+                        <div onClick={()=> setMobile(false)} style={{backgroundColor: '#F9F9F9'}} className='rounded-full mr-12 lg:hidden cursor-pointer p-2'>
+                            <IoIosArrowBack size='20px' />
+                        </div>   
+                        <p className='font-Montserrat-Bold text-base' >Account Name</p>
+                    </div> 
                     <div className='w-16 rounded-2xl h-16 bg-yellow-300' >
 
                     </div>
@@ -55,15 +74,15 @@ export default function AccountTab() {
                     })} 
                 </> 
                 : tab === 0 ?
-                    <AccountName tab={setTab} />
+                    <AccountName tab={setTab} close={setMobile} />
                     : tab === 1 ?
-                        <AccountAddress tab={setTab} />
+                        <AccountAddress tab={setTab} close={setMobile} />
                         : tab === 2 ?
-                            <AccountContact tab={setTab} />
+                            <AccountContact tab={setTab} close={setMobile} />
                             : tab === 3 ?
-                                <AccountEmail tab={setTab} />
+                                <AccountEmail tab={setTab} close={setMobile} />
                                 : tab === 4 ?
-                                    <AcountIdentification tab={setTab} />
+                                    <AcountIdentification tab={setTab} close={setMobile} />
             :null}
         </div>
     )

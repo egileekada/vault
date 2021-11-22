@@ -38,7 +38,7 @@ export default function dashboard() {
                         </DrawerContent>
                     </Drawer>
                 </div>
-                <div className='w-screen overflow-x-hidden lg:w-full bg-white overflow-y-auto' >
+                <div className='w-screen overflow-x-hidden h-screen lg:w-full bg-white overflow-y-auto' >
                     {tab === 0 ?
                             <Home tab={setTab} />
                             :tab === 1 ?

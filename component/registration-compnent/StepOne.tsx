@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import * as yup from 'yup'
 import { useFormik } from 'formik';   
 import { Input, Link } from '@chakra-ui/react'
+import Router from 'next/router'
 
 export default function StepOne(props: any) {
     
@@ -30,6 +31,26 @@ export default function StepOne(props: any) {
         validationSchema: loginSchema,
         onSubmit: () => {},
     }); 
+
+
+    const submit = async () => {
+
+        setLoading(true);
+        if (!formik.dirty) {
+          alert('You have to fill in th form to continue');
+          return;
+        }else if (!formik.isValid) {
+          alert('You have to fill in the form correctly to continue');
+          return;
+        }else { 
+            const t1 = setTimeout(() => { 
+                setLoading(false);
+                props.value(formik.values)
+                props.click(true)
+                clearTimeout(t1);
+            }, 3000); 
+        }
+    } 
 
     return (
         <div className='bg-white w-full h-auto flex justify-center flex-col py-12 px-6 lg:px-40 rounded-lg' >
@@ -180,7 +201,7 @@ export default function StepOne(props: any) {
                 </div>   
             </div>  
             
-            <button onClick={()=> props.click(true)} style={formik.values.email.length >= 3 && formik.values.password.length >= 8 && formik.values.password === formik.values.confirmpassword ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
+            <button onClick={()=> submit()} style={formik.values.email.length >= 3 && formik.values.password.length >= 8 && formik.values.password === formik.values.confirmpassword ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
                 {!loading ? 
                     <div className='py-1' >
                         NEXT

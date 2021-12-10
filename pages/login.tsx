@@ -27,6 +27,54 @@ export default function login() {
         onSubmit: () => {},
     }); 
 
+
+    React.useEffect(() => { 
+        const token = localStorage.getItem('token')
+        if(token ){
+            Router.push('/dashboard')
+        }
+    }); 
+
+    const submit = async () => {
+
+        if (!formik.dirty) {
+          alert('You have to fill in th form to continue');
+          return;
+        }else if (!formik.isValid) {
+          alert('You have to fill in the form correctly to continue');
+          return;
+        }else {
+            setLoading(true);
+            const request = await fetch(`https://api.vaultafrica.co/auth/signin`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formik.values),
+            });
+    
+            const json = await request.json();
+    
+            if (request.status === 200) {   
+                localStorage.setItem('token', json.data.token); 
+                localStorage.setItem('id', json.data.user._id); 
+                localStorage.setItem('details', JSON.stringify(json.data.user))
+                setLoading(false);
+                // console.log(json)
+    
+                const t1 = setTimeout(() => { 
+                    Router.push('/dashboard'); 
+                    clearTimeout(t1);
+                }, 3000); 
+  
+                setLoading(false);
+            }else {
+                alert(json.message);
+                setLoading(false);
+            }
+        }
+    } 
+
     return (
         <div className='w-full h-screen flex relative flex-row bg-white' > 
             <div className='w-full h-full flex justify-center items-center  ' >

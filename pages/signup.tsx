@@ -10,13 +10,16 @@ import StepOne from '../component/registration-compnent/StepOne';
 export default function login() {
 
     const [next, setNext] = React.useState(false);
+    const [firstStep, setFirstStep] = React.useState({
+        email: '', password: '' 
+    })
 
     return (
         <div className='w-full h-screen flex relative overflow-hidden flex-row bg-white' > 
             <div className='w-full h-full justify-center items-center overflow-y-auto ' >
                 {next ?
-                    <StepTwo />:
-                    <StepOne click={setNext} /> 
+                    <StepTwo value={firstStep} />:
+                    <StepOne value={setFirstStep} click={setNext} /> 
                 }
             </div> 
             <div className='w-full h-screen relative hidden lg:flex' > 

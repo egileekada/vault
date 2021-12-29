@@ -11,7 +11,7 @@ import PayBack from '../loan-component/loan-modal/PayBack'
 import Payment from '../loan-component/loan-modal/Payment'
 import PaymentInformation from '../loan-component/PaymentInformation'
 
-export default function Loan() {
+export default function Loan(props: any) {
 
     const [eligible, setEligiblity] = React.useState(1)
     const [showModal, setShowModal] = React.useState(-1);

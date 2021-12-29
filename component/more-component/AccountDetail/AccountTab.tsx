@@ -1,5 +1,6 @@
 import React from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import { IUser, UserContext } from '../../../context/UserContext'
 import AccountAddress from './component/AccountAddress'
 import AccountContact from './component/AccountContact'
 import AccountEmail from './component/AccountEmail'
@@ -7,22 +8,32 @@ import AcountIdentification from './component/AccountIdentification'
 import AccountName from './component/AccountName'
 
 export default function AccountTab(props: any) {
+     
+    const userContext: IUser = React.useContext(UserContext);  
 
+    const CheckValues =(index: any)=> {
+        if(index === null){
+            return 'Not Available'
+        } else {
+            index
+        }
+    }
+ 
     const tabArray =[
         {
-            name: 'Bright Mba',
+            name: userContext.userData.firstname+ ' '+userContext.userData.lastname,
             detail: 'Account Name'
         },
         {
-            name: 'Emmene Port Harcourt Rivers',
+            name: CheckValues(userContext.userData.street),
             detail: 'Address'
         },
         {
-            name: '7890-290-234',
+            name: userContext.userData.phoneNumber,
             detail: 'Contact Details'
         },
         {
-            name: 'brightbright@gmail.com',
+            name: userContext.userData.email,
             detail: 'Email Address'
         },
         {
@@ -59,7 +70,7 @@ export default function AccountTab(props: any) {
                     <div className='w-16 rounded-2xl h-16 bg-yellow-300' >
 
                     </div>
-                    <p className='font-Montserrat-Bold text-base mb-10' >Bright Mba</p>
+                    <p className='font-Montserrat-Bold text-base mb-10' >{userContext.userData.firstname+ ' '+userContext.userData.lastname}</p>
                     {tabArray.map((item: any, index: any)=> {
                         return(
                             <div key={index} onClick={()=> setTab(index)} style={{background: 'rgba(224, 224, 224, 0.2)', opacity:'0.8'}} className='w-full rounded-lg cursor-pointer flex items-center my-2 p-3' >

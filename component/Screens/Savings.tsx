@@ -18,7 +18,7 @@ import JointSavingTab from '../savings-component/Tabs/JointSavingTab'
 import TabScreen from '../savings-component/TabScreen'
 
 
-export default function Savings() {
+export default function Savings(props: any) {
 
     const [savingsModal, setSavingModal] = React.useState(false);
     const [showModal, setShowModal] = React.useState(0)

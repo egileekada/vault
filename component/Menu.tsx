@@ -1,8 +1,12 @@
+import Router from 'next/router'
 import React from 'react'
+import { IUser, UserContext } from '../context/UserContext';
 import Icons from './MenuIcons'
 
 export default function Menu(props: any) {
 
+
+    const userContext: IUser = React.useContext(UserContext);  
     const Array = [ 
         {
             name: 'Home', 
@@ -36,11 +40,16 @@ export default function Menu(props: any) {
         setActive(index);
         props.tab(index);
         props.close();
-    } 
+    }  
 
     React.useEffect(() => {
-        setActive(props.index)
+        setActive(props.index)  
     },)
+
+    const LogOut =()=> {
+        localStorage.clear()
+        Router.push('/login')
+    }
 
     return (
         <div className='w-full h-screen pt-8 flex flex-col items-center overflow-y-auto' >
@@ -52,7 +61,7 @@ export default function Menu(props: any) {
 
                         </div>
                         </div>
-                        <p style={{color:'#828282'}} className='font-Montserrat-Regular text-white text-sm mt-4' >Hey, Brightmac</p>
+                        <p style={{color:'#828282'}} className='font-Montserrat-Regular text-white text-sm mt-4' >Hey, {userContext.userData.firstname}</p>
                         <p style={{color:'#1D1D1D'}} className='font-Montserrat-Bold text-white text-base mt-1' >Welcome back!</p>
                     </>
                 :
@@ -76,7 +85,7 @@ export default function Menu(props: any) {
                 })}
             </div>
             <div className='w-full h-full flex items-end ' >  
-                <div style={{backgroundColor: '#FCFCFC'}} className='w-full h-auto flex pb-4 cursor-pointer flex-row items-center ' > 
+                <div onClick={()=> LogOut()} style={{backgroundColor: '#FCFCFC'}} className='w-full h-auto flex pb-4 cursor-pointer flex-row items-center ' > 
                     <div className='w-16 flex justify-center items-center' >
                         <Icons icons='logout' />
                     </div>

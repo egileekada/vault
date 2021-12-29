@@ -1,6 +1,7 @@
 import { Input } from '@chakra-ui/react'
 import React from 'react'
 import { IoIosArrowBack } from 'react-icons/io'
+import { IUser, UserContext } from '../../../../context/UserContext'
 import SuccessModal from './SucessModal'
 
 export default function AccountName(props: any) {
@@ -8,6 +9,7 @@ export default function AccountName(props: any) {
     const [next, setNext] = React.useState(false)
     const [showModal, setShowModal] =   React.useState(false)
     const [closeTab, setCloseTab] =   React.useState(false) 
+    const userContext: IUser = React.useContext(UserContext);  
 
     React.useEffect(() => {
         {closeTab ?
@@ -27,11 +29,11 @@ export default function AccountName(props: any) {
                 <div className=' w-full lg:w-560px' >
                     <p className='font-Montserrat-Medium text-sm mt-6' >You full legal names as it apperas on all your document</p>
                     <p className='font-Montserrat-Medium text-sm mt-8 mb-1' >First Name</p>
-                        <Input backgroundColor='#fff' fontSize='sm' />
+                        <Input placeholder={userContext.userData.firstname} backgroundColor='#fff' fontSize='sm'  />
                     <p className='font-Montserrat-Medium text-sm mt-4 mb-1' >Other Names</p>
-                        <Input backgroundColor='#fff' fontSize='sm' />
+                        <Input placeholder={userContext.userData.othername}  backgroundColor='#fff' fontSize='sm' />
                     <p className='font-Montserrat-Medium text-sm mt-4 mb-1' >Last Name</p>
-                        <Input backgroundColor='#fff' fontSize='sm' />
+                        <Input placeholder={userContext.userData.lastname} backgroundColor='#fff' fontSize='sm' />
 
                     <button onClick={()=> setNext(true)} style={{backgroundColor: '#002343'}} className='w-full rounded text-white py-3 mt-12 text-sm font-Montserrat-Medium ' >Submit</button>
                 </div>:

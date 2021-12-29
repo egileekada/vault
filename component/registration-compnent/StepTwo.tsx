@@ -17,22 +17,15 @@ export default function StepTwo(props: any) {
     const loginSchema = yup.object({ 
         firstname: yup.string().required('Your first name is required').min(2, 'A minimium of 2 characters'), 
         lastname: yup.string().required('Your last name is required').min(2, 'A minimium of 2 characters'), 
-        username: yup.string().required('Your user name is required').min(2, 'A minimium of 2 characters'), 
-        phoneNumber: yup.string().required('Your phone number is required').min(11, 'A minimium of 11 characters'), 
+        // username: yup.string().required('Your user name is required').min(2, 'A minimium of 2 characters'), 
+        phoneNumber: yup.string().required('Your phone number is required').min(10, 'A minimium of 10 characters'), 
     }) 
 
     // formik
     const formik = useFormik({
-        initialValues: {email: props.value.email, firstname: '', lastname: '', username: '', phoneNumber: '', password: props.value.password},
+        initialValues: {email: props.value.email, firstname: '', lastname: '', phoneNumber: '', password: props.value.password},
         validationSchema: loginSchema,
         onSubmit: () => {},
-    }); 
-
-    React.useEffect(() => { 
-        const token = localStorage.getItem('token')
-        if(token ){
-            Router.push('/dashboard')
-        }
     }); 
 
     const submit = async () => {
@@ -53,23 +46,16 @@ export default function StepTwo(props: any) {
                 body: JSON.stringify(formik.values),
             });
     
-            const json = await request.json();
+            const json = await request.json(); 
     
-            if (request.status === 200) {   
-                localStorage.setItem('token', json.data.token); 
-                localStorage.setItem('id', json.data.user._id); 
-                localStorage.setItem('details', JSON.stringify(json.data.user))
-                setLoading(false);
-                console.log(json)
-    
-                // const t1 = setTimeout(() => { 
-                //     Router.push('/verify'); 
-                //     clearTimeout(t1);
-                // }, 3000); 
-  
-                setLoading(false);
+            if (request.status === 201) {      
+                const t1 = setTimeout(() => { 
+                    Router.push('/verify');   
+                    clearTimeout(t1);
+                }, 3000); 
             }else {
-                alert(json.message);
+                // alert(json);
+                console.log(json)
                 setLoading(false);
             }
         }
@@ -89,7 +75,7 @@ export default function StepTwo(props: any) {
                         onFocus={() =>
                             formik.setFieldTouched("firstname", true, true)
                         }  
-                        placeholder="Enter your first name" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                        placeholder="Enter your first name" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
                 
                     <div className="w-full h-auto pt-2">
                         {formik.touched.firstname && formik.errors.firstname && (
@@ -111,7 +97,7 @@ export default function StepTwo(props: any) {
                         onFocus={() =>
                             formik.setFieldTouched("lastname", true, true)
                         }  
-                        placeholder="Enter your last name" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                        placeholder="Enter your last name" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
                 
                     <div className="w-full h-auto pt-2">
                         {formik.touched.lastname && formik.errors.lastname && (
@@ -125,7 +111,7 @@ export default function StepTwo(props: any) {
                         )}
                     </div>
                 </div> 
-                <div className='relative w-full flex font-Inter-Regular flex-col py-2 ' > 
+                {/* <div className='relative w-full flex font-Inter-Regular flex-col py-2 ' > 
                     <p className='font-Inter-Medium text-xs' >User Name</p>
                      <Input 
                         name="username"
@@ -133,9 +119,9 @@ export default function StepTwo(props: any) {
                         onFocus={() =>
                             formik.setFieldTouched("username", true, true)
                         }  
-                        placeholder="Enter your user name" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
-                
-                    <div className="w-full h-auto pt-2">
+                        placeholder="Enter your user name" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
+                 */}
+                    {/* <div className="w-full h-auto pt-2">
                         {formik.touched.username && formik.errors.username && (
                             <motion.p
                                 initial={{ y: -100, opacity: 0 }}
@@ -145,8 +131,8 @@ export default function StepTwo(props: any) {
                                 {formik.errors.username}
                             </motion.p>
                         )}
-                    </div>
-                </div> 
+                    </div> */}
+                {/* </div>  */}
                 <div className='relative w-full flex font-Inter-Regular flex-col py-2 ' > 
                     <p className='font-Inter-Medium text-xs' >Phone Number</p>
                      <Input 
@@ -156,7 +142,7 @@ export default function StepTwo(props: any) {
                         onFocus={() =>
                             formik.setFieldTouched("phoneNumber", true, true)
                         }  
-                        placeholder="Enter your Phone Number" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                        placeholder="Enter your Phone Number" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
                 
                     <div className="w-full h-auto pt-2">
                         {formik.touched.phoneNumber && formik.errors.phoneNumber && (

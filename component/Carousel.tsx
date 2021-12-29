@@ -64,7 +64,7 @@ export default function Carousel() {
                 <div className='w-full mt-14 flex justify-center items-center' >
                     {arr.map((item:any, index: any) => {
                         return(
-                            <div key={item} style={{width: '6px', height: '6px'}} className={index === count ? 'z-30 rounded-full bg-white mx-1' : 'z-30 rounded-full bg-inactive mx-1' } /> 
+                            <div key={index} style={{width: '6px', height: '6px'}} className={index === count ? 'z-30 rounded-full bg-white mx-1' : 'z-30 rounded-full bg-inactive mx-1' } /> 
                         )
                     })}
                 </div>

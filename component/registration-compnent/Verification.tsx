@@ -16,8 +16,7 @@ export default function Verification(props: any) {
 
 
     const loginSchema = yup.object({ 
-        email: yup.string().email('This email is not valid').required('Your email is required'),
-        password: yup.string().required('Your password is required').min(8, 'A minimium of 8 characters')
+        code: yup.string().required('Enter Your OTP code')
     }) 
 
     // formik
@@ -26,6 +25,36 @@ export default function Verification(props: any) {
         validationSchema: loginSchema,
         onSubmit: () => {},
     }); 
+    const submit = async () => {
+
+        if (!formik.dirty) {
+          alert('You have to fill in th form to continue');
+          return;
+        }else if (!formik.isValid) {
+          alert('You have to fill in the form correctly to continue');
+          return;
+        }else {
+            setLoading(true);
+            const request = await fetch(`https://api.vaultafrica.co/auth/confirm/account`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    otp: formik.values.code+''
+                }),
+            });  
+
+            if (request.status === 200) {     
+                const t1 = setTimeout(() => { 
+                    props.click(true) 
+                    clearTimeout(t1);
+                }, 3000); 
+            }else {  
+                setLoading(false);
+            }
+        }
+    } 
 
     return (
         <div className='bg-white w-full h-full flex justify-center flex-col py-24  py-14 px-6 lg:px-40 rounded-lg' >
@@ -42,24 +71,24 @@ export default function Verification(props: any) {
                         onFocus={() =>
                             formik.setFieldTouched("code", true, true)
                         }  
-                        placeholder="0000000" size="lg" className=' bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                        placeholder="0000000" size="lg" className=' bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
                 
-                    {/* <div className="w-full h-auto pt-2">
-                        {formik.touched.email && formik.errors.email && (
+                    <div className="w-full h-auto pt-2">
+                        {formik.touched.code && formik.errors.code && (
                             <motion.p
                                 initial={{ y: -100, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 className="text-xs font-Inter-Regular text-errorRed"
                             >
-                                {formik.errors.email}
+                                {formik.errors.code}
                             </motion.p>
                         )}
-                    </div> */}
+                    </div>
                 </div> 
 
             </div>  
             
-            <button  onClick={()=> props.click(true)} style={formik.values.code !== '' ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
+            <button  onClick={()=> submit()} style={formik.values.code !== '' ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
                 {!loading ? 
                     <div className='py-1' >
                         NEXT

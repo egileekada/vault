@@ -22,7 +22,10 @@ export default function StepOne(props: any) {
 
     const loginSchema = yup.object({ 
         email: yup.string().email('This email is not valid').required('Your email is required'),
-        password: yup.string().required('Your password is required').min(8, 'A minimium of 8 characters')
+        password: yup.string().required('Your password is required').matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+            "Must Contain 8 Characters, And At Least An Uppercase And A Lowercase Letter, A Number and A Special Case Character"
+          ),
     }) 
 
     // formik
@@ -67,7 +70,7 @@ export default function StepOne(props: any) {
                         onFocus={() =>
                             formik.setFieldTouched("email", true, true)
                         }  
-                        placeholder="John@gmail.com" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                        placeholder="John@gmail.com" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
                 
                     <div className="w-full h-auto pt-2">
                         {formik.touched.email && formik.errors.email && (
@@ -89,7 +92,7 @@ export default function StepOne(props: any) {
                         onFocus={() =>
                             formik.setFieldTouched("password", true, true)
                         } 
-                        type={showpassword ? "text" : "password"} placeholder="Password" size="lg" className=' mt-2 bg-gray_bg  border-gray_bg text-primary'  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                        type={showpassword ? "text" : "password"} placeholder="Password" size="lg" className=' mt-2 bg-gray_bg  border-gray_bg text-primary'  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
                     <div onClick={()=> handleShowpassword()} style={{color: '#00191AA6', marginTop: '36px'}} className=' font-Inter-Medium cursor-pointer z-10 absolute lg:ml-70 right-4 text-sm ' >
                         {showpassword ?
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +151,7 @@ export default function StepOne(props: any) {
                         onFocus={() =>
                             formik.setFieldTouched("confirmpassword", true, true)
                         } 
-                        type={showconfirmpassword ? "text" : "password"} placeholder="Confirm Password" size="lg" className=' mt-2 bg-gray_bg  border-gray_bg text-primary'  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                        type={showconfirmpassword ? "text" : "password"} placeholder="Confirm Password" size="lg" className=' mt-2 bg-gray_bg  border-gray_bg text-primary'  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
                     <div onClick={()=> handleShowconfirmpassword()} style={{color: '#00191AA6', marginTop: '36px'}} className=' font-Inter-Medium cursor-pointer z-10 absolute lg:ml-70 right-4 text-sm ' >
                         {showconfirmpassword ?
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

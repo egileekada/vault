@@ -12,7 +12,7 @@ import InvestmentHistory from '../investmen-component/InvestmentHistory'
 import ConfirmTransaction from '../savings-component/modal-controller/SavingsModal/ConfirmTransaction' 
 import WithdrawalMoney from '../savings-component/modal-controller/SavingsModal/WithdrawalMoney'
 
-export default function Investment() {
+export default function Investment(props: any) {
 
     const [showModal, setShowModal] = React.useState(-1); 
     const [withdrawModal, setWithdrawModal] = React.useState(false);

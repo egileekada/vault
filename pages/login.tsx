@@ -25,8 +25,7 @@ export default function login() {
         initialValues: {email: '', password: ''},
         validationSchema: loginSchema,
         onSubmit: () => {},
-    }); 
-
+    });  
 
     React.useEffect(() => { 
         const token = localStorage.getItem('token')
@@ -54,22 +53,22 @@ export default function login() {
             });
     
             const json = await request.json();
+
+            console.log('Status '+request.status)
     
             if (request.status === 200) {   
-                localStorage.setItem('token', json.data.token); 
-                localStorage.setItem('id', json.data.user._id); 
-                localStorage.setItem('details', JSON.stringify(json.data.user))
+                localStorage.setItem('token', json.accessToken);  
                 setLoading(false);
-                // console.log(json)
-    
+                console.log(json) 
+  
                 const t1 = setTimeout(() => { 
                     Router.push('/dashboard'); 
                     clearTimeout(t1);
                 }, 3000); 
-  
                 setLoading(false);
             }else {
                 alert(json.message);
+                console.log(json)
                 setLoading(false);
             }
         }
@@ -94,7 +93,7 @@ export default function login() {
                                 onFocus={() =>
                                     formik.setFieldTouched("email", true, true)
                                 }  
-                                placeholder="John@gmail.com" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                                placeholder="John@gmail.com" size="lg" className=' mt-2 bg-gray_bg border-gray_bg text-primary '  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
                         
                             <div className="w-full h-auto pt-2">
                                 {formik.touched.email && formik.errors.email && (
@@ -116,7 +115,7 @@ export default function login() {
                                 onFocus={() =>
                                     formik.setFieldTouched("password", true, true)
                                 } 
-                                type={showpassword ? "text" : "password"} placeholder="Password" size="lg" className=' mt-2 bg-gray_bg  border-gray_bg text-primary'  bg="#F6F6F6" focusBorderColor='white' fontSize='xs' borderColor="#F6F6F6" color="#200E32"/>
+                                type={showpassword ? "text" : "password"} placeholder="Password" size="lg" className=' mt-2 bg-gray_bg  border-gray_bg text-primary'  bg="#F6F6F6" focusBorderColor='white' fontSize='sm' borderColor="#F6F6F6" color="#200E32"/>
                             <div onClick={()=> handleShowpassword()} style={{color: '#00191AA6', marginTop: '36px'}} className=' font-Inter-Medium cursor-pointer z-10 absolute lg:ml-70 right-4 text-sm ' >
                                 {showpassword ?
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -170,7 +169,7 @@ export default function login() {
                         <p className='font-Inter-Medium text-xs text-right cursor-pointer' >Forgot Password?<Link style={{ textDecoration: 'none' }} href='/forgotpassword'><span className='cursor-pointer ml-1 font-Inter-SemiBold text-xs' style={{color:'#03C8DB'}} > Get a new one</span></Link></p> 
                     </div>  
                     
-                    <button onClick={()=> Router.push('/dashboard')} style={formik.values.email.length >= 3 && formik.values.password.length >= 8 ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
+                    <button onClick={()=> submit()} style={formik.values.email.length >= 3 && formik.values.password.length >= 8 ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
                         {!loading ? 
                             <div className='py-1' >
                                 SIGN IN

@@ -13,7 +13,7 @@ export default function SignMessage() {
             <p style={{color: '#5788AD'}} className='font-Inter-Regular my-2 text-xs text-center mb-2' >You have successfully created your<br/>registered your account. </p>
              
             
-            <button onClick={()=> Router.push('/dashboard')} style={{backgroundColor: '#002343', color: 'white'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
+            <button onClick={()=> Router.push('/login')} style={{backgroundColor: '#002343', color: 'white'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >
                 {!loading ? 
                     <div className='py-1' >
                         Enjoy!

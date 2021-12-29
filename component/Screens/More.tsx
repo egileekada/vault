@@ -1,5 +1,6 @@
 import React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { IUser, UserContext } from '../../context/UserContext';
 import Header from '../dashboard-component/Header';
 import AccountTab from '../more-component/AccountDetail/AccountTab';
 import AccountLimit from '../more-component/AccountLimit';
@@ -7,8 +8,10 @@ import LegalTab from '../more-component/Legal/LegalTab';
 import SecurityTab from '../more-component/Security/SecurityTab';
 import TabIcons from '../more-component/TabIcons';
 
-export default function More() {
+export default function More(props: any) {
 
+
+    const userContext: IUser = React.useContext(UserContext);  
     const tabArray = [
         {
             icon: 'Chat',
@@ -31,6 +34,8 @@ export default function More() {
             detail: 'Term os use and others'
         },
     ]
+
+    // console.log(userContext.userData)
 
     const [tab, setTab] = React.useState(-1)
     const [mobile, setMobile] = React.useState(false)
@@ -61,7 +66,7 @@ export default function More() {
                                     
                                 </div>
                                 <div className=' w-auto mx-2' >
-                                    <p className='font-Montserrat-Bold text-base' >Bright Mba</p>
+                                    <p className='font-Montserrat-Bold text-base' >{(userContext.userData.firstname+ ' '+userContext.userData.lastname).substring(0, 16)}</p>
                                     <p style={{color:'#667B8E'}} className='font-Montserrat-Medium text-sm' >Account Details</p>
                                 </div>
                                 <div className='w-full flex flex-1' />

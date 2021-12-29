@@ -6,10 +6,7 @@ import Router from 'next/router';
 
 export default function login() {
 
-    const [next, setNext] = React.useState(false);
-    const [firstStep, setFirstStep] = React.useState({
-        email: '', password: '' 
-    })
+    const [next, setNext] = React.useState(false); 
 
 
     React.useEffect(() => { 
@@ -22,10 +19,14 @@ export default function login() {
     return (
         <div className='w-full h-screen flex relative overflow-hidden flex-row bg-white' > 
             <div className='w-full h-full justify-center items-center overflow-y-auto ' >
-                {next ?
-                    <StepTwo value={firstStep} />:
-                    <StepOne value={setFirstStep} click={setNext} /> 
-                }
+                {/* {next ? */}
+                <div className={next ? 'flex' : 'hidden'} >
+                    <StepTwo click={setNext} />
+                </div>
+                <div className={!next ? 'flex' : 'hidden'} > 
+                    <StepOne click={setNext} /> 
+                </div>
+                {/* // } */}
             </div> 
             <div className='w-full h-screen relative hidden lg:flex' > 
                 <Carousel />

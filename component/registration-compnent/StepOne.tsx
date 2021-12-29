@@ -4,11 +4,13 @@ import * as yup from 'yup'
 import { useFormik } from 'formik';   
 import { Input, Link } from '@chakra-ui/react'
 import Router from 'next/router'
+import { IUser, UserContext } from '../../context/UserContext';
 
 export default function StepOne(props: any) {
     
 
     const [showpassword, setShowpass] = React.useState(false);
+    const userContext: IUser = React.useContext(UserContext); 
     const [showconfirmpassword, setShowconfirmpass] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
 
@@ -40,15 +42,17 @@ export default function StepOne(props: any) {
 
         setLoading(true);
         if (!formik.dirty) {
-          alert('You have to fill in th form to continue');
-          return;
+          alert('You have to fill in th form to continue'); 
+          setLoading(false);
         }else if (!formik.isValid) {
-          alert('You have to fill in the form correctly to continue');
-          return;
+          alert('You have to fill in the form correctly to continue'); 
+          setLoading(false);
         }else { 
             const t1 = setTimeout(() => { 
-                setLoading(false);
-                props.value(formik.values)
+                setLoading(false); 
+                userContext.setSignUp({
+                    email: formik.values.email, password: formik.values.password 
+                })
                 props.click(true)
                 clearTimeout(t1);
             }, 3000); 

@@ -3,17 +3,13 @@ import { Input, Link } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import * as yup from 'yup'
 import { useFormik } from 'formik';  
-import Router from 'next/router';
+import Router from 'next/router'; 
+import { IUser, UserContext } from '../../context/UserContext';
 
 export default function Verification(props: any) {
-
-    const [showpassword, setShowpass] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
-
-    const handleShowpassword = () => {
-        setShowpass(prev => !prev);
-    } 
-
+ 
+    const [loading, setLoading] = React.useState(false); 
+    const userContext: IUser = React.useContext(UserContext); 
 
     const loginSchema = yup.object({ 
         code: yup.string().required('Enter Your OTP code')
@@ -25,6 +21,8 @@ export default function Verification(props: any) {
         validationSchema: loginSchema,
         onSubmit: () => {},
     }); 
+
+    // console.log(localStorage.getItem('email')+"")
     const submit = async () => {
 
         if (!formik.dirty) {
@@ -60,7 +58,7 @@ export default function Verification(props: any) {
         <div className='bg-white w-full h-full flex justify-center flex-col py-24  py-14 px-6 lg:px-40 rounded-lg' >
             <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '143px'}} className=' h-auto  ' />
             <p style={{color: '#002343'}} className='font-Inter-ExtraBold text-2xl flex mt-10'>Enter code sent to</p> 
-            <p style={{color: '#5788AD'}} className='font-Inter-Regular my-2 text-xs' >mbaright200000@gmail.com</p>
+            <p style={{color: '#5788AD'}} className='font-Inter-Regular my-2 text-xs' >{userContext.signup.email}</p>
             <div className='w-full flex flex-col mt-4 py-4' >  
                 <div className='relative w-full flex font-Inter-Regular flex-col py-2 ' > 
                     {/* <p className='font-Inter-Medium text-xs' >Email Address</p> */}

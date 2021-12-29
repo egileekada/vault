@@ -3,16 +3,13 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'; 
 import React from 'react'  
 import Router from 'next/router'
-import { Input, Link } from '@chakra-ui/react'
+import { Input, Link } from '@chakra-ui/react' 
+import { IUser, UserContext } from '../../context/UserContext';
 
 export default function StepTwo(props: any) { 
 
-    const [showpassword, setShowpass] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
-
-    const handleShowpassword = () => {
-        setShowpass(prev => !prev);
-    }    
+    const userContext: IUser = React.useContext(UserContext); 
+    const [loading, setLoading] = React.useState(false); 
 
     const loginSchema = yup.object({ 
         firstname: yup.string().required('Your first name is required').min(2, 'A minimium of 2 characters'), 
@@ -23,10 +20,10 @@ export default function StepTwo(props: any) {
 
     // formik
     const formik = useFormik({
-        initialValues: {email: props.value.email, firstname: '', lastname: '', phoneNumber: '', password: props.value.password},
+        initialValues: {firstname: '', lastname: '', phoneNumber: ''},
         validationSchema: loginSchema,
         onSubmit: () => {},
-    }); 
+    });   
 
     const submit = async () => {
 
@@ -43,12 +40,19 @@ export default function StepTwo(props: any) {
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formik.values),
+                body: JSON.stringify({
+                    email: userContext.signup.email,
+                    firstname: formik.values.firstname,
+                    lastname: formik.values.lastname,
+                    password: userContext.signup.password,
+                    phoneNumber: formik.values.phoneNumber
+                }),
             });
     
             const json = await request.json(); 
     
-            if (request.status === 201) {      
+            if (request.status === 201) {  
+                localStorage.setItem('email', userContext.signup.email,)
                 const t1 = setTimeout(() => { 
                     Router.push('/verify');   
                     clearTimeout(t1);
@@ -63,10 +67,11 @@ export default function StepTwo(props: any) {
 
 
     return (
-        <div className='  bg-white w-full h-full flex justify-center my-12 flex-col pb-8 px-6 lg:px-40 lg:my-auto rounded-lg' >
+        <div className='  bg-white w-full lg:h-screen flex justify-center my-12 flex-col pb-8 px-6 lg:px-40 lg:my-auto rounded-lg' >
             <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '143px'}} className=' h-auto mt-12  ' />
-            <p style={{color: '#002343'}} className='font-Inter-ExtraBold text-2xl flex mt-10'>Let’s get to know you</p>  
-            <div className='w-full flex flex-col mt-4 py-4' >  
+            <p onClick={()=> props.click(false)} className='cursor-pointer mt-6 font-Inter-SemiBold text-xs' style={{color:'#03C8DB'}} >Go back</p>
+            <p style={{color: '#002343'}} className='font-Inter-ExtraBold text-2xl flex mt-4'>Let’s get to know you</p>  
+            <div className='w-full flex flex-col py-4' >  
                 <div className='relative w-full flex font-Inter-Regular flex-col py-2 ' > 
                     <p className='font-Inter-Medium text-xs' >First Name</p>
                     <Input 
@@ -171,7 +176,7 @@ export default function StepTwo(props: any) {
                         LOADING
                     </>
                 } 
-            </button>  
+            </button>   
         </div>
     )
 }

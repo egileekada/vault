@@ -48,7 +48,7 @@ export default function More(props: any) {
   return (
         <div className='w-full py-8 lg:py-20  ' >
             <p style={{color: '#828282'}} className='px-8 hidden lg:flex font-Montserrat-Regular text-xs' >Balance</p>
-            <p style={{color: '#1D1D1D'}} className='px-8 hidden lg:flex font-Montserrat-Bold text-base mt-1' >₦ 2,909,323.06</p>
+            <p style={{color: '#1D1D1D'}} className='px-8 hidden lg:flex font-Montserrat-Bold text-base mt-1' >₦ 0.00</p>
             <div className='w-full hidden lg:flex ' >
                 <Header />
             </div>

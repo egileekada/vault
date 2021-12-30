@@ -19,7 +19,7 @@ export default function Investment(props: any) {
     return (
         <div className='w-full h-full py-20 ' >
             <p style={{color: '#828282'}} className='px-8 font-Montserrat-Regular text-xs' >Balance</p>
-            <p style={{color: '#1D1D1D'}} className='px-8 font-Montserrat-Bold text-base mt-1' >₦ 2,909,323.06</p>
+            <p style={{color: '#1D1D1D'}} className='px-8 font-Montserrat-Bold text-base mt-1' >₦ 0.00</p>
             <Header />
             <div className='px-8 w-full flex flex-row' >
                 <div className='w-full mt-10'  > 

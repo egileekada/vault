@@ -28,7 +28,7 @@ export default function Savings(props: any) {
     return (
         <div className='w-full h-auto pt-8 lg:pt-20 ' >
             <p style={{color: '#828282'}} className='px-8 font-Montserrat-Regular text-xs' >Savings Balance</p>
-            <p style={{color: '#1D1D1D'}} className='px-8 font-Montserrat-Bold text-base mt-1' >₦ 92,323.34</p>
+            <p style={{color: '#1D1D1D'}} className='px-8 font-Montserrat-Bold text-base mt-1' >₦ 0.00</p>
             
             {tab === -1 ?  
                 <div>

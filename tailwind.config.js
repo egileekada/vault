@@ -20,6 +20,7 @@ module.exports = {
       startgrad: '#000C15',
       stopgrad: '#010F1B',
       morebg : '#F9F9F9',
+      vault: '#002343',
 
       black: colors.black,
       white: colors.white,

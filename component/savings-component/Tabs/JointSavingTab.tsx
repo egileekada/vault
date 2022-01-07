@@ -11,6 +11,7 @@ export default function JointSavingTab(props: any) {
     const [friendsModal, setFriendsModal] = React.useState(false)
     const [endModal, setEndModal] = React.useState(true)
     const [friends, setFriends] = React.useState([] as any)
+    const [catergory, setCatergory] = React.useState('');
 
     const ClickHandler =()=> {
         props.close(-1)  
@@ -56,7 +57,7 @@ export default function JointSavingTab(props: any) {
                 <p className='font-Montserrat-Medium text-sm mt-4 mb-2' >End Date</p>
                 <Input backgroundColor='#E0E0E0' placeholder='DD-MM-YYYY' fontSize='sm' />
                 <p className='font-Montserrat-Bold text-base mt-8 mb-4' >How would you like to save?</p>
-                <RadioButton array={['Daily','Weekly','Monthly']} size='32px' font='14px' />
+                <RadioButton value={setCatergory} array={['Daily','Weekly','Monthly']} size='32px' font='14px' />
             </div>
             <div className='w-full lg:mx-3 mt-8 lg:mt-0'>
                 <p className='font-Montserrat-Bold text-base' >Add Participants</p>

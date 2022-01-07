@@ -1,24 +1,139 @@
-import { Input } from '@chakra-ui/input'
+import { Input } from '@chakra-ui/input' 
+import DateFnsUtils from '@date-io/date-fns'
+import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers'
 import React from 'react'
 import RadioButton from '../../reusable-modal/RadioButton'
+import { motion } from 'framer-motion'
+import * as yup from 'yup'
+import { useFormik } from 'formik'; 
 import Modals from '../modal-controller/FixedSavingController'
+// import DateFnsUtils from '@date-io/date-fns';
 
 export default function FixedSavingTab(props: any) { 
 
     const [showModal, setShowModal] = React.useState(false)
     const [endModal, setEndModal] = React.useState(true)
+    const [startDate, setStartDate] = React.useState(new Date());
+    const [endDate, setEndDate] = React.useState(new Date()); 
+    const [start, setStart] = React.useState(false);
+    const [end, setEnd] = React.useState(false);
+    const [catergory, setCatergory] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [value, setValue] = React.useState({} as any);
+    const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-    const ClickHandler =()=> {
-        props.close(-1)  
-        setEndModal(true)
+
+    const handleStartChange = (date: any) => { 
+        setStartDate(date);
+        setStart(false);
+    };
+
+
+    const handleEndChange = (date: any) => { 
+        setEndDate(date);
+        setEnd(false);
+    };
+
+    const renderStart = (props: any) => {
+        return(
+            <div style={{backgroundColor: '#E0E0E0'}} className='w-full relative h-12 cursor-pointer flex flex-row items-center justify-center text-primary text-xs font-Rubik-regular rounded-md' onClick={() => setStart(isOpen => !isOpen)}>
+                <svg className='absolute right-4'  width="25" height="25" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.21283 0.583344C9.45434 0.583344 9.65034 0.779343 9.65034 1.02084L9.6506 1.5154C10.5023 1.57379 11.2097 1.86554 11.7104 2.36723C12.257 2.91615 12.5445 3.7054 12.5416 4.65215V9.9739C12.5416 11.9176 11.3073 13.1251 9.32104 13.1251H4.38721C2.40096 13.1251 1.16663 11.9007 1.16663 9.92957V4.65098C1.16663 2.81768 2.26741 1.64089 4.06269 1.5156L4.06305 1.02084C4.06305 0.779343 4.25905 0.583344 4.50055 0.583344C4.74205 0.583344 4.93805 0.779343 4.93805 1.02084L4.93788 1.50443H8.77504L8.77533 1.02084C8.77533 0.779343 8.97133 0.583344 9.21283 0.583344ZM11.6666 5.77734H2.04163V9.92957C2.04163 11.4264 2.87463 12.2501 4.38721 12.2501H9.32104C10.8336 12.2501 11.6666 11.4416 11.6666 9.9739L11.6666 5.77734ZM9.45066 9.44785C9.69216 9.44785 9.88816 9.64385 9.88816 9.88535C9.88816 10.1269 9.69216 10.3229 9.45066 10.3229C9.20916 10.3229 9.01083 10.1269 9.01083 9.88535C9.01083 9.64385 9.20391 9.44785 9.44541 9.44785H9.45066ZM6.86212 9.44785C7.10362 9.44785 7.29962 9.64385 7.29962 9.88535C7.29962 10.1269 7.10362 10.3229 6.86212 10.3229C6.62062 10.3229 6.42228 10.1269 6.42228 9.88535C6.42228 9.64385 6.61537 9.44785 6.85687 9.44785H6.86212ZM4.26815 9.44785C4.50965 9.44785 4.70565 9.64385 4.70565 9.88535C4.70565 10.1269 4.50965 10.3229 4.26815 10.3229C4.02665 10.3229 3.82773 10.1269 3.82773 9.88535C3.82773 9.64385 4.0214 9.44785 4.2629 9.44785H4.26815ZM9.45066 7.18061C9.69216 7.18061 9.88816 7.37661 9.88816 7.61811C9.88816 7.85961 9.69216 8.05561 9.45066 8.05561C9.20916 8.05561 9.01083 7.85961 9.01083 7.61811C9.01083 7.37661 9.20391 7.18061 9.44541 7.18061H9.45066ZM6.86212 7.18061C7.10362 7.18061 7.29962 7.37661 7.29962 7.61811C7.29962 7.85961 7.10362 8.05561 6.86212 8.05561C6.62062 8.05561 6.42228 7.85961 6.42228 7.61811C6.42228 7.37661 6.61537 7.18061 6.85687 7.18061H6.86212ZM4.26815 7.18061C4.50965 7.18061 4.70565 7.37661 4.70565 7.61811C4.70565 7.85961 4.50965 8.05561 4.26815 8.05561C4.02665 8.05561 3.82773 7.85961 3.82773 7.61811C3.82773 7.37661 4.0214 7.18061 4.2629 7.18061H4.26815ZM8.77504 2.37943H4.93788L4.93805 2.94059C4.93805 3.18209 4.74205 3.37809 4.50055 3.37809C4.25905 3.37809 4.06305 3.18209 4.06305 2.94059L4.06274 2.39267C2.75594 2.50245 2.04163 3.29459 2.04163 4.65098V4.90234H11.6666L11.6666 4.65098C11.669 3.93057 11.4753 3.37057 11.0909 2.98557C10.7534 2.64712 10.2601 2.44499 9.65083 2.39295L9.65034 2.94059C9.65034 3.18209 9.45434 3.37809 9.21283 3.37809C8.97133 3.37809 8.77533 3.18209 8.77533 2.94059L8.77504 2.37943Z" fill="black"/>
+                </svg> 
+                <p>{props.value}</p>
+            </div>
+        )
     }
 
+    const renderEnd = (props: any) => {
+        return(
+            <div style={{backgroundColor: '#E0E0E0'}} className='w-full relative h-12 cursor-pointer flex flex-row items-center justify-center text-primary text-xs font-Rubik-regular rounded-md' onClick={() => setEnd(isOpen => !isOpen)}>
+                <svg className='absolute right-4'  width="25" height="25" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.21283 0.583344C9.45434 0.583344 9.65034 0.779343 9.65034 1.02084L9.6506 1.5154C10.5023 1.57379 11.2097 1.86554 11.7104 2.36723C12.257 2.91615 12.5445 3.7054 12.5416 4.65215V9.9739C12.5416 11.9176 11.3073 13.1251 9.32104 13.1251H4.38721C2.40096 13.1251 1.16663 11.9007 1.16663 9.92957V4.65098C1.16663 2.81768 2.26741 1.64089 4.06269 1.5156L4.06305 1.02084C4.06305 0.779343 4.25905 0.583344 4.50055 0.583344C4.74205 0.583344 4.93805 0.779343 4.93805 1.02084L4.93788 1.50443H8.77504L8.77533 1.02084C8.77533 0.779343 8.97133 0.583344 9.21283 0.583344ZM11.6666 5.77734H2.04163V9.92957C2.04163 11.4264 2.87463 12.2501 4.38721 12.2501H9.32104C10.8336 12.2501 11.6666 11.4416 11.6666 9.9739L11.6666 5.77734ZM9.45066 9.44785C9.69216 9.44785 9.88816 9.64385 9.88816 9.88535C9.88816 10.1269 9.69216 10.3229 9.45066 10.3229C9.20916 10.3229 9.01083 10.1269 9.01083 9.88535C9.01083 9.64385 9.20391 9.44785 9.44541 9.44785H9.45066ZM6.86212 9.44785C7.10362 9.44785 7.29962 9.64385 7.29962 9.88535C7.29962 10.1269 7.10362 10.3229 6.86212 10.3229C6.62062 10.3229 6.42228 10.1269 6.42228 9.88535C6.42228 9.64385 6.61537 9.44785 6.85687 9.44785H6.86212ZM4.26815 9.44785C4.50965 9.44785 4.70565 9.64385 4.70565 9.88535C4.70565 10.1269 4.50965 10.3229 4.26815 10.3229C4.02665 10.3229 3.82773 10.1269 3.82773 9.88535C3.82773 9.64385 4.0214 9.44785 4.2629 9.44785H4.26815ZM9.45066 7.18061C9.69216 7.18061 9.88816 7.37661 9.88816 7.61811C9.88816 7.85961 9.69216 8.05561 9.45066 8.05561C9.20916 8.05561 9.01083 7.85961 9.01083 7.61811C9.01083 7.37661 9.20391 7.18061 9.44541 7.18061H9.45066ZM6.86212 7.18061C7.10362 7.18061 7.29962 7.37661 7.29962 7.61811C7.29962 7.85961 7.10362 8.05561 6.86212 8.05561C6.62062 8.05561 6.42228 7.85961 6.42228 7.61811C6.42228 7.37661 6.61537 7.18061 6.85687 7.18061H6.86212ZM4.26815 7.18061C4.50965 7.18061 4.70565 7.37661 4.70565 7.61811C4.70565 7.85961 4.50965 8.05561 4.26815 8.05561C4.02665 8.05561 3.82773 7.85961 3.82773 7.61811C3.82773 7.37661 4.0214 7.18061 4.2629 7.18061H4.26815ZM8.77504 2.37943H4.93788L4.93805 2.94059C4.93805 3.18209 4.74205 3.37809 4.50055 3.37809C4.25905 3.37809 4.06305 3.18209 4.06305 2.94059L4.06274 2.39267C2.75594 2.50245 2.04163 3.29459 2.04163 4.65098V4.90234H11.6666L11.6666 4.65098C11.669 3.93057 11.4753 3.37057 11.0909 2.98557C10.7534 2.64712 10.2601 2.44499 9.65083 2.39295L9.65034 2.94059C9.65034 3.18209 9.45434 3.37809 9.21283 3.37809C8.97133 3.37809 8.77533 3.18209 8.77533 2.94059L8.77504 2.37943Z" fill="black"/>
+                </svg> 
+                <p>{props.value}</p>
+            </div>
+        )
+    }
+
+    function pad(n: any) {
+        return (n < 10) ? ("0" + n) : n;
+    }
+    
     React.useEffect(() => { 
         {endModal === false ? 
             ClickHandler() 
             :null
+        }   
+        setValue({
+            title: formik.values.title, 
+            start: startDate.getFullYear()+'-'+pad(months[startDate.getMonth()])+'-'+pad(startDate.getDate()), 
+            end: endDate.getFullYear()+'-'+pad(months[endDate.getMonth()])+'-'+pad(endDate.getDate()), 
+            amount: formik.values.amount, 
+            occurrence: catergory
+        }) 
+    },[endDate, startDate, endModal]) 
+ 
+    const loginSchema = yup.object({  
+        title: yup.string().required('Required'), 
+        start: yup.string().required('Required'), 
+        end: yup.string().required('Required'), 
+        amount: yup.string().required('Required'), 
+        occurrence: yup.string().required('Required'), 
+    }) 
+
+    // formik
+    // "title\": \"Buy a new car\",\r\n\t\"start\": \"2021-01-03\",\r\n\t\"end\": \"2021-03-03\",\r\n\t\"amount\": 1,\r\n\t\"occurrence\": \"Weekly\"\r\n
+    const formik = useFormik({
+        initialValues: {title: '', amount: '', occurrence: catergory},
+        validationSchema: loginSchema,
+        onSubmit: () => {},
+    });  
+
+    const submit = async () => {
+
+        if (!formik.dirty) {
+          alert('You have to fill in th form to continue');
+          return;
+        }else if (!formik.isValid) {
+          alert('You have to fill in the form correctly to continue');
+          return;
+        }else {
+            setLoading(true);
+            const request = await fetch(`https://api.vaultafrica.co/fixed-savings/`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                Authorization : `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify(formik.values),
+            });
+    
+            const json = await request.json();
+
+            console.log('Status '+request.status)
+    
+            if (request.status === 200) {    
+                setLoading(false);
+                console.log(json) 
+  
+                const t1 = setTimeout(() => { 
+                    // Router.push('/dashboard'); 
+                    clearTimeout(t1);
+                }, 3000); 
+                setLoading(false);
+            }else {
+                alert(json.message);
+                console.log(json)
+                setLoading(false);
+            }
         }
-    },) 
+    } 
+
+    const ClickHandler =()=> {
+        props.close(-1)  
+        setEndModal(true)
+    }   
 
     return (
         <div className='w-full flex-col lg:flex-row flex mb-10' >
@@ -27,19 +142,77 @@ export default function FixedSavingTab(props: any) {
                     <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className=' lg:hidden font-Montserrat-Bold text-base cursor-pointer absolute left-0 ' >Go back</p>
                     <p className='font-Montserrat-Bold text-base ' >Fixed Savings</p>
                 </div> 
-                <p className='font-Montserrat-Medium text-sm mt-6 mb-2' >Goal Name</p>
-                <Input backgroundColor='#E0E0E0' fontSize='sm' />
+                <p className='font-Montserrat-Medium text-sm mt-6 mb-2' >Goal Name</p> 
+                <Input 
+                    name="title"
+                    onChange={formik.handleChange}
+                    onFocus={() =>
+                        formik.setFieldTouched("title", true, true)
+                    }  
+                    fontSize='sm' backgroundColor='#E0E0E0'/>
+            
+                <div className="w-full h-auto pt-2">
+                    {formik.touched.title && formik.errors.title && (
+                        <motion.p
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-Regular text-errorRed"
+                        >
+                            {formik.errors.title}
+                        </motion.p>
+                    )}
+                </div>
                 <p className='font-Montserrat-Medium text-sm mt-4 mb-2' >Amount<span style={{color: '#828282'}}>(₦)</span></p>
-                <Input backgroundColor='#E0E0E0' fontSize='sm' />
+                <Input 
+                    name="amount"
+                    onChange={formik.handleChange}
+                    onFocus={() =>
+                        formik.setFieldTouched("amount", true, true)
+                    }  
+                    backgroundColor='#E0E0E0' fontSize='sm' />
+            
+                <div className="w-full h-auto pt-2">
+                    {formik.touched.amount && formik.errors.amount && (
+                        <motion.p
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-Regular text-errorRed"
+                        >
+                            {formik.errors.amount}
+                        </motion.p>
+                    )}
+                </div>
                 <p className='font-Montserrat-Bold text-base mt-8 mb-4' >How would you like to save?</p>
-                <RadioButton array={['Daily','Weekly','Monthly']} size='32px' font='14px' />
+                <RadioButton value={setCatergory} array={['Daily','Weekly','Monthly']} size='32px' font='14px' />
             </div>
             <div className='w-full lg:mx-3 mt-8 lg:mt-0 '>
                 <p className='font-Montserrat-Bold text-base' >How long do you want to save for?</p>
-                <p className='font-Montserrat-Medium text-sm mt-6 mb-2' >Start Date</p>
-                <Input backgroundColor='#E0E0E0' fontSize='sm' />
-                <p className='font-Montserrat-Medium text-sm mt-4 mb-2' >End Date</p>
-                <Input backgroundColor='#E0E0E0' fontSize='sm' />
+                <p className='font-Montserrat-Medium text-sm mt-6 mb-2' >Start Date</p> 
+                <MuiPickersUtilsProvider  utils={DateFnsUtils}>
+                    <DatePicker
+                        disablePast
+                        open={start}
+                        onOpen={() => setStart(true)}
+                        onClose={() => setStart(false)}
+                        format="dd/MM/yyyy"
+                        name='StartTime'
+                        value={startDate} 
+                        onChange={handleStartChange}
+                        TextFieldComponent={renderStart}  /> 
+                </MuiPickersUtilsProvider> 
+                <p className='font-Montserrat-Medium text-sm mt-4 mb-2' >End Date</p> 
+                    <MuiPickersUtilsProvider  utils={DateFnsUtils}>
+                        <DatePicker
+                            disablePast
+                            open={end}
+                            onOpen={() => setStart(true)}
+                            onClose={() => setStart(false)}
+                            format="dd/MM/yyyy"
+                            name='StartTime'
+                            value={endDate} 
+                            onChange={handleEndChange}
+                            TextFieldComponent={renderEnd}  /> 
+                    </MuiPickersUtilsProvider> 
                 <p className='font-Montserrat-Bold text-base mt-8' >Personalize goal</p>
                 <div style={{backgroundColor: '#CDF4F8', height: '160px', borderRadius: '8px'}} className='w-full flex justify-center items-center my-8' >
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +239,7 @@ export default function FixedSavingTab(props: any) {
                 <button onClick={()=> setShowModal(true)} style={{backgroundColor: '#002343'}} className='w-full font-Montserrat-Bold py-3 text-white rounded text-sm font-Montserrat-Bold' >PROCEED</button>
             </div>
             {showModal ?  
-                <Modals close={setShowModal} end={setEndModal} />
+                <Modals value={value} day={catergory} close={setShowModal} end={setEndModal} />
             :null}
         </div>
     )

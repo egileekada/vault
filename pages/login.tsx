@@ -57,15 +57,14 @@ export default function login() {
             console.log('Status '+request.status)
     
             if (request.status === 200) {   
-                localStorage.setItem('token', json.accessToken);  
-                setLoading(false);
+                localStorage.setItem('token', json.accessToken);   
                 console.log(json) 
   
                 const t1 = setTimeout(() => { 
-                    Router.push('/dashboard'); 
+                    // Router.push('/dashboard'); 
+                    setLoading(false);
                     clearTimeout(t1);
                 }, 3000); 
-                setLoading(false);
             }else {
                 alert(json.message);
                 console.log(json)

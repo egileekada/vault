@@ -2,11 +2,17 @@ import { Input } from '@chakra-ui/react'
 import React from 'react'
 import RadioButton from '../../reusable-modal/RadioButton'
 import FixedDepositController from '../modal-controller/FixedDepositController'
+import { motion } from 'framer-motion'
+import * as yup from 'yup'
+import { useFormik } from 'formik'; 
 
 export default function FixedDepositTab(props: any) { 
 
     const [showModal, setShowModal] = React.useState(false)
-    const [endModal, setEndModal] = React.useState(true)
+    const [endModal, setEndModal] = React.useState(true) 
+    const [catergory, setCatergory] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [value, setValue] = React.useState({}as any);
 
     const ClickHandler =()=> {
         props.close(-1)  
@@ -17,8 +23,66 @@ export default function FixedDepositTab(props: any) {
         {endModal === false ? 
             ClickHandler() 
             :null
+        } 
+        setValue({
+            name: formik.values.name,
+            amount: formik.values.amount,
+            duration: catergory,
+        })
+    },[catergory, endModal])  
+ 
+    const loginSchema = yup.object({  
+        name: yup.string().required('Required'),  
+        amount: yup.string().required('Required'), 
+        duration: yup.string().required('Required'), 
+    }) 
+
+    // formik
+	// "raw": "{\r\n\t\"name\": \"Car\",\r\n\t\"amount\": 7000000,\r\n\t\"duration\": \"3 Months\"\r\n}",
+    const formik = useFormik({
+        initialValues: {name: '', amount: '', duration: catergory},
+        validationSchema: loginSchema,
+        onSubmit: () => {},
+    });  
+
+    const submit = async () => {
+
+        if (!formik.dirty) {
+          alert('You have to fill in th form to continue');
+          return;
+        }else if (!formik.isValid) {
+          alert('You have to fill in the form correctly to continue');
+          return;
+        }else {
+            setLoading(true);
+            const request = await fetch(`https://api.vaultafrica.co/fixed-savings/`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                Authorization : `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify(formik.values),
+            });
+    
+            const json = await request.json();
+
+            console.log('Status '+request.status)
+    
+            if (request.status === 200) {     
+                console.log(json) 
+  
+                const t1 = setTimeout(() => { 
+                    // Router.push('/dashboard'); 
+                    setLoading(false);
+                    clearTimeout(t1);
+                }, 3000); 
+            }else {
+                alert(json.message);
+                console.log(json)
+                setLoading(false);
+            }
         }
-    },) 
+    } 
 
     return (
         <div className='w-full flex-col lg:flex-row flex mb-10' >
@@ -29,11 +93,47 @@ export default function FixedDepositTab(props: any) {
                 </div>
                 {/* <p className='font-Montserrat-Bold text-base' >Fixed Deposit</p> */}
                 <p className='font-Montserrat-Medium text-sm mt-6 mb-2' >Goal Name</p>
-                <Input backgroundColor='#E0E0E0' fontSize='sm' />
+                <Input 
+                    name="name"
+                    onChange={formik.handleChange}
+                    onFocus={() =>
+                        formik.setFieldTouched("name", true, true)
+                    }  
+                    backgroundColor='#E0E0E0' fontSize='sm' />
+            
+                <div className="w-full h-auto pt-2">
+                    {formik.touched.name && formik.errors.name && (
+                        <motion.p
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-Regular text-errorRed"
+                        >
+                            {formik.errors.name}
+                        </motion.p>
+                    )}
+                </div>
                 <p className='font-Montserrat-Medium text-sm mt-4 mb-2' >Amount<span style={{color: '#828282'}}>(₦)</span></p>
-                <Input backgroundColor='#E0E0E0' fontSize='sm' />
+                <Input 
+                    name="name"
+                    onChange={formik.handleChange}
+                    onFocus={() =>
+                        formik.setFieldTouched("name", true, true)
+                    }  
+                    backgroundColor='#E0E0E0' fontSize='sm' />
+            
+                <div className="w-full h-auto pt-2">
+                    {formik.touched.name && formik.errors.name && (
+                        <motion.p
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-Regular text-errorRed"
+                        >
+                            {formik.errors.name}
+                        </motion.p>
+                    )}
+                </div>
                 <p className='font-Montserrat-Bold text-base mt-8 mb-4' >How long would you like to keep this money?</p>
-                <RadioButton array={['3 months','6  months','1 year','2 years']} size='32px' font='14px' />
+                <RadioButton value={setCatergory} array={['3 months','6  months','1 year','2 years']} size='32px' font='14px' />
             </div>
             <div className='w-full lg:mx-3 mt-8 lg:mt-0'> 
                 <p className='font-Montserrat-Bold text-base ' >Personalize goal</p>
@@ -62,7 +162,7 @@ export default function FixedDepositTab(props: any) {
                 <button onClick={()=> setShowModal(true)} style={{backgroundColor: '#002343'}} className='w-full font-Montserrat-Bold py-3 text-white rounded text-sm font-Montserrat-Bold' >PROCEED</button>
             </div>
             {showModal ?  
-                <FixedDepositController close={setShowModal} end={setEndModal} />
+                <FixedDepositController value={value} close={setShowModal} end={setEndModal} />
             :null}
         </div>
     )

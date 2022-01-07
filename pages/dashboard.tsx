@@ -37,7 +37,7 @@ export default function dashboard() {
         if(!isLoading){
             userContext.setUserData(data)  
             if(data.message === "Unauthorized"){
-                localStorage.clear() 
+                localStorage.clear()  
             }
         } 
 

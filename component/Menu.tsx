@@ -1,7 +1,8 @@
 import Router from 'next/router'
 import React from 'react'
 import { IUser, UserContext } from '../context/UserContext';
-import Icons from './MenuIcons'
+import Icons from './MenuIcons' 
+import avatar from '../public/assets/images/avatar.png'
 
 export default function Menu(props: any) {
 
@@ -57,8 +58,11 @@ export default function Menu(props: any) {
                     <>
                         <div className='w-full h-auto flex flex-col items-center' > 
                         <img src='/assets/images/Vault-logo.png'  className='' />
-                        <div className='w-12 h-12 flex bg-yellow-200 mt-8' style={{borderRadius: '9px'}} >
-
+                        <div className='w-16 justify-center items-center rounded-2xl h-16 flex bg-yellow-200 relative mt-8' > 
+                            <img src='/assets/images/avatar.png' alt='' className='absolute w-full h-full object-cover rounded-2xl' />
+                            {userContext.userData.avatar !== '' ?
+                                <img src={`data:image/png;base64, ${userContext.userData.avatar}`} alt='' className='absolute w-full h-full object-cover rounded-2xl' />
+                            :null}
                         </div>
                         </div>
                         <p style={{color:'#828282'}} className='font-Montserrat-Regular text-white text-sm mt-4' >Hey, {userContext.userData.firstname}</p>

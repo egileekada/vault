@@ -54,16 +54,19 @@ export default function More(props: any) {
             </div>
             <div className='w-full flex px-6 lg:px-8' >
                 <div className={mobile ? ' w-full lg:w-400px hidden lg:flex lg:mx-8 ': ' w-full lg:w-400px lg:mx-8'} >
-                    <div className='w-full' >
+                    {/* <div className='w-full' >
                         <div style={{backgroundColor: '#F9F9F9'}} className='rounded-full hidden lg:flex   cursor-pointer p-2'>
                             <IoIosArrowBack size='20px' />
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className='w-full h-full mt-20' >
                         <div onClick={()=> ClickHandler(-1, true)} style={tab === -1 ?  {background: 'rgba(224, 224, 224, 0.2)', opacity:'0.8', borderColor:'#002343' }:{background: 'rgba(224, 224, 224, 0.2)', opacity:'0.8'}} className='w-full mb-10 flex rounded-lg lg:border-2 cursor-pointer items-center p-3' >
-                                <div className='w-16 rounded-2xl h-16 bg-yellow-300' >
-                                    
+                                <div className='w-16 rounded-2xl h-16 bg-yellow-300 relative' > 
+                                    <img src='/assets/images/avatar.png' alt='' className='absolute w-full h-full object-cover rounded-2xl' />
+                                    {userContext.userData.avatar !== '' ?
+                                        <img src={`data:image/png;base64, ${userContext.userData.avatar}`} alt='' className='absolute w-full h-full object-cover rounded-2xl' />
+                                    :null}
                                 </div>
                                 <div className=' w-auto mx-2' >
                                     <p className='font-Montserrat-Bold text-base' >{(userContext.userData.firstname+ ' '+userContext.userData.lastname).substring(0, 16)}</p>

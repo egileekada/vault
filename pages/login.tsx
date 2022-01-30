@@ -5,11 +5,13 @@ import { useFormik } from 'formik';
 import React from 'react'
 import Carousel from '../component/Carousel';
 import Router from 'next/router';
+import { IUser, UserContext } from '../context/UserContext';
 
 export default function login() {
  
     const [showpassword, setShowpass] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
+    const userContext: IUser = React.useContext(UserContext); 
 
     const handleShowpassword = () => {
         setShowpass(prev => !prev);
@@ -27,12 +29,12 @@ export default function login() {
         onSubmit: () => {},
     });  
 
-    React.useEffect(() => { 
-        const token = localStorage.getItem('token')
-        if(token ){
-            Router.push('/dashboard')
-        }
-    }); 
+    // React.useEffect(() => { 
+    //     const token = localStorage.getItem('token')
+    //     if(token ){
+    //         Router.push('/dashboard')
+    //     }
+    // }); 
 
     const submit = async () => {
 
@@ -57,14 +59,17 @@ export default function login() {
             console.log('Status '+request.status)
     
             if (request.status === 200) {   
-                localStorage.setItem('token', json.accessToken);   
+                localStorage.setItem('token', json.accessToken);  
+                localStorage.setItem('email', formik.values.email);  
                 console.log(json) 
   
                 const t1 = setTimeout(() => { 
-                    // Router.push('/dashboard'); 
-                    setLoading(false);
+                    Router.push('/dashboard');  
+                    userContext.setSignUp({
+                        email: formik.values.email, password: formik.values.password 
+                    })
                     clearTimeout(t1);
-                }, 3000); 
+                }, 1000); 
             }else {
                 alert(json.message);
                 console.log(json)

@@ -39,7 +39,7 @@ export default function AcountIdentification(props: any) {
     return (
         <div className='w-full h-full py-6 lg:py-10 lg:px-14'> 
             <div className='w-full flex items-center'> 
-                <div onClick={()=> props.close(false)} style={{backgroundColor: '#F9F9F9'}} className='rounded-full mr-12 flex lg:hidden cursor-pointer p-2'>
+                <div onClick={()=> props.close(false)} style={{backgroundColor: '#F9F9F9'}} className='rounded-full mr-12 flex cursor-pointer p-2'>
                     <IoIosArrowBack size='20px' />
                 </div>    
                 <p className='font-Montserrat-Bold text-sm lg:text-base w-auto ' >{tab === 1 ? 'ID Image' :tab === 2 ? 'Other Document':'Account Verification'}</p> 

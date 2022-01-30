@@ -31,19 +31,36 @@ export default function dashboard() {
 
     // console.log(userContext.userData)
 
-    React.useEffect(() => { 
-        const token = localStorage.getItem('token')  
+    React.useEffect(() => {  
 
         if(!isLoading){
-            userContext.setUserData(data)  
+            userContext.setUserData(data) 
+            // Your account has not been confirmed
+            console.log(data.message) 
             if(data.message === "Unauthorized"){
+                Router.push('/login')
+                localStorage.clear()  
+            } else if(data.message === 'Your account has not been confirmed'){
+                Router.push('/verify')
+                const request =  fetch(`https://api.vaultafrica.co/auth/resend/otp`, {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        email: userContext.signup.email
+                    }),
+                });  
+
+                console.log(request)
+     
                 localStorage.clear()  
             }
         } 
 
-        if(!token ){
-            Router.push('/login')
-        }
+        // if(!token ){
+        //     Router.push('/login')
+        // }
     });   
 
     return (

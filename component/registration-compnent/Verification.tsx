@@ -39,7 +39,7 @@ export default function Verification(props: any) {
                 'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    otp: formik.values.code+''
+                    otp: formik.values.code
                 }),
             });  
 
@@ -53,6 +53,28 @@ export default function Verification(props: any) {
             }
         }
     } 
+
+    const ClickHandler =async()=> {
+        const request = await fetch(`https://api.vaultafrica.co/auth/resend/otp`, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                email: userContext.signup.email
+            }),
+        });  
+
+        console.log(request.status)
+
+        if (request.status === 200) {     
+            const t1 = setTimeout(() => {  
+                clearTimeout(t1);
+            }, 3000); 
+        }else {  
+            setLoading(false);
+        }
+    }
 
     return (
         <div className='bg-white w-full h-full flex justify-center flex-col py-24  py-14 px-6 lg:px-40 rounded-lg' >
@@ -83,7 +105,7 @@ export default function Verification(props: any) {
                         )}
                     </div>
                 </div> 
-
+                 <span onClick={()=> ClickHandler()} className='cursor-pointer text-right font-Inter-SemiBold text-xs' style={{color:'#03C8DB'}} >Resend Otp</span>
             </div>  
             
             <button  onClick={()=> submit()} style={formik.values.code !== '' ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full py-3 flex justify-center items-center text-white font-Inter-Bold text-xs mr-2 mt-4 rounded-md' >

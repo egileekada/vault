@@ -60,7 +60,7 @@ export default function Menu(props: any) {
                         <img src='/assets/images/Vault-logo.png'  className='' />
                         <div className='w-16 justify-center items-center rounded-2xl h-16 flex bg-yellow-200 relative mt-8' > 
                             <img src='/assets/images/avatar.png' alt='' className='absolute w-full h-full object-cover rounded-2xl' />
-                            {userContext.userData.avatar !== '' ?
+                            {userContext.userData.avatar !== null ?
                                 <img src={`data:image/png;base64, ${userContext.userData.avatar}`} alt='' className='absolute w-full h-full object-cover rounded-2xl' />
                             :null}
                         </div>

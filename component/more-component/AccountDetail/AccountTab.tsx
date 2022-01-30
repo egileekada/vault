@@ -168,12 +168,12 @@ export default function AccountTab(props: any) {
                                 <input style={{display:'none'}} type="file" accept="image/*" id="input" onChange={handleImageChange} />
                                 <img src={image} alt='' className=' w-16 h-16 object-cover rounded-2xl' />
                             </label>
-                        :
+                        : userContext.userData.avatar !== null ?
                             <label className='absolute cursor-pointer' >
                                 <input style={{display:'none'}} type="file" accept="image/*" id="input" onChange={handleImageChange} />
                                 <img src={`data:image/png;base64, ${userContext.userData.avatar}`} alt='' className='w-16 h-16 object-cover rounded-2xl' />
                             </label>
-                        }
+                        : null}
                     </div>
                     <p className='font-Montserrat-Bold text-base mb-10' >{userContext.userData.firstname+ ' '+userContext.userData.lastname}</p>
                     {tabArray.map((item: any, index: any)=> {

@@ -64,7 +64,7 @@ export default function More(props: any) {
                         <div onClick={()=> ClickHandler(-1, true)} style={tab === -1 ?  {background: 'rgba(224, 224, 224, 0.2)', opacity:'0.8', borderColor:'#002343' }:{background: 'rgba(224, 224, 224, 0.2)', opacity:'0.8'}} className='w-full mb-10 flex rounded-lg lg:border-2 cursor-pointer items-center p-3' >
                                 <div className='w-16 rounded-2xl h-16 bg-yellow-300 relative' > 
                                     <img src='/assets/images/avatar.png' alt='' className='absolute w-full h-full object-cover rounded-2xl' />
-                                    {userContext.userData.avatar !== '' ?
+                                    {userContext.userData.avatar !== null ?
                                         <img src={`data:image/png;base64, ${userContext.userData.avatar}`} alt='' className='absolute w-full h-full object-cover rounded-2xl' />
                                     :null}
                                 </div>

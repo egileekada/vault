@@ -1,10 +1,12 @@
 import React from 'react'
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { IUser, UserContext } from '../../context/UserContext';
 
 export default function Information(props: any) {
+    const userContext: IUser = React.useContext(UserContext);  
     return (
         <div onClick={()=> props.close(true)} style={{border: '1px solid #CCD3D9', borderRadius: '8px', }} className='w-full p-4 my-10 cursor-pointer' >
-            <p style={{color: '#828282'}} className='text-xs font-Montserrat-Bold' >Let’s get to know more about you, Brightmac.</p>
+            <p style={{color: '#828282'}} className='text-xs font-Montserrat-Bold' >Let’s get to know more about you, {userContext.userData.firstname}.</p>
             <div className='mt-2 w-full flex flex-col lg:flex-row' >
                 <div className='w-full flex flex-col mr-2' > 
                     <div style={{border: '1px solid #CCD3D9', borderRadius: '8px', }} className='w-full my-2 h-11 flex items-center p-3' >

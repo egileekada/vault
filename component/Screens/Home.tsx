@@ -8,6 +8,7 @@ import Information from '../dashboard-component/Information'
 import TransactionModal from '../dashboard-component/dashboard-modal/Transaction'
 import Transaction from '../dashboard-component/Transaction'
 import SuccessModal from '../reusable-modal/SucessModal'
+import { IUser, UserContext } from '../../context/UserContext'
 
 export default function Home(props: any) {
 
@@ -17,6 +18,7 @@ export default function Home(props: any) {
     const [transactionModal, setTransactionModal] = React.useState(false);
     const [tab, setTab] = React.useState(false)
     const [transaction, setTransaction] = React.useState(false)
+    const userContext: IUser = React.useContext(UserContext);  
 
     React.useEffect(() => {
         {tab ? 
@@ -47,9 +49,13 @@ export default function Home(props: any) {
                         <CreditCard open={setLinkCardModal} />
                     </div>
                 </div>
-                <div className='w-full flex mt-8'>
-                    <Information close={setTab} />  
-                    <div style={{width: '700px'}} className='ml-8 h-52 hidden lg:flex' > 
+                <div className='w-full flex mt-8 mb-20'>
+                    {userContext.userData.country === null ?
+                        <>
+                            <Information close={setTab} />  
+                        </>
+                    :null}
+                    <div style={{width: '700px'}} className=' h-44 hidden lg:flex' > 
                         <div className=' w-96 -mt-4 rounded-2xl relative ' > 
                             <img src='/assets/images/building.png'  className=' w-full rounded-3xl' />  
                             <div className="absolute inset-0 bg-gradient-to-r from-startgrad to-stopgrad opacity-40 rounded-3xl  h-full flex flex-col" />

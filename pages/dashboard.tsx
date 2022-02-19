@@ -6,7 +6,7 @@ import Loan from '../component/Screens/Loan'
 import Savings from '../component/Screens/Savings'
 import { Drawer, DrawerContent, DrawerCloseButton, useDisclosure } from '@chakra-ui/react';
 import More from '../component/Screens/More'
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 import { IUser, UserContext } from '../context/UserContext';
 import Router from 'next/router' 
 

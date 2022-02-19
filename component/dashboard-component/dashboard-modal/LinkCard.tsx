@@ -8,6 +8,8 @@ import { useFormik } from 'formik';
 export default function LinkCard(props: any) {
 
     const [loading, setLoading] = React.useState(false);
+    const [date, setDate] = React.useState(Date());
+
     const Next =()=> {
         props.close(false)
         props.next(true)
@@ -21,12 +23,15 @@ export default function LinkCard(props: any) {
         pin: yup.string().required('Required'), 
     }) 
 
+    // /cards",
     // formikraw": "{\r\n    \"name\": \"Charles Allison\",\r\n    \"number\": 23340988982234312,\r\n    \"expiryDate\": \"12/21\",\r\n    \"cvv\": 322,\r\n    \"pin\": 3342\r\n}",
     const formik = useFormik({
         initialValues: {name: '', number: '', expiryDate: '', cvv: '', pin: 0},
         validationSchema: loginSchema,
         onSubmit: () => {},
     });  
+
+    console.log(date)
 
 
     const submit = async () => {
@@ -46,7 +51,13 @@ export default function LinkCard(props: any) {
                 'Content-Type': 'application/json',
                 Authorization : `Bearer ${localStorage.getItem('token')}`
                 },
-                body: JSON.stringify(formik.values),
+                body: JSON.stringify({
+                    name : formik.values.name,
+                    number : formik.values.number,
+                    expiryDate : formik.values.expiryDate,
+                    cvv : formik.values.cvv,
+                    pin : parseInt(formik.values.pin+''),
+                }),
             });
     
             const json = await request.json();
@@ -69,7 +80,6 @@ export default function LinkCard(props: any) {
         }
     } 
 
-
     return (
         <div className=' w-full lg:w-560px  bg-white px-8 h-screen'  >
             <div className='w-full flex flex-row items-center py-10' > 
@@ -82,7 +92,7 @@ export default function LinkCard(props: any) {
             <p className='font-Inter-Medium text-base' >{props.header}</p>
             <p style={{color: '#828282'}} className='font-Montserrat-Regular text-xs mt-1' >Add your card details to link your card.</p>
             <div className='mt-10' >
-                <p className=' font-Montserrat-Regular text-xs mb-2' >Card details</p>
+                <p className=' font-Montserrat-Regular text-xs mb-2' >Card Name</p>
                 <Input
                     name="name"
                     onChange={formik.handleChange}
@@ -132,7 +142,9 @@ export default function LinkCard(props: any) {
                             onFocus={() =>
                                 formik.setFieldTouched("expiryDate", true, true)
                             }  
+                            // onChange={(e)=> setDate(e.target.value)}
                             type='text'
+                            // placeholder='month/year'
                             backgroundColor='#E0E0E0' fontSize='sm' className=' font-Montserrat-Regular'/>
 
                             <div className="w-full h-auto pt-2">
@@ -179,7 +191,7 @@ export default function LinkCard(props: any) {
                     onFocus={() =>
                         formik.setFieldTouched("pin", true, true)
                     }  
-                    type='password'
+                    type='number'
                     backgroundColor='#E0E0E0' fontSize='sm' className=' font-Montserrat-Regular' />
 
                      <div className="w-full h-auto pt-2">

@@ -5,7 +5,7 @@ export default function CreditCard(props: any) {
 
     const [show, setShow] = React.useState(false)
 
-    const { isLoading, error, data } = useQuery('cards', () =>
+    const { isLoading, data } = useQuery('cards', () =>
         fetch(`https://api.vaultafrica.co/cards`, {
             method: 'GET', // or 'PUT'
             headers: {

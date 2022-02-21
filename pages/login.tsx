@@ -11,6 +11,7 @@ export default function login() {
  
     const [showpassword, setShowpass] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
+    const [tokenvalue, setToken] = React.useState('');
     const userContext: IUser = React.useContext(UserContext); 
 
     const handleShowpassword = () => {
@@ -29,12 +30,13 @@ export default function login() {
         onSubmit: () => {},
     });  
 
-    // React.useEffect(() => { 
-    //     const token = localStorage.getItem('token')
-    //     if(token ){
-    //         Router.push('/dashboard')
-    //     }
-    // }); 
+    React.useEffect(() => {  
+        localStorage.setItem('token', tokenvalue);  
+        const token = localStorage.getItem('token')
+        if(token === '' ){
+            Router.push('/dashboard')
+        }
+    }); 
 
     const submit = async () => {
 
@@ -55,11 +57,9 @@ export default function login() {
             });
     
             const json = await request.json();
-
-            console.log('Status '+request.status)
     
-            if (request.status === 200) {   
-                localStorage.setItem('token', json.accessToken);  
+            if (request.status === 200) {    
+                setToken(json.accessToken)
                 localStorage.setItem('email', formik.values.email);  
                 console.log(json) 
   

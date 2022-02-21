@@ -1,15 +1,16 @@
 import React from 'react'
 
 export default function Goals(props: any) { 
+ 
+    const [image, SetImage] = React.useState(''); 
 
-    console.log(props.start)
     return (
         <div  className=' w-full h-full lg:h-auto lg:w-400px flex justify-center flex-col items-center px-10 py-8 bg-white lg:rounded-2xl'>
             <p className=' font-Montserrat-Bold text-base text-center' >Goal Summary</p>
             <p style={{color: '#4f4f4f'}} className=' font-Montserrat-Bold text-sm mt-4 text-center' >{props.value.title} {props.value.name}</p>
             <p style={{color: '#828282'}} className=' font-Montserrat-Bold text-sm mt-2 mb-8 text-center' >{props.value.amount}</p>
             {!props.joint ? 
-                <img src='/assets/images/pic.png' className='w-72 rounded' />
+                <img src={props.image} className='w-72 h-36 object-cover rounded' />
             :null}
             {props.deposit ? 
                 <>

@@ -43,7 +43,7 @@ export default function Controller(props: any) {
                 (
                     <>
                         <div className=" h-full lg:h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <Goals value={value} day={props.day} close={setShowModal} />
+                            <Goals image={props.image} value={value} day={props.day} close={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
@@ -52,7 +52,7 @@ export default function Controller(props: any) {
                 (
                     <>
                         <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <AddMoney close={setCloseModal} next={setShowModal} />
+                            <AddMoney value={value} close={setCloseModal} next={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>

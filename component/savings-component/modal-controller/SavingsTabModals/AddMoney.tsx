@@ -1,10 +1,15 @@
 import React from 'react'
 import { IoIosAdd, IoIosClose } from 'react-icons/io'
 import { useQuery } from 'react-query'
+import Router from 'next/router';
+import * as axios from 'axios'   
 
 export default function AddMoney(props: any) {
 
     const [select, setSelect] = React.useState(0)
+    const [cardId, setCardId] = React.useState('')
+    const [loading, setLoading] = React.useState(false)
+    const [value, setValue] = React.useState({} as any)
     
     const { isLoading, data } = useQuery('cards', () =>
         fetch(`https://api.vaultafrica.co/cards`, {
@@ -17,6 +22,77 @@ export default function AddMoney(props: any) {
             res.json()
         )
     )
+
+    React.useEffect(() => {
+        setValue(props.value)
+    }, [])
+
+    console.log(value) 
+
+    //     {
+    //         "key": "card",
+    //         "value": "<card id>",
+    //         "description": "This will be added after integration with onepipe\n",
+    //         "type": "default",
+    //         "disabled": true
+    //     }
+    // ]
+
+    const Submit =async()=> { 
+ 
+        setLoading(true)
+        if(cardId === '' ){
+            alert('Select Card') 
+        } else { 
+            try {
+
+                let formData = new FormData() 
+    
+    
+                formData.append('name', props.value.title) 
+                formData.append('start', props.value.start) 
+                formData.append('end', props.value.end) 
+                formData.append('amount', props.value.amount) 
+                formData.append('occurrence', props.value.occurrence) 
+                formData.append('avatar', props.value.avatar) 
+                formData.append('card', cardId) 
+    
+                // make request to server
+                const request = await axios.default.post(`https://api.vaultafrica.co/fixed-savings/`, formData, {
+                    headers: { 'content-type': 'application/json',
+                        Authorization : `Bearer ${localStorage.getItem('token')}`
+                    }
+                })   
+    
+            // const json = await request.json();
+    
+            console.log('Status '+request.status)
+    
+            if (request.status === 201) {    
+                // console.log(json)  
+                const t1 = setTimeout(() => { 
+                    // setShowModal(false)
+                    props.next(4)
+                    // Router.reload()
+                    clearTimeout(t1);
+                }, 1000); 
+            }else {
+                // alert(json.message);
+                // console.log(json)
+                // setLoading(false);
+            }
+                    
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        setLoading(false)
+    }
+
+    const ClickHandler =(index: any, item: any)=> {
+        setSelect(index+1)
+        setCardId(item)
+    }
 
     return (
         <div  className=' w-full lg:w-560px bg-white pb-8 px-8 h-screen overflow-y-auto'  >
@@ -36,7 +112,7 @@ export default function AddMoney(props: any) {
                             <>
                                 {data.map((item: any, index: any)=> {
                                     return(
-                                        <div onClick={()=> setSelect(index+1)} style={select === index+1 ? {border: '1px solid #002343', color: '#002343'}: {border: '1px solid #CCD3D9', color: '#828282'}} className='w-full h-40 relative p-3 rounded-lg cursor-pointer' >
+                                        <div onClick={()=> ClickHandler(index, item.id)} style={select === index+1 ? {border: '1px solid #002343', color: '#002343'}: {border: '1px solid #CCD3D9', color: '#828282'}} className='w-full h-40 relative p-3 rounded-lg cursor-pointer' >
                                             <p className=' font-Montserrat-Bold text-base' >{item.name}</p>
                                             <p style={{color: '#828282'}} className=' font-Montserrat-Bold text-sm mt-4' >.... .... .... {item.last}</p>
                                             <div className='w-full flex mt-4' >
@@ -63,7 +139,13 @@ export default function AddMoney(props: any) {
                     <IoIosAdd size='50px' />
                 </div>
             </div>
-            <button onClick={()=> props.next(4)} style={select !== 0 ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full text-white font-Montserrat-Medium text-sm h-10 rounded  mt-10' >PROCEED  🔒</button>
+            <button onClick={()=> Submit()} style={select !== 0 ? {backgroundColor: '#002343', color: 'white'}: {backgroundColor: '#CCD3D9', color: '#667B8E'}} className='w-full text-white font-Montserrat-Medium text-sm h-10 rounded  mt-10' >{loading ?
+                <div className='flex justify-center mx-auto items-center ' >
+                    <div className="animate-spin rounded-full h-7 w-7  border-t-2 border-b-2 border-white mr-3"></div>Loading
+               </div>
+            :
+            'PROCEED  🔒'
+            }</button>
         </div>
     )
 }

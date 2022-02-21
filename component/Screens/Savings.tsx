@@ -26,7 +26,7 @@ export default function Savings(props: any) {
     const [tab, setTab] = React.useState(-1);
 
     return (
-        <div className='w-full h-auto pt-8 lg:pt-20 ' >
+        <div className='w-full h-auto py-8 lg:py-20 ' >
             <p style={{color: '#828282'}} className='px-8 font-Montserrat-Regular text-xs' >Savings Balance</p>
             <p style={{color: '#1D1D1D'}} className='px-8 font-Montserrat-Bold text-base mt-1' >₦ 0.00</p>
             
@@ -48,12 +48,12 @@ export default function Savings(props: any) {
                                 </div>
                             </div>
                             <FixedSaving click={setShowModal}  />
-                            <div className='w-full flex flex-row' >
+                            {/* <div className='w-full flex flex-row' >
                                 <div className='mt-10 w-657.46px ' >
                                 <p style={{color: '#828282'}} className=' w-full font-Montserrat-SemiBold text-sm' >Joint Savings</p>
                                 </div>
                             </div>
-                            <FixedSaving Joint='true' sign={setJoint} click={setShowModal} />
+                            <FixedSaving Joint='true' sign={setJoint} click={setShowModal} /> */}
                         </div>
                     </div> 
                 </div>:

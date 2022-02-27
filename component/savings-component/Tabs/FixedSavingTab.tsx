@@ -6,7 +6,7 @@ import RadioButton from '../../reusable-modal/RadioButton'
 import { motion } from 'framer-motion'
 import * as yup from 'yup'
 import { useFormik } from 'formik'; 
-import Modals from '../modal-controller/FixedSavingController'
+import Modals from '../modal-controller/FixedSavingController' 
 // import DateFnsUtils from '@date-io/date-fns';
 
 export default function FixedSavingTab(props: any) { 
@@ -43,6 +43,7 @@ export default function FixedSavingTab(props: any) {
         }   
         SetImageFile(selected) 
     }  
+  ;   
 
     const handleStartChange = (date: any) => { 
         setStartDate(date);
@@ -82,6 +83,8 @@ export default function FixedSavingTab(props: any) {
     function pad(n: any) {
         return (n < 10) ? ("0" + n) : n;
     }
+
+    // console.log(startDate.toJSON())
     
     React.useEffect(() => { 
         {endModal === false ? 
@@ -90,8 +93,8 @@ export default function FixedSavingTab(props: any) {
         }   
         setValue({
             title: formik.values.title, 
-            start: startDate.getFullYear()+'-'+pad(months[startDate.getMonth()])+'-'+pad(startDate.getDate()), 
-            end: endDate.getFullYear()+'-'+pad(months[endDate.getMonth()])+'-'+pad(endDate.getDate()), 
+            start: startDate.toJSON(), 
+            end: endDate.toJSON(), 
             amount: Number(formik.values.amount), 
             occurrence: formik.values.occurrence,
             avatar: imageFile
@@ -256,4 +259,4 @@ export default function FixedSavingTab(props: any) {
             :null}
         </div>
     )
-}
+} 

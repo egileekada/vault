@@ -52,6 +52,10 @@ export default function Menu(props: any) {
         Router.push('/login')
     }
 
+
+
+    console.log(userContext.userData)
+
     return (
         <div className='w-full h-screen pt-8 flex flex-col items-center overflow-y-auto' >
             {props.mobile === false ? 

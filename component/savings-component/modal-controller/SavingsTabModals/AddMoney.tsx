@@ -2,6 +2,7 @@ import React from 'react'
 import { IoIosAdd, IoIosClose } from 'react-icons/io'
 import { useQuery } from 'react-query'
 import Router from 'next/router';
+import { addMonths } from "date-fns";
 import * as axios from 'axios'   
 
 export default function AddMoney(props: any) {
@@ -9,7 +10,16 @@ export default function AddMoney(props: any) {
     const [select, setSelect] = React.useState(0)
     const [cardId, setCardId] = React.useState('')
     const [loading, setLoading] = React.useState(false)
-    const [value, setValue] = React.useState({} as any)
+    const [value, setValue] = React.useState({} as any) 
+    const startDate = new Date()
+    let endDate = addMonths(startDate, props.month).toJSON()
+
+
+    console.log(addMonths(startDate, 7).toJSON)
+
+    console.log( props.value.duration)
+    console.log( props.value.month)
+    console.log( props.month)
     
     const { isLoading, data } = useQuery('cards', () =>
         fetch(`https://api.vaultafrica.co/cards`, {
@@ -27,16 +37,7 @@ export default function AddMoney(props: any) {
         setValue(props.value)
     }, [])
 
-    console.log(value) 
-
-    //     {
-    //         "key": "card",
-    //         "value": "<card id>",
-    //         "description": "This will be added after integration with onepipe\n",
-    //         "type": "default",
-    //         "disabled": true
-    //     }
-    // ]
+    console.log(value)  
 
     const Submit =async()=> { 
  
@@ -44,46 +45,121 @@ export default function AddMoney(props: any) {
         if(cardId === '' ){
             alert('Select Card') 
         } else { 
-            try {
 
-                let formData = new FormData() 
-    
-    
-                formData.append('name', props.value.title) 
-                formData.append('start', props.value.start) 
-                formData.append('end', props.value.end) 
-                formData.append('amount', props.value.amount) 
-                formData.append('occurrence', props.value.occurrence) 
-                formData.append('avatar', props.value.avatar) 
-                formData.append('card', cardId) 
-    
-                // make request to server
-                const request = await axios.default.post(`https://api.vaultafrica.co/fixed-savings/`, formData, {
-                    headers: { 'content-type': 'application/json',
-                        Authorization : `Bearer ${localStorage.getItem('token')}`
-                    }
-                })   
-    
-            // const json = await request.json();
-    
-            console.log('Status '+request.status)
-    
-            if (request.status === 201) {    
-                // console.log(json)  
-                const t1 = setTimeout(() => { 
-                    // setShowModal(false)
-                    props.next(4)
-                    // Router.reload()
-                    clearTimeout(t1);
-                }, 1000); 
-            }else {
-                // alert(json.message);
-                // console.log(json)
-                // setLoading(false);
-            }
-                    
-            } catch (error) {
-                console.log(error)
+								// "body": {
+								// 	"mode": "formdata",
+								// 	"formdata": [
+								// 		{
+								// 			"key": "name",
+								// 			"value": "Future Rental",
+								// 			"type": "text"
+								// 		},
+								// 		{
+								// 			"key": "amount",
+								// 			"value": "40000",
+								// 			"type": "default"
+								// 		},
+								// 		{
+								// 			"key": "duration",
+								// 			"value": "2 years",
+								// 			"type": "default"
+								// 		},
+								// 		{
+								// 			"key": "avatar",
+								// 			"type": "file",
+								// 			"src": "/C:/Users/charles/Desktop/backup/profile/Pictures/Patience/codementor.png"
+								// 		},
+								// 		{
+								// 			"key": "start",
+								// 			"value": "2022-01-31",
+								// 			"type": "text"
+								// 		},
+								// 		{
+								// 			"key": "end",
+								// 			"value": "2022-02-28",
+								// 			"type": "text"
+								// 		}
+								// 	]
+								// },
+            if(props.deposit) { 
+                try {
+
+                    let formData = new FormData()   
+                    formData.append('name', props.value.name) 
+                    formData.append('start', startDate.toJSON()) 
+                    formData.append('end', endDate) 
+                    formData.append('amount', props.value.amount) 
+                    formData.append('duration', props.value.duration)  
+                    formData.append('avatar', props.value.avatar)  
+        
+                    // make request to server
+                    const request = await axios.default.post(`https://api.vaultafrica.co/fixed-deposit/`, formData, {
+                        headers: { 'content-type': 'application/json',
+                            Authorization : `Bearer ${localStorage.getItem('token')}`
+                        }
+                    })   
+        
+                // const json = await request.json();
+        
+                console.log('Status '+request.status)
+        
+                if (request.status === 201) {    
+                    // console.log(json)  
+                    const t1 = setTimeout(() => { 
+                        // setShowModal(false)
+                        props.next(4)
+                        // Router.reload()
+                        clearTimeout(t1);
+                    }, 1000); 
+                }else {
+                    // alert(json.message);
+                    // console.log(json)
+                    // setLoading(false);
+                }
+                        
+                } catch (error) {
+                    console.log(error)
+                }
+            } else { 
+                try {
+
+                    let formData = new FormData()   
+                    formData.append('name', props.value.title) 
+                    formData.append('start', props.value.start) 
+                    formData.append('end', props.value.end) 
+                    formData.append('amount', props.value.amount) 
+                    formData.append('occurrence', props.value.occurrence) 
+                    formData.append('avatar', props.value.avatar) 
+                    formData.append('card', cardId) 
+        
+                    // make request to server
+                    const request = await axios.default.post(`https://api.vaultafrica.co/fixed-savings/`, formData, {
+                        headers: { 'content-type': 'application/json',
+                            Authorization : `Bearer ${localStorage.getItem('token')}`
+                        }
+                    })   
+        
+                // const json = await request.json();
+        
+                console.log('Status '+request.status)
+        
+                if (request.status === 201) {    
+                    // console.log(json)  
+                    const t1 = setTimeout(() => { 
+                        // setShowModal(false)
+                        props.next(4)
+                        // Router.reload()
+                        clearTimeout(t1);
+                    }, 1000); 
+                }else {
+                    // alert(json.message);
+                    // console.log(json)
+                    // setLoading(false);
+                }
+                        
+                } catch (error) {
+                    console.log(error)
+                }
             }
         }
         setLoading(false)

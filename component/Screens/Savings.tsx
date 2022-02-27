@@ -47,7 +47,9 @@ export default function Savings(props: any) {
                                     <button onClick={()=> setSavingModal(true)}  style={{backgroundColor: '#002343', borderRadius: '4px'}}  className=' w-28 ml-4 flex text-white font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Save Now</button>
                                 </div>
                             </div>
-                            <FixedSaving click={setShowModal}  />
+                            <FixedSaving click={setShowModal} savings='saving'  />
+                            <FixedSaving click={setShowModal} savings='deposit'  />
+                            {/* <FixedSaving click={setShowModal} savings='fixed-deposit'  /> */}
                             {/* <div className='w-full flex flex-row' >
                                 <div className='mt-10 w-657.46px ' >
                                 <p style={{color: '#828282'}} className=' w-full font-Montserrat-SemiBold text-sm' >Joint Savings</p>

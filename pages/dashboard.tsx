@@ -29,8 +29,6 @@ export default function dashboard() {
         )
     )
 
-    // console.log(userContext.userData)
-
     React.useEffect(() => {  
 
         if(!isLoading){
@@ -50,17 +48,10 @@ export default function dashboard() {
                     body: JSON.stringify({ 
                         email: userContext.signup.email
                     }),
-                });  
-
-                console.log(request)
-     
+                });   
                 localStorage.clear()  
             }
-        } 
-
-        // if(!token ){
-        //     Router.push('/login')
-        // }
+        }  
     });   
 
     return (

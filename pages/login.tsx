@@ -60,8 +60,7 @@ export default function login() {
     
             if (request.status === 200) {    
                 setToken(json.accessToken)
-                localStorage.setItem('email', formik.values.email);  
-                console.log(json) 
+                localStorage.setItem('email', formik.values.email);   
   
                 const t1 = setTimeout(() => { 
                     Router.push('/dashboard');  

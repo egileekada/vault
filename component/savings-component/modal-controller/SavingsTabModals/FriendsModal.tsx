@@ -1,7 +1,22 @@
 import { Input } from '@chakra-ui/input'
 import React from 'react'
+import { useQuery } from 'react-query'
 
-export default function FriendsModal(props: any) {
+export default function FriendsModal(props: any) { 
+ 
+    const { isLoading, error, data } = useQuery('friends', () =>
+        fetch(`https://api.vaultafrica.co/joint-savings/find`, {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json', 
+                Authorization : `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(res =>
+            res.json()
+        )
+    )
+
+    console.log(data)
 
     const friends = [
         {

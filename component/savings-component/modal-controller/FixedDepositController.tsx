@@ -43,20 +43,21 @@ export default function FixedDepositController(props: any) {
                 (
                     <>
                         <div className=" h-full lg:h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <Goals value={value} deposit={true} close={setShowModal} />
+                            <Goals image={props.image} value={value} deposit={true} back={setCloseModal} close={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
                 ) : null} 
+
             {showModal === 1 ? 
                 (
                     <>
                         <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <AddMoney close={setCloseModal} next={setShowModal} />
+                            <AddMoney deposit={true} month={props.month} value={value} close={setCloseModal} next={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
-                ) : null} 
+                ) : null}  
             {showModal === 2 ? 
                 (
                     <>
@@ -79,11 +80,11 @@ export default function FixedDepositController(props: any) {
                 (
                     <>
                         <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <SuccessModal header='Goal is set!' body='You have successfully set your savings plan. kudos.' close={setCloseTab} />
+                            <SuccessModal header='Goal is set!' body='You have successfully set your savings plan 👍.' close={setCloseTab} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
-                ) : null} 
+                ) : null}  
         </div>
     )
 }

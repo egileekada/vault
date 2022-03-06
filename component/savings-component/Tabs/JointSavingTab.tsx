@@ -61,72 +61,15 @@ export default function JointSavingTab(props: any) {
             :null
         }
 
-							// "formdata": [
-							// 	{
-							// 		"key": "groupName",
-							// 		"value": "{{$randomCompanyName}}",
-							// 		"type": "text"
-							// 	},
-							// 	{
-							// 		"key": "savingsName",
-							// 		"value": "{{$randomUserName}}",
-							// 		"type": "text"
-							// 	},
-							// 	{
-							// 		"key": "amount",
-							// 		"value": "{{$randomInt}}",
-							// 		"type": "text"
-							// 	},
-							// 	{
-							// 		"key": "start",
-							// 		"value": "{{$randomDateRecent}}",
-							// 		"type": "text"
-							// 	},
-							// 	{
-							// 		"key": "end",
-							// 		"value": "{{$randomDateFuture}}",
-							// 		"type": "text"
-							// 	},
-							// 	{
-							// 		"key": "pattern",
-							// 		"value": "Daily",
-							// 		"type": "text"
-							// 	},
-							// 	{
-							// 		"key": "friends",
-							// 		"value": "[\n{\"id\": \"13bdef99-ab00-4f7f-ad9a-2898feb5a0c7\", \"email\": \"john@doe.com\"},\n{\"id\": \"29eaeb1a-c3bc-46f5-a926-6eeca5a2be25\", \"email\": \"mary@doe.com\"}\n]",
-							// 		"type": "text"
-							// 	},
-							// 	{
-							// 		"key": "avatar",
-							// 		"value": "Optional",
-							// 		"type": "text",
-							// 		"disabled": true
-							// 	},
-							// 	{
-							// 		"key": "card",
-							// 		"value": "",
-							// 		"type": "text"
-							// 	}
-
-        setValue({
-            groupName: formik.values.groupName, 
-            savingsName: formik.values.savingsName, 
-            // start: startDate.getFullYear()+'-'+pad(months[startDate.getMonth()])+'-'+pad(startDate.getDate()), 
-            // end: endDate.getFullYear()+'-'+pad(months[endDate.getMonth()])+'-'+pad(endDate.getDate()), 
-            amount: Number(formik.values.amount), 
-            occurrence: formik.values.pattern,
-            // avatar: imageFile
-        }) 
         formik.setFieldValue('pattern', catergory ) 
     },[endModal]) 
 
     
 
-    const NextClick =()=> {
-        setShowModal(true);
-        setFriendsModal(false)
-    }
+    // const NextClick =()=> {
+    //     setShowModal(true);
+    //     setFriendsModal(false)
+    // }
 
     const handleStartChange = (date: any) => { 
         setStartDate(date);
@@ -175,14 +118,48 @@ export default function JointSavingTab(props: any) {
         groupName: yup.string().required('Required'),  
         savingsName: yup.string().required('Required'), 
         amount: yup.string().required('Required'), 
-        pattern: yup.string().required('Required'), 
+        // pattern: yup.string().required('Required'), 
     }) 
  
     const formik = useFormik({
-        initialValues: {groupName: '', savingsName: '', amount: '', pattern: ''},
+        initialValues: {groupName: '', savingsName: '', amount: ''},
         validationSchema: loginSchema,
         onSubmit: () => {},
     });  
+
+
+
+    const submit = async () => {
+
+        if (!formik.dirty) {
+          alert('You have to fill in th form to continue');
+          return;
+        }else if (!formik.isValid) {
+          alert('You have to fill in the form correctly to continue');
+          return;
+        }else if (image === '') {
+            alert('You have to Add an Avatar to continue');
+            return;
+        }else if (intialstartDate === '') {
+            alert('You have to set a Starting Date to continue');
+            return;
+        }else if (intialendDate === '') {
+            alert('You have to set a Ending Date to continue');
+            return;
+        }else {
+            setShowModal(true);
+            setFriendsModal(false)  
+            setValue({
+                groupName: formik.values.groupName, 
+                savingsName: formik.values.savingsName, 
+                start: startDate.toJSON(), 
+                end: endDate.toJSON(), 
+                amount: Number(formik.values.amount), 
+                pattern: catergory,
+                avatar: imageFile
+            }) 
+        }
+    }  
 
     // "body": "{\n    \"id\": \"e674d508-76e9-4320-a43c-f825af905179\",\n    \"groupName\": \"Runte - Ortiz\",\n    \"savingsName\": \"Jacques_Thompson\",\n    \"amount\": 790,\n    \"balance\": 0,\n    \"start\": \"2022-02-12T20:26:27.000Z\",\n    \"end\": \"2022-10-07T13:24:18.000Z\",\n    \"pattern\": \"Daily\",\n    \"isActive\": true,\n    \"avatar\": null\n}"
     return (
@@ -336,7 +313,7 @@ export default function JointSavingTab(props: any) {
                         }
                     </div>
                 </label>
-                <button onClick={()=> NextClick()} style={{backgroundColor: '#002343'}} className='w-full font-Montserrat-Bold py-3 text-white rounded text-sm font-Montserrat-Bold' >PROCEED</button>
+                <button onClick={()=> submit()} style={{backgroundColor: '#002343'}} className='w-full font-Montserrat-Bold py-3 text-white rounded text-sm font-Montserrat-Bold' >PROCEED</button>
             </div>
             {showModal ?  
                 <JointSavingsController friends={setFriends} value={value} close={setShowModal} end={setEndModal} />

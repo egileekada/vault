@@ -70,6 +70,7 @@ module.exports = {
       80: '20rem',
       96: '24rem', 
       '260px': '260px',
+      '389px': '389px',
       '400px': '400px',
       '560px': '560px',
       '657.46px': '657.46px',
@@ -307,6 +308,18 @@ module.exports = {
       ],
       'Montserrat-SemiBold': [
         'Montserrat-SemiBold'
+      ],
+      'CircularStd-Bold': [
+        'CircularStd-Bold',
+      ],
+      'CircularStd-Black': [
+        'CircularStd-Black',
+      ],
+      'CircularStd-Medium': [
+        'CircularStd-Medium',
+      ],
+      'CircularStd-Light': [
+        'CircularStd-Light',
       ],
     },
     fontSize: {

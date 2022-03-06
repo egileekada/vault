@@ -14,7 +14,7 @@ export default function SavingsOption(props: any) {
         },
         {
             name: 'Joint savings',
-            body: 'Save with Friends, Partner, team or <br/>associates'
+            body: 'Save with Friends, Partner, team or associates'
         },
         {
             name: 'Dollar safe',

@@ -10,11 +10,13 @@ export default function Goals(props: any) {
             <p className=' font-Montserrat-Medium text-xs' >{string.substr(4, 11)}</p>
         )
     }
+
+    console.log(props.value)
   
     return (
         <div  className=' w-full h-full lg:h-auto lg:w-400px flex justify-center flex-col items-center px-10 py-8 bg-white lg:rounded-2xl'>
             <p className=' font-Montserrat-Bold text-base text-center' >Goal Summary</p>
-            <p style={{color: '#4f4f4f'}} className=' font-Montserrat-Bold text-sm mt-4 text-center' >{props.value.title} {props.value.name}</p>
+            <p style={{color: '#4f4f4f'}} className=' font-Montserrat-Bold text-sm mt-4 text-center' >{props.value.title} {props.value.name} {props.value.savingsName}</p>
             <p style={{color: '#828282'}} className=' font-Montserrat-Bold text-sm mt-2 mb-8 text-center' >{props.value.amount}</p>
             {!props.joint ? 
                 <img src={props.image} className='w-72 h-36 object-cover rounded' />
@@ -42,7 +44,7 @@ export default function Goals(props: any) {
                     <div style={{backgroundColor: '#F3F3F3'}} className='w-full flex p-1 mt-8 flex-row' >
                         <p className=' font-Montserrat-Medium text-xs' >Pattern</p>
                         <div className='w-full flex flex-1' />
-                        <p className=' font-Montserrat-Medium text-xs' >{props.value.amount} / {props.day}</p>
+                        <p className=' font-Montserrat-Medium text-xs' >{props.value.amount} / {props.day}{props.value.pattern}</p>
                     </div>
                     <div className='w-full flex p-1 flex-row' >
                         <p className=' font-Montserrat-Medium text-xs' >Interest Rate</p>

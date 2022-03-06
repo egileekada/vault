@@ -51,6 +51,26 @@
   font-family: 'Montserrat-SemiBold';
   src: url("../public/assets/fonts/Montserrat-SemiBold.ttf")
 }
+
+@font-face {
+  font-family: 'CircularStd-Bold';
+  src: url("../public/assets/fonts/CircularStd-Bold.otf")
+}
+
+@font-face {
+  font-family: 'CircularStd-Black';
+  src: url("../public/assets/fonts/CircularStd-Black.otf")
+}
+
+@font-face {
+  font-family: 'CircularStd-Medium';
+  src: url("../public/assets/fonts/CircularStd-Medium.otf")
+}
+
+@font-face {
+  font-family: 'CircularStd-Light';
+  src: url("../public/assets/fonts/CircularStd-Light.otf")
+}
  
 html{  
   scroll-behavior: smooth;

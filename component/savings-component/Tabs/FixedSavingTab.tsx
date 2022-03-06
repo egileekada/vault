@@ -78,13 +78,7 @@ export default function FixedSavingTab(props: any) {
                 <p>{props.value}</p>
             </div>
         )
-    }
-
-    function pad(n: any) {
-        return (n < 10) ? ("0" + n) : n;
-    }
-
-    // console.log(startDate.toJSON())
+    } 
     
     React.useEffect(() => { 
         {endModal === false ? 

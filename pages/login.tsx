@@ -61,7 +61,7 @@ export default function login() {
             if (request.status === 200) {    
                 setToken(json.accessToken)
                 localStorage.setItem('email', formik.values.email);   
-  
+                localStorage.setItem('token',json.accessToken)
                 const t1 = setTimeout(() => { 
                     Router.push('/dashboard');  
                     userContext.setSignUp({

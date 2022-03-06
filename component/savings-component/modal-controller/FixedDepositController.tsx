@@ -80,7 +80,7 @@ export default function FixedDepositController(props: any) {
                 (
                     <>
                         <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <SuccessModal header='Goal is set!' body='You have successfully set your savings plan 👍.' close={setCloseTab} />
+                            <SuccessModal header='Goal is set!' body='You have successfully set your fixed deposit plan 👍.' close={setCloseTab} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>

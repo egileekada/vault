@@ -42,7 +42,7 @@ export default function JointSavingsController(props: any) {
                 (
                     <>
                         <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <Goals joint={true} close={setShowModal} />
+                            <Goals joint={true} value={props.value} close={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
@@ -51,7 +51,7 @@ export default function JointSavingsController(props: any) {
                 (
                     <>
                         <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <AddMoney close={setCloseModal} next={setShowModal} />
+                            <AddMoney  joint={true} value={props.value} close={setCloseModal} next={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
@@ -87,7 +87,7 @@ export default function JointSavingsController(props: any) {
                 (
                     <>
                         <div className="h-auto flex justify-center items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <SuccessModal header='Goal is set!' body='You have successfully set your savings plan. kudos.' close={setCloseTab} />
+                            <SuccessModal header='Goal is set!' body='You have successfully set your Joint savings plan. kudos.' close={setCloseTab} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>

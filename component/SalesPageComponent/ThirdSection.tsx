@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ThirdSection() {
     return (
-        <div style={{backgroundColor: '#002343'}} className='w-full flex py-36 text-white' >
+        <div style={{backgroundColor: '#002343'}} className='w-full flex lg:flex-row flex-col lg:px-0 px-6 py-36 text-white' >
             <div className='w-full flex justify-center ' >
                 <div  style={{width: '470px'}} > 
                     <img className='w-20 h-20' src='/assets/images/third.png' alt='second' /> 
@@ -10,7 +10,7 @@ export default function ThirdSection() {
                     <p style={{color: 'rgba(255, 255, 255, 0.8)'}} className=' mt-2 text-SM font-CircularStd-Light'>No restrictions, start small, grow big. Starting with N1,000 or N10,000,000 ? no problem, we have just the plan that’ll work for you.</p>
                 </div>
             </div> 
-            <div className='w-full flex justify-center' >
+            <div className='w-full flex justify-center mt-12 lg:mt-0' >
                 <div  style={{width: '470px'}} >
                     <img className='w-20 h-20' src='/assets/images/third1.png' alt='second1' />
                     <p className='text-xl font-CircularStd-Medium mt-10' >Security is our priority : Bank Level Security</p>

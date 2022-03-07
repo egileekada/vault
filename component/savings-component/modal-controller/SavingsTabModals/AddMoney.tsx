@@ -15,7 +15,7 @@ export default function AddMoney(props: any) {
     let endDate = addMonths(startDate, props.month).toJSON()
 
 
-    // console.log(addMonths(startDate, 7).toJSON) 
+    console.log(props.value.groupName) 
 
     const { isLoading, data } = useQuery('cards', () =>
         fetch(`https://api.vaultafrica.co/cards`, {
@@ -86,16 +86,16 @@ export default function AddMoney(props: any) {
                     let formData = new FormData()   
                     formData.append('groupName', props.value.groupName) 
                     formData.append('savingsName', props.value.savingsName) 
-                    formData.append('amount', props.value.title) 
+                    formData.append('amount', props.value.amount) 
                     formData.append('start', props.value.start) 
                     formData.append('end', props.value.end)  
-                    formData.append('pattern', props.value.occurrence) 
-                    formData.append('friends', props.value.occurrence) 
+                    formData.append('pattern', props.value.pattern) 
+                    formData.append('friends', props.value.friends) 
                     formData.append('avatar', props.value.avatar) 
                     formData.append('card', cardId) 
         
                     // make request to server
-                    const request = await axios.default.post(`https://api.vaultafrica.co/fixed-savings/`, formData, {
+                    const request = await axios.default.post(`https://api.vaultafrica.co/joint-savings`, formData, {
                         headers: { 'content-type': 'application/json',
                             Authorization : `Bearer ${localStorage.getItem('token')}`
                         }

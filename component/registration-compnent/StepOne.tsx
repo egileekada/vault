@@ -61,7 +61,7 @@ export default function StepOne(props: any) {
 
     return (
         <div className='bg-white w-full h-auto flex justify-center flex-col py-12 px-6 lg:px-40 rounded-lg' >
-            <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '143px'}} className=' h-auto  ' />
+            <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '143px'}} className=' h-auto cursor-pointer  ' onClick={()=> Router.push('/')} />
             <p style={{color: '#002343'}} className='font-Inter-ExtraBold text-2xl flex mt-10'>Create new account</p> 
             <p style={{color: '#5788AD', width: '300px'}} className='font-Inter-Regular mt-2 text-xs' >Create a new vault account in less than 2mins. <br/>Your password should contain 8 characters, <br/>number and UPPERCASE.</p>
             <p style={{color: '#5788AD'}} className='font-Inter-Regular text-xs' ></p>

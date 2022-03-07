@@ -2,12 +2,12 @@ import React from 'react'
 
 export default function FifthSection() {
     return (
-        <div className='w-full flex py-6' >
+        <div className='w-full flex lg:flex-row flex-col-reverse lg:px-0 px-6 py-6' >
             <div className='w-full flex justify-center items-center py-20' >
                 <img src='/assets/images/FifthImage.png' alt='second' />
             </div> 
             <div className='w-full flex flex-col justify-center items-center' >
-                <div style={{width: '486px'}} >
+                <div className='lg:w-486px w-full' >
                     <div style={{borderLeftWidth: '5px', borderColor: '#017DC3'}} className='pl-4 py-2' > 
                         <p style={{color: '#017DC3'}} className='text-2xl font-CircularStd-Medium' >Meet life Emergencies</p>
                         <p style={{color: '#727272'}} className=' mt-4 text-SM font-CircularStd-Light'>Get Quick loans to meet Emergencies when they show up with friendly rates

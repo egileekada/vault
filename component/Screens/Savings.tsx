@@ -48,14 +48,8 @@ export default function Savings(props: any) {
                                 </div>
                             </div>
                             <FixedSaving click={setShowModal} savings='saving'  />
-                            <FixedSaving click={setShowModal} savings='deposit'  />
-                            {/* <FixedSaving click={setShowModal} savings='fixed-deposit'  /> */}
-                            {/* <div className='w-full flex flex-row' >
-                                <div className='mt-10 w-657.46px ' >
-                                <p style={{color: '#828282'}} className=' w-full font-Montserrat-SemiBold text-sm' >Joint Savings</p>
-                                </div>
-                            </div>
-                            <FixedSaving Joint='true' sign={setJoint} click={setShowModal} /> */}
+                            <FixedSaving click={setShowModal} savings='deposit'  /> 
+                            {/* <FixedSaving click={setShowModal} savings='joint'  />  */}
                         </div>
                     </div> 
                 </div>:

@@ -146,6 +146,9 @@ export default function JointSavingTab(props: any) {
         }else if (intialendDate === '') {
             alert('You have to set a Ending Date to continue');
             return;
+        }else if (friends.length === 0) {
+            alert('You have to add at lease one friend to continue');
+            return;
         }else {
             setShowModal(true);
             setFriendsModal(false)  
@@ -156,6 +159,7 @@ export default function JointSavingTab(props: any) {
                 end: endDate.toJSON(), 
                 amount: Number(formik.values.amount), 
                 pattern: catergory,
+                friends: JSON.stringify(friends),
                 avatar: imageFile
             }) 
         }

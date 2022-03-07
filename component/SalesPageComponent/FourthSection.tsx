@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function FourthSection() {
     return (
-        <div className='w-full flex py-6' >
+        <div className='w-full flex lg:flex-row flex-col px-6 lg:px-0 mt-12 lg:mt-0 py-6' >
             <div className='w-full flex flex-col justify-center items-center' >
-                <div style={{width: '486px'}} >
+                <div className='lg:w-486px w-full' >
                     <div style={{borderLeftWidth: '5px', borderColor: '#017DC3'}} className='pl-4 py-2' > 
                         <p style={{color: '#017DC3'}} className='text-2xl font-CircularStd-Medium' >Reach your financial Goals.</p>
                         <p style={{color: '#727272'}} className=' mt-4 text-SM font-CircularStd-Light'>We’ve gone the extra mile, to ensure that all investment are vetted, and

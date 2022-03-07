@@ -16,91 +16,88 @@ export default function faq() {
             <div>
                 <NavBar tab='faq' />
             </div>
-            <div className='w-full flex justify-center items-center' >
-                <div style={{width: '954px'}} className='py-12 pb-36'  >
-                    <p className='font-CircularStd-Bold text-3xl text-center' >Frequently Asked Question</p>
+            <div className='w-full flex justify-center items-center lg:px-0 px-6' >
+                <div className='py-12 pb-36 lg:w-954px w-full '  >
+                    <p className='font-CircularStd-Bold lg:text-3xl text-2xl text-center' >Frequently Asked Question</p>
                     <Input bg='#FAFAFA' size='lg' fontSize='sm' className='my-8' placeholder='Search for question' color='#333333' />
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-4 text-2xl' >What is Vault Africa?</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-4 text-lg lg:text-2xl' >What is Vault Africa?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Managing money is complicated. Investing money is reserved for only the to help change this</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >How do I know what plan is right for me?</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >How do I know what plan is right for me?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Managing money is complicated. Investing money is reserved for only the wealthy. We want to help change this</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >How do I start saving on Vault?</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >How do I start saving on Vault?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>1. Visit the website or download the app to create an account.</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>2. Set up your withdrawal account details; this is the bank account that funds you withdraw will get sent to.</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>3. Enter your debit card details to activate your account and then make your first
-deposit. (You may use a MasterCard, Visa or Verve card from any Nigerian
-bank).</p>
+                        deposit. (You may use a MasterCard, Visa or Verve card from any Nigerian
+                        bank).</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>4. You may now proceed to use any of the Savings Plans to start your custom, monthly,
-weekly or daily savings.</p> 
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >What do I need to open a Vault account?</p>
+                        weekly or daily savings.</p> 
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >What do I need to open a Vault account?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>To open a Vault account, you must be at least 16 years old and you must have an email
-address and a valid phone number.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >How much can I start with?</p>
+                        address and a valid phone number.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >How much can I start with?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Any amount that works for you. You can start with as low as N100, daily, weekly or monthly.
-However we advise you to increase the amount for weekly and monthly savings, so you can
-get a reasonable amount at the end of your savings cycle.
-You can also use the save feature, to add money to your vault anytime.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >Is my money safe with Vault?</p>
+                        However we advise you to increase the amount for weekly and monthly savings, so you can
+                        get a reasonable amount at the end of your savings cycle.
+                        You can also use the save feature, to add money to your vault anytime.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >Is my money safe with Vault?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Yes, your money is safe with us. We secure all accounts with the same high-security
-encryption used by banks.</p>
+                        encryption used by banks.</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-10'>We operate in partnership with V bank, a duly registered and regulated bank insured by
-Nigerian Deposit Insurance commission (NDIC). All saved funds are warehoused with Vbank
-via our agreement with Onepipe</p>
-                    
-
-
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >Are my card details safe?</p>
+                        Nigerian Deposit Insurance commission (NDIC). All saved funds are warehoused with Vbank
+                        via our agreement with Onepipe</p> 
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >Are my card details safe?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Your security is our major priority, so we work with a PCIDSS-compliant processor, to handle
-your card. All details are extremely safe and can never be compromised.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >Do you give loans?</p>
+                        your card. All details are extremely safe and can never be compromised.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >Do you give loans?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Yes, we give loans and you’ll be able to get one easily without collateral if you use your Vault
-account regularly.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >Why do you need my BVN/NIN?</p>
+                        account regularly.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >Why do you need my BVN/NIN?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>We ask you to confirm your BVN/NIN so we can be sure no one is pretending to be you.
-When you confirm your BVN, we match your details with the information on the national BVN
-database owned by the Central Bank and the federal Government.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >How are you able to offer higher returns than traditional banks?</p>
+                        When you confirm your BVN, we match your details with the information on the national BVN
+                        database owned by the Central Bank and the federal Government.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >How are you able to offer higher returns than traditional banks?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Maintaining a traditional bank is expensive. Cost of building, infrastructure, maintenance,
-and large staff is quite expensive. At Vault, we do not have to deal with this high cost. Our
-operations are based on a small smart team and our proprietary technology and we make
-money via commissions and collective investment and we’re able to transfer the cost
-savings to our customers in the form of higher returns.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >Is my investment insured?</p>
+                        and large staff is quite expensive. At Vault, we do not have to deal with this high cost. Our
+                        operations are based on a small smart team and our proprietary technology and we make
+                        money via commissions and collective investment and we’re able to transfer the cost
+                        savings to our customers in the form of higher returns.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >Is my investment insured?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Yes, we ensure that each investment on Vault comes with its own protection and coverage</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >What is the minimum amount I can invest with?</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >What is the minimum amount I can invest with?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Investment minimums vary by investment opportunities. But most investment have a
-minimum investment amount of N10,000 only</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >What is the insurance coverage on the investment?</p>
+                        minimum investment amount of N10,000 only</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >What is the insurance coverage on the investment?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Insurance coverage varies by investment opportunities.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >How can I fund my investment?</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >How can I fund my investment?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>You can fund your investment using your debit card and Flex wallet.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >How safe is my money?</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >How safe is my money?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>All investment opportunities listed on Vault are pre-vetted for maximum safety. Due diligence
-is carried out on all investment partners before they are listed.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >What happens to my capital in case of disasters?</p>
+                        is carried out on all investment partners before they are listed.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >What happens to my capital in case of disasters?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>All investment options aggregated on Vault have been properly vetted for insurance against
-loss.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >How is my interest paid?</p>
+                        loss.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >How is my interest paid?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Interest varies based on investment opportunity. Your interest could be paid monthly,
-quarterly OR at the end of the investment cycle into your Vault account.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >Is the investment taxed?</p>
+                        quarterly OR at the end of the investment cycle into your Vault account.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >Is the investment taxed?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>We don't handle tax. You, however, you are to comply with stipulated laws by the federal
-government in regards to paying your taxes.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >Can I liquidate my investment at anytime?</p>
+                        government in regards to paying your taxes.</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >Can I liquidate my investment at anytime?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Yes, you can.
-However, to liquidate, you will need to trade the units you have already acquired with other
-existing investors or potential new investors.
-</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >Will I get account statements?</p>
+                        However, to liquidate, you will need to trade the units you have already acquired with other
+                        existing investors or potential new investors.
+                        </p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >Will I get account statements?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>You can request an account statement for a specific time period.</p>
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >Where’s your office?</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >Where’s your office?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>We are located at No 1 Katokuma plaza prince and princess Junction Gudu district FCT.</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Visits by appointment only, please.</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Contact Number: 0700 000 0000</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Email: contact@Vaultafrica.co</p> 
-                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >What should I do if I need help?</p>
+                    <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-lg lg:text-2xl' >What should I do if I need help?</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>You can also send an email to help@Vaultafrica.co or call 070 000 0000 between 8:00 am and
-5:00 pm on weekdays.</p>
+                        5:00 pm on weekdays.</p>
                     {/* <p style={{color: '#222222'}} className='font-CircularStd-Medium mt-8 text-2xl' >How</p>
                     <p style={{color: '#727272'}} className='font-CircularStd-Regular mt-2'>Managing</p> */}
                 </div>

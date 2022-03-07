@@ -68,7 +68,7 @@ export default function StepTwo(props: any) {
 
     return (
         <div className='  bg-white w-full lg:h-screen flex justify-center my-12 flex-col pb-8 px-6 lg:px-40 lg:my-auto rounded-lg' >
-            <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '143px'}} className=' h-auto mt-12  ' />
+            <img src='/assets/images/Vault-logo.png' alt='login' style={{width: '143px'}} className=' h-auto mt-12  cursor-pointer  ' onClick={()=> Router.push('/')} />
             <p onClick={()=> props.click(false)} className='cursor-pointer mt-6 font-Inter-SemiBold text-xs' style={{color:'#03C8DB'}} >Go back</p>
             <p style={{color: '#002343'}} className='font-Inter-ExtraBold text-2xl flex mt-4'>Let’s get to know you</p>  
             <div className='w-full flex flex-col py-4' >  

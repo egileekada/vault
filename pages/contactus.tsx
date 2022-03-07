@@ -13,11 +13,11 @@ export default function contactus() {
             <div>
                 <NavBar tab='contactus' />
             </div>
-            <div className='w-full flex justify-center items-center' > 
+            <div className='w-full flex lg:flex-row flex-col justify-center px-6 lg:px-0 items-center' > 
                 <div className='w-full flex flex-col items-center ' >
                     <div>
-                        <p style={{color:'#002343'}} className='w-389px font-CircularStd-Medium text-5xl' >Contact us</p>
-                        <p style={{color:'#333333'}} className='w-389px font-CircularStd-Light mt-4'>Do well to reach out to us incase you have any challenge and we will gladly assist you.</p>
+                        <p style={{color:'#002343'}} className='lg:w-389px w-full font-CircularStd-Medium text-3xl lg:text-5xl' >Contact us</p>
+                        <p style={{color:'#333333'}} className='lg:w-389px w-full font-CircularStd-Light mt-4'>Do well to reach out to us incase you have any challenge and we will gladly assist you.</p>
                         <div className='flex mt-10 items-center' >
                             <div style={{backgroundColor: '#EAF6FF'}} className='w-10 h-10 rounded-full flex justify-center items-center' >
                                 <svg width="16" height="7" viewBox="0 0 16 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,14 +36,27 @@ export default function contactus() {
                         </div> 
                     </div>
                 </div>
-                <div className='w-full relative' >
-                    <div style={{width:'400px'}} className='relative mb-14 ml-14 z-40' > 
-                        <img style={{width: '400px', borderTopRightRadius: '40px', borderBottomRightRadius: '40px'}} src='/assets/images/contactImage.png' alt='Hero' />
+                <div className='w-full relative lg:mt-0 mt-14 pb-8' >
+                    <div className='relative mb-14 lg:w-400px w-full lg:ml-14 z-40' > 
+                        <img style={{borderTopRightRadius: '40px', borderBottomRightRadius: '40px'}} className='w-full' src='/assets/images/contactImage.png' alt='Hero' />
                     </div>
-                    <div style={{height: '300px', backgroundColor: '#002343'}} className=' absolute bottom-0 w-full - rounded-t-full ' >
+                    <div style={{height: '300px', backgroundColor: '#002343'}} className=' absolute lg:flex hidden bottom-0 w-full rounded-t-full ' >
 
                     </div>
                 </div>
+            </div>
+            <div style={{backgroundColor: '#002343'}} className='w-full flex lg:flex-row px-6 lg:pt-12 flex-col pb-20 pt-20 lg:pb-0' >
+                <div className='w-full flex flex-col justify-center items-center' >
+                    <div className='lg:w-486px w-full' > 
+                        <p style={{color: '#FFF'}} className='text-sm font-CircularStd-Light' >Try Vault Africa Now</p> 
+                        <p style={{color: '#FFF'}} className='text-3xl font-CircularStd-Bold my-1' >Create an account for free.</p> 
+                        <p style={{color: '#FFF'}} className='text-sm font-CircularStd-Light' >it onlt takes few minutes to start enjoying the benefit that comes with using vaultafrica</p>
+                        <button style={{color: '#002343'}} className='font-CircularStd-Medium text-sm py-3 px-8 bg-white rounded-md mt-6' >Get Vaultafrica</button>
+                    </div>
+                </div> 
+                <div className='w-full flex justify-center items-center pt-20' >
+                    <img src='/assets/images/SixthImage2.png' alt='second' />
+                </div> 
             </div>
             <div>
                 <Footer />

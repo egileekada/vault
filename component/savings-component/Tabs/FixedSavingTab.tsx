@@ -24,7 +24,7 @@ export default function FixedSavingTab(props: any) {
     const [value, setValue] = React.useState({} as any);
     const [image, SetImage] = React.useState('');
     const [imageFile, SetImageFile] = React.useState({} as any);  
-    const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    // const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 
     const handleImageChange = (e: any ) => {
@@ -42,8 +42,7 @@ export default function FixedSavingTab(props: any) {
             console.log('Error')
         }   
         SetImageFile(selected) 
-    }  
-  ;   
+    }   
 
     const handleStartChange = (date: any) => { 
         setStartDate(date);

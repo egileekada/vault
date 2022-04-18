@@ -50,10 +50,8 @@ export default function Menu(props: any) {
     const LogOut =()=> {
         localStorage.clear()
         Router.push('/login')
-    }
-
-
-
+    } 
+    
     console.log(userContext.userData)
 
     return (

@@ -3,7 +3,22 @@ import { Select } from '@chakra-ui/select'
 import React from 'react'
 import { IoIosClose } from 'react-icons/io'
 
-export default function LoanAmount(props: any) {
+export default function LoanAmount(props: any) { 
+
+    // "method": "POST",
+    // "header": [],
+    // "body": {
+    //     "mode": "raw",
+    //     "raw": "{\r\n    \"amount\": 5000,\r\n    \"duration\": \"3 months\"\r\n}",
+    //     "options": {
+    //         "raw": {
+    //             "language": "json"
+    //         }
+    //     }
+    // },
+    // "url": {
+    //     "raw": "{{base}}/loan",
+
     return (
         <div className=' w-full lg:w-560px bg-white h-screen px-6 lg:px-8 overflow-y-auto font-Montserrat-Regular '  >
             <div className='w-full flex flex-row items-center py-10' > 

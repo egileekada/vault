@@ -1,12 +1,39 @@
 import { Input } from '@chakra-ui/react'
 import React from 'react'
+import { motion } from 'framer-motion'
+import * as yup from 'yup'
+import { useFormik } from 'formik'; 
 import { IoIosClose } from 'react-icons/io'
 
-export default function InvestmentAmount(props: any) {
+export default function InvestmentAmount(props: any) { 
+
+
+    const loginSchema = yup.object({  
+        amount: yup.string().required('Required')
+    }) 
+
+    // formik
+    const formik = useFormik({
+        initialValues: { amount: 0},
+        validationSchema: loginSchema,
+        onSubmit: () => {},
+    });  
+
+
+    const ClickHandler =()=> {
+        if (formik.values.amount < 5000) {
+            alert('You must Add At least 5000');
+            return;
+        } else {
+            props.amount(formik.values.amount)
+            props.close(3)
+        }
+    }
+
     return (
         <div className=' w-full lg:w-560px bg-white h-screen px-6 lg:px-8 overflow-y-auto font-Montserrat-Regular '  >
             <div className='w-full flex flex-row items-center py-10' > 
-                <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
+                <p onClick={()=> props.close(1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />
                 <div onClick={()=> props.close(-1)} style={{backgroundColor: '#FAFAFA', borderRadius: '4px'}} className='w-auto h-auto cursor-pointer' >
                     <IoIosClose size='30px' />
@@ -20,12 +47,17 @@ export default function InvestmentAmount(props: any) {
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M16.005 22.3942C15.2677 22.3942 14.665 21.7982 14.665 21.0609C14.665 20.3235 15.2557 19.7275 15.9917 19.7275H16.005C16.7424 19.7275 17.3384 20.3235 17.3384 21.0609C17.3384 21.7982 16.7424 22.3942 16.005 22.3942Z" fill="#002343"/>
                 </svg>
             </div> 
-            <p className=' font-Montserrat-Bold text-sm mb-3 mt-10' >Enter amount of unit</p>
-            <p className=' font-Montserrat-Medium text-sm mb-2 mt-6' >Unit</p>
-            <Input backgroundColor='#f6f6f6' fontSize='sm' />
+            {/* <p className=' font-Montserrat-Bold text-sm mb-3 mt-10' >Enter amount of unit</p> */}
+            {/* <p className=' font-Montserrat-Medium text-sm mb-2 mt-6' >Unit</p>
+            <Input backgroundColor='#f6f6f6' fontSize='sm' /> */}
             <p className=' font-Montserrat-Medium text-sm mb-2 mt-6' >Amount(N)</p>
-            <Input backgroundColor='#f6f6f6' fontSize='sm' />
-            <button onClick={()=> props.close(3)} style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-full mt-16 text-white font-Montserrat-Bold mb-8 text-sm h-12 items-center justify-center' >Next</button>
+            <Input 
+                name="amount"
+                onChange={formik.handleChange}
+                onFocus={() =>
+                    formik.setFieldTouched("amount", true, true)
+                }   backgroundColor='#f6f6f6' fontSize='sm' />
+            <button onClick={()=> ClickHandler()} style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-full mt-16 text-white font-Montserrat-Bold mb-8 text-sm h-12 items-center justify-center' >Next</button>
         </div>
     )
 }

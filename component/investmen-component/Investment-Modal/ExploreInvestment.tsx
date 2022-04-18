@@ -1,6 +1,7 @@
 import { Input } from '@chakra-ui/input';
 import React from 'react';
 import { IoIosClose } from 'react-icons/io';
+import { useQuery } from 'react-query';
 
 export default function ExportInvestment(props: any) {
 
@@ -60,7 +61,20 @@ export default function ExportInvestment(props: any) {
             profit: '10%',
             amount: '₦4000'
         },
-    ]
+    ] 
+
+    const { isLoading, data } = useQuery('investment', () =>
+        fetch(`https://api.vaultafrica.co/investment`, {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json', 
+                Authorization : `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(res =>
+            res.json()
+        )
+    ) 
+
     const [selected, setSelected] = React.useState([] as any) 
 
     const ClickHandler =(value: any)=> {
@@ -75,11 +89,16 @@ export default function ExportInvestment(props: any) {
         }  
         setSelected(newarr)
     }
+ 
+    const onClickHandler =(item: any)=> {
+        props.close(1)
+        props.value(item)
+    }
 
     return (
         <div className=' w-full lg:w-560px bg-white px-6 lg:px-8 h-screen overflow-y-auto'  >
             <div className='w-full flex flex-row items-center py-10' > 
-                <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
+                {/* <p onClick={()=> props.close(0)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p> */}
                 <div className='w-full flex flex-1' />
                 <div onClick={()=> props.close(-1)} style={{backgroundColor: '#FAFAFA', borderRadius: '4px'}} className='w-auto h-auto cursor-pointer' >
                     <IoIosClose size='30px' />
@@ -113,21 +132,33 @@ export default function ExportInvestment(props: any) {
                     })} 
                 </div>
             </div> 
-            <div onClick={()=> props.close(1)} className='w-full grid grid-cols-2 lg:grid-cols-3 mt-4' >
-                {Investments.map((items:any)=> {
-                    return(
-                        <div className='w-full px-2 my-2 cursor-pointer' >
-                            <div className='w-full h-36 bg-yellow-400 rounded-xl relative' >
-                                <div className='rounded-tl-2xl py-1 flex justify-center items-center absolute right-0 top-10 bg-white w-16 rounded-bl-2xl' >
-                                    <p style={items.status === 'Active' ? {color: '#27AE60'}:{color: '#EB5757'}} className='text-xs font-Montserrat-Medium' >{items.status}</p>
+
+            {isLoading &&(
+                <div className="animate-spin rounded-full mx-auto mt-10 h-12 w-12 border-t-2 border-b-2 border-vault"></div>
+            )}
+            <div className='w-full grid grid-cols-2 lg:grid-cols-3 mt-4' >
+                
+                {!isLoading && (
+                    <>
+                        {data.map((items:any)=> {
+                            return(
+                                <div onClick={()=> onClickHandler(items)} className='w-full px-2 my-2 cursor-pointer' >
+                                    <div className='w-full h-36 bg-yellow-400 rounded-xl relative' >
+                                        {items.avatar && (
+                                            <img src={items.avatar} className='w-full h-full object-cover rounded-xl ' alt={items.id} />
+                                        )}
+                                        <div className='rounded-tl-2xl py-1 flex justify-center items-center absolute right-0 top-10 bg-white w-16 rounded-bl-2xl' >
+                                            <p style={items.status === 'Active' ? {color: '#27AE60'}:{color: '#EB5757'}} className='text-xs font-Montserrat-Medium' >{items.isActive ? 'Active' : 'Closed'}</p>
+                                        </div>
+                                    </div>
+                                    <p className='font-Montserrat-Bold text-sm mt-2' >{items.title}</p>
+                                    <p style={{color: '#03C8DB'}} className='font-Montserrat-Medium text-xs mt-1' >{items.roi+'%'}<span style={{color: '#828282'}} className='ml-1'>ROI/Annum</span></p>
+                                    <p  style={{color: '#03C8DB'}} className='font-Montserrat-Medium text-xs mt-1' >{items.units}<span style={{color: '#828282'}}>/unit</span></p>
                                 </div>
-                            </div>
-                            <p className='font-Montserrat-Bold text-sm mt-2' >{items.title}</p>
-                            <p style={{color: '#03C8DB'}} className='font-Montserrat-Medium text-xs mt-1' >{items.profit}<span style={{color: '#828282'}} className='ml-1'>ROI/Annum</span></p>
-                            <p  style={{color: '#03C8DB'}} className='font-Montserrat-Medium text-xs mt-1' >{items.amount}<span style={{color: '#828282'}}>/unit</span></p>
-                        </div>
-                    )
-                })}
+                            )
+                        })}
+                    </>
+                )}
             </div>
         </div>
     );

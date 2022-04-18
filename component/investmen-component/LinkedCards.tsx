@@ -17,6 +17,19 @@ export default function LinkedCards(props: any) {
         )
     )
 
+    console.log(props.amount)
+    console.log(props.data)
+
+    // "body": {
+    //     "mode": "raw",
+    //     "raw": "{\r\n    \"investmentId\": \"{{randomInvestmentId}}\",\r\n    \"unit\": {{$randomInt}},\r\n    \"amount\": 500,\r\n    \"pin\": {{transactionPin}},\r\n    \"paymentMethod\": \"Savings Account\",\r\n    \"savingsId\": \"{{randomSavingsId}}\",\r\n    \"interest\": 5000,\r\n    \"card\": {}\r\n}",
+    //     "options": {
+    //         "raw": {
+    //             "language": "json"
+    //         }
+    //     }
+    // },
+
     return (
         <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-4 mt-2' > 
             {!isLoading ?

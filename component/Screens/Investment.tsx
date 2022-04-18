@@ -15,6 +15,8 @@ import WithdrawalMoney from '../savings-component/modal-controller/SavingsModal/
 export default function Investment(props: any) {
 
     const [showModal, setShowModal] = React.useState(-1); 
+    const [data, setData] = React.useState(-1); 
+    const [amount, setAmount] = React.useState(''); 
     const [withdrawModal, setWithdrawModal] = React.useState(false);
     return (
         <div className='w-full h-full py-20 ' >
@@ -55,7 +57,7 @@ export default function Investment(props: any) {
                 (
                     <>
                         <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                            <ExportInvestment close={setShowModal} />
+                            <ExportInvestment value={setData} close={setShowModal} />
                         </div> 
                         <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                     </>
@@ -64,7 +66,7 @@ export default function Investment(props: any) {
                     (
                         <>
                             <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                <InvestmentOption withdraw={withdrawModal} close={setShowModal}/>
+                                <InvestmentOption data={data} withdraw={withdrawModal} close={setShowModal}/>
                             </div> 
                             <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                         </>
@@ -73,7 +75,7 @@ export default function Investment(props: any) {
                         (
                             <>
                                 <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                    <InvestmentAmount close={setShowModal}/>
+                                    <InvestmentAmount amount={setAmount} close={setShowModal}/>
                                 </div> 
                                 <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                             </>
@@ -82,7 +84,7 @@ export default function Investment(props: any) {
                             (
                                 <>
                                     <div className="h-auto flex justify-end items-center overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none"> 
-                                        <Payment close={setShowModal}/>
+                                        <Payment amount={amount} data={data} close={setShowModal}/>
                                     </div> 
                                     <div className="opacity-20 fixed flex flex-1 inset-0 z-40 bg-black"/>
                                 </>

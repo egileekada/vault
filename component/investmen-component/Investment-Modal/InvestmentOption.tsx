@@ -5,10 +5,12 @@ export default function InvestmentOption(props: any) {
 
     const [more, setMore] = React.useState(false) 
 
+    console.log(props.data)
+
     return (
         <div className=' w-full lg:w-560px bg-white h-screen overflow-y-auto'  >
             <div className='w-full px-8 flex flex-row items-center py-10' > 
-                <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
+                <p onClick={()=> props.close(0)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />
                 <div onClick={()=> props.close(-1)} style={{backgroundColor: '#FAFAFA', borderRadius: '4px'}} className='w-auto h-auto cursor-pointer' >
                     <IoIosClose size='30px' />
@@ -24,6 +26,9 @@ export default function InvestmentOption(props: any) {
             </div>
 
             <div className='w-full bg-yellow-400 h-44 my-14 relative' > 
+                {props.data.avatar && (
+                    <img src={props.data.avatar} className='w-full h-full object-cover ' alt={props.data.id} />
+                )}
                 {more ? 
                         <div className='w-full h-full flex items-center justify-center' >
                             <div onClick={()=> setMore(false)} style={{backgroundColor: 'rgba(255, 255, 255, 0.16)', border: ' 1px solid #FFFFFF', color:'white'}} className=' w-28 cursor-pointer justify-center flex h-8 rounded items-center ' >
@@ -40,8 +45,8 @@ export default function InvestmentOption(props: any) {
             <div className='w-full px-8 pb-8' >
                 <div className='w-full flex' > 
                     <div className='w-full' >
-                        <p className='text-sm font-Montserrat-Bold' >Rice farm Investment</p>
-                        <p style={{color: '#828282'}} className='text-xs font-Montserrat-Medium mt-1' >By GBG Farms, Kano.</p>
+                        <p className='text-sm font-Montserrat-Bold' >{props.data.title}</p>
+                        <p style={{color: '#828282'}} className='text-xs font-Montserrat-Medium mt-1' >By {props.data.owners}</p>
                     </div>
                     <div className='w-full flex flex-1' />
                     <div style={{border: '1px solid #03C8DB'}} className=' w-20 cursor-pointer rounded-lg flex justify-center h-8 items-center ' >
@@ -54,7 +59,7 @@ export default function InvestmentOption(props: any) {
                 <div className='w-full flex py-8' >  
                     <p style={{color: '#03C8DB'}} className='text-sm font-Montserrat-Medium' >20%  <span style={{color: '#000'}}>ROI</span></p> 
                     <div className='w-full flex flex-1' /> 
-                    <p  className='text-sm font-Montserrat-Medium ml-2' >N 5000  <span style={{color: '#03C8DB'}} className='text-xs' >/unit</span></p> 
+                    <p  className='text-sm font-Montserrat-Medium ml-2' >N {props.data.units}  <span style={{color: '#03C8DB'}} className='text-xs' >/unit</span></p> 
                 </div>
                 {more ? 
                         <p className='text-xs font-Montserrat-Medium'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium semper libero, velit neque consectetur. Blandit dignissim scelerisque orci amet amet mattis natoque tristique sed. Magna in ultrices massa dictum ut pharetra. A et urna sed erat eleifend quam a tortor.

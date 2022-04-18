@@ -21,7 +21,7 @@ export default function Payment(props: any) {
     return (
         <div className=' w-full lg:w-560px bg-white h-screen px-6 lg:px-8 pb-10 overflow-y-auto font-Montserrat-Regular '  >
             <div className='w-full flex flex-row items-center py-10' > 
-                <p onClick={()=> props.close(-1)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
+                <p onClick={()=> props.close(2)} style={{color:'#03C8DB'}} className='font-Montserrat-Bold text-sm cursor-pointer ' >Go back</p>
                 <div className='w-full flex flex-1' />
                 <div onClick={()=> props.close(-1)} style={{backgroundColor: '#FAFAFA', borderRadius: '4px'}} className='w-auto h-auto cursor-pointer' >
                     <IoIosClose size='30px' />
@@ -36,18 +36,18 @@ export default function Payment(props: any) {
                 </svg>
             </div> 
             <div style={{backgroundColor: '#002343'}} className='w-full flex justify-center my-10 items-center rounded-2xl h-48' >
-                <p style={{color: '#CCD3D9'}} className='font-Montserrat-Bold text-5xl' >10</p>
+                <p style={{color: '#CCD3D9'}} className='font-Montserrat-Bold text-5xl' >{(props.amount/props.data.units).toFixed(2)}</p>
                 <p style={{color: '#CCD3D9'}} className='font-Montserrat-Bold text-sm ml-2' >Unit(s)</p>
             </div>
             <div className='w-full flex' >
                 <div className='w-auto' >
                     <p style={{color: '#828282'}} className='font-Montserrat-Medium text-sm' >You are investing</p>
-                    <p style={{color: '#03C8DB'}} className='font-Montserrat-Bold text-xl mt-2 ' >₦56,000.00</p>
+                    <p style={{color: '#03C8DB'}} className='font-Montserrat-Bold text-xl mt-2 ' >₦ {(props.amount).toLocaleString()}</p>
                 </div>
                 <div className='w-full flex flex-1' />
                 <div className='w-auto' >
                     <p style={{color: '#828282'}} className='font-Montserrat-Medium text-sm' >Expected ROI</p>
-                    <p style={{color: '#828282'}} className='font-Montserrat-Medium text-base' >₦16,000.00</p>
+                    <p style={{color: '#828282'}} className='font-Montserrat-Medium text-base' >₦ {((props.data.roi/100)*props.amount).toLocaleString()}</p>
                 </div>
             </div>
             <p style={{color: '#828282'}} className='font-Montserrat-Medium mb-2 text-sm mt-12' >You are investing</p>
@@ -57,7 +57,7 @@ export default function Payment(props: any) {
             </Select>
             <div className='mt-10' >
                 {selected === 'card' ? 
-                    <LinkedCards next={setAddCard} />:
+                    <LinkedCards amount={props.amount} unit={props.amount/props.data.units} data={props.data} next={setAddCard} />:
                     selected === 'saving' ? 
                         <Account /> 
                 :null}

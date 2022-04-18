@@ -31,11 +31,7 @@ export default function login() {
     });  
 
     React.useEffect(() => {  
-        localStorage.setItem('token', tokenvalue);  
-        // const token = localStorage.getItem('token')
-        // if(token === '' ){
-        //     Router.push('/dashboard')
-        // }
+        localStorage.setItem('token', tokenvalue);   
     }); 
 
     const submit = async () => {

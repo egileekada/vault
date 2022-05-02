@@ -29,7 +29,7 @@ export default function HomeInsurance(props: any) {
             </div>
 
             <div className='w-full bg-yellow-400 h-44 my-8 relative' >  
-                <img src='/assets/images/insurance2.png' className='w-full h-full object-cover ' alt='insure2' /> 
+                <img src='/assets/images/Insurance1.png' className='w-full h-full object-cover ' alt='insure2' /> 
             </div>
             <div className='w-full px-8 pb-8' >
                 {tabs === 0 && (

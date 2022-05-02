@@ -9,6 +9,7 @@ import More from '../component/Screens/More'
 import { useQuery } from 'react-query'
 import { IUser, UserContext } from '../context/UserContext';
 import Router from 'next/router' 
+import Insurance from '../component/insurance-component/Insurance'
 
 export default function dashboard() {
 
@@ -97,8 +98,10 @@ export default function dashboard() {
                                         <Loan />
                                         :tab === 3 ?
                                             <Investment />
-                                            :tab === 5 ?
-                                                <More />
+                                            :tab === 4 ?
+                                                <Insurance />
+                                                :tab === 5 ?
+                                                    <More />
                             :null
                         }
                     </div> 

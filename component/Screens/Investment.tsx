@@ -26,12 +26,12 @@ export default function Investment(props: any) {
             <div className='px-8 w-full flex flex-row' >
                 <div className='w-full mt-10'  > 
                     <div className='w-full flex justify-end lg:hidden' >
-                        <button onClick={()=> setShowModal(0)}  style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-32 ml-4 flex text-white ml-auto  font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Invest Now</button>    
+                        <button onClick={()=> setShowModal(0)}  style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-32 flex text-white ml-auto  font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Invest Now</button>    
                     </div> 
                     <InvestmentHistory open={setShowModal} withdraw={setWithdrawModal} />  
                 </div>
                 <div className='ml-8 hidden flex-col lg:flex lg:w-700px' > 
-                    <button onClick={()=> setShowModal(0)}  style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-32 ml-4 flex text-white ml-auto mt-16 mb-8 font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Invest Now</button>
+                    <button onClick={()=> setShowModal(0)}  style={{backgroundColor: '#002343', borderRadius: '2px'}}  className=' w-32 flex text-white ml-auto mt-16 mb-8 font-Montserrat-Medium text-sm h-10 items-center justify-center' ><IoIosAdd size='25px' /> Invest Now</button>
                     <div className=' w-96  mt-12 rounded-2xl relative ' > 
                         <img src='/assets/images/building.png'  className=' w-full rounded-3xl' />  
                         <div className="absolute inset-0 bg-gradient-to-r from-startgrad to-stopgrad opacity-40 rounded-3xl  h-full flex flex-col" />
